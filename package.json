@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "lint": "npm run lint:ts && npm run lint:css",
     "lint:ts": "eslint --ext .jsx,.js,.tsx,.ts src/ --fix",
-    "lint:css": "stylelint src"
+    "lint:css": "stylelint src",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@types/react": "16.8.23",
