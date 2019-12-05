@@ -71,7 +71,6 @@ class RGBShiftEffect extends EffectShell {
   }
 
   onMouseEnter() {
-    console.log("mouse entered");
     if (!this.currentItem || !this.isMouseOver) {
       this.isMouseOver = true;
       // show plane
@@ -83,7 +82,6 @@ class RGBShiftEffect extends EffectShell {
   }
 
   onMouseLeave(event) {
-    console.log("mouse left");
     this.isMouseOver = false;
     TweenLite.to(this.uniforms.uAlpha, 0.5, {
       value: 0,

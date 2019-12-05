@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useRef } from "react";
 import imagesLoaded from "imagesloaded";
 import RGBShiftEffect from "Components/EffectShell/Effect";
-import { Me, Art } from "static/img";
+import { Me, Art, Temple } from "static/img";
 import "./Landing.scss";
+import HoverImage from "Components/HoverImage";
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,36 +31,44 @@ const Landing = () => {
     // setIsLoading(false);
   }, []);
 
+  const handleMouseLeave = () => {
+    setHovered(false);
+    if (effect && effect.current) {
+      (effect as any).current.onMouseLeave();
+    }
+  };
+
   useEffect(() => initAnimations, [initAnimations]);
+
   return (
     <div className="landing">
+      <div className="bg en">Jason</div>
+      <div className="bg ch">人杰</div>
       <div className={`text ${hovered ? "hovered" : ""}`}>
-        <a
-          aria-label="link-1"
-          className="link w-inline-block"
+        <HoverImage
           onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => {
-            setHovered(false);
-            if (effect && effect.current) {
-              (effect as any).current.onMouseLeave();
-            }
-          }}
-        >
-          <h1 className="h1">Jason Hong</h1>
-          <img src={Me} className="image" alt="me" />
-        </a>
+          onMouseLeave={handleMouseLeave}
+          text="Jason Hong"
+          imageSrc={Me}
+        />
         <span>
           {" "}
-          is a Computer Engineering student at the University of Waterloo,
+          is a Computer Engineering student at the University of Waterloo. He
+          loves to
         </span>
-        <a
-          aria-label="link-1"
-          className="link w-inline-block"
-          onClick={() => {}}
-        >
-          <h1 className="h1">Traveller</h1>
-          <img src={Art} className="image" alt="art" />
-        </a>
+        <HoverImage
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={handleMouseLeave}
+          text=" travel, "
+          imageSrc={Temple}
+        />
+        <HoverImage
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={handleMouseLeave}
+          text="draw"
+          imageSrc={Art}
+        />
+        <span>, and take photos</span>
       </div>
     </div>
   );

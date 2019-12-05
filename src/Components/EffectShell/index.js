@@ -101,7 +101,6 @@ class EffectShell {
   }
 
   createEventsListeners() {
-    console.log(this.items);
     this.items.forEach((item, index) => {
       item.element.addEventListener(
         "mouseover",
@@ -115,11 +114,6 @@ class EffectShell {
       this._onMouseMove.bind(this),
       false
     );
-    // this.itemsWrapper.addEventListener(
-    //   "mouseleave",
-    //   this._onMouseLeave.bind(this),
-    //   false
-    // );
   }
 
   _onMouseLeave(event) {
