@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import imagesLoaded from "imagesloaded";
 import RGBShiftEffect from "Components/EffectShell/Effect";
 import { Me, Art } from "static/img";
@@ -7,6 +7,7 @@ import "./Landing.scss";
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const effect = useRef();
 
   // Preload images
   const preloadImages = () => {
@@ -21,7 +22,7 @@ const Landing = () => {
     preloadImages().then(() => {
       // Remove the loader
       console.log("loaded");
-      const effect = new RGBShiftEffect(container, itemsWrapper, {
+      effect.current = new RGBShiftEffect(container, itemsWrapper, {
         strength: 0.25
       });
     });
@@ -35,9 +36,13 @@ const Landing = () => {
         <a
           aria-label="link-1"
           className="link w-inline-block"
-          onClick={() => {}}
           onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          onMouseLeave={() => {
+            setHovered(false);
+            if (effect && effect.current) {
+              (effect as any).current.onMouseLeave();
+            }
+          }}
         >
           <h1 className="h1">Jason Hong</h1>
           <img src={Me} className="image" alt="me" />

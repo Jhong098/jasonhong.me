@@ -115,11 +115,11 @@ class EffectShell {
       this._onMouseMove.bind(this),
       false
     );
-    this.itemsWrapper.addEventListener(
-      "mouseleave",
-      this._onMouseLeave.bind(this),
-      false
-    );
+    // this.itemsWrapper.addEventListener(
+    //   "mouseleave",
+    //   this._onMouseLeave.bind(this),
+    //   false
+    // );
   }
 
   _onMouseLeave(event) {
@@ -136,7 +136,6 @@ class EffectShell {
   }
 
   _onMouseOver(index, event) {
-    console.log("mouse over");
     this.tempItemIndex = index;
     this.onMouseOver(index, event);
   }
