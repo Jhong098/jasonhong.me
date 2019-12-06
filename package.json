@@ -16,6 +16,7 @@
     "@types/react-dom": "16.8.4",
     "@types/styled-components": "^4.1.18",
     "classnames": "^2.2.6",
+    "dat.gui": "^0.7.6",
     "framer-motion": "^1.6.17",
     "gsap": "^3.0.1",
     "imagesloaded": "^4.1.4",
