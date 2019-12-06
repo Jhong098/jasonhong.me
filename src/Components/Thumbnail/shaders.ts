@@ -3,10 +3,25 @@ export const VERTEX_SHADER = `
     uniform float hover;
     uniform float time;
     uniform vec2 intersect;
+
+    uniform float hoverRadius;
+    uniform float amplitude;
+    uniform float speed;
     
     void main() {
         vUv = uv;
-        gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);;
+        vec4 _plane = modelMatrix * vec4(position, 1.0);
+
+        if (hover > 0.0) {
+            float _wave = hover * amplitude * sin(speed * (position.x + position.y + time));
+            float _dist = length(uv - intersect);
+            float _inCircle = 1. - (clamp(_dist, 0., hoverRadius) / hoverRadius);
+            float _distort = _inCircle * _wave;
+            
+            _plane.z += _distort;
+        }
+        
+        gl_Position = projectionMatrix * viewMatrix * _plane;
     }
 `;
 
