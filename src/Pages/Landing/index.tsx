@@ -7,7 +7,6 @@ import "./Landing.scss";
 import HoverImage from "Components/HoverImage";
 
 const Landing = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
   const effect = useRef();
 
@@ -18,17 +17,15 @@ const Landing = () => {
     });
   };
 
-  const initAnimations = useEffect(() => {
+  useEffect(() => {
     const container = document.body;
     const itemsWrapper = document.querySelector(".landing");
     preloadImages().then(() => {
       // Remove the loader
-      console.log("loaded");
       effect.current = new RGBShiftEffect(container, itemsWrapper, {
         strength: 0.25
       });
     });
-    // setIsLoading(false);
   }, []);
 
   const handleMouseLeave = () => {
@@ -37,8 +34,6 @@ const Landing = () => {
       (effect as any).current.onMouseLeave();
     }
   };
-
-  useEffect(() => initAnimations, [initAnimations]);
 
   return (
     <div className="landing">

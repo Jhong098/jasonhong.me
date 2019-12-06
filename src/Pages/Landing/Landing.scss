@@ -1,41 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-#root,
-.App,
-.landing {
-  width: 100vw;
-  height: 100vh;
-}
-
-body {
-  font-family: "Bebas Neue", cursive;
-  color: #333;
-  font-size: 0.85rem;
-  line-height: 0.85rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  margin: 0;
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-canvas {
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: -1;
-  pointer-events: none;
-}
+@import "common.scss";
 
 .link {
   cursor: pointer;
@@ -56,22 +19,27 @@ canvas {
   padding: 230px;
 
   .text.hovered {
-    color: white;
+    h1 {
+      color: $beige;
+    }
+    span {
+      visibility: hidden;
+    }
   }
 }
 
 .body {
-  background-color: #b1a59f;
+  background-color: $beige;
 }
 
 .divider {
   width: 120px;
   height: 2px;
-  background-color: #333;
+  background-color: $dark-grey;
 }
 
 .link {
-  color: #333;
+  color: $dark-grey;
   text-decoration: none;
 }
 

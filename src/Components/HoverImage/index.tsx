@@ -10,8 +10,8 @@ interface HoverImageProps {
 
 const HoverImage: React.FC<HoverImageProps> = ({ text, imageSrc, ...rest }) => {
   return (
-    <a aria-label="link-1" className="link w-inline-block" {...rest}>
-      <h1 className="h1">{text}</h1>
+    <a aria-label="link-1" className="link" {...rest}>
+      <h1>{text}</h1>
       <img src={imageSrc} className="image" alt="art" />
     </a>
   );
