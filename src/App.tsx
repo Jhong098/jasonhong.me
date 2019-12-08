@@ -1,7 +1,8 @@
 import React from "react";
-import Landing from "Pages/Landing";
+import About from "Pages/About";
 import Cursor from "Components/Cursor";
 import Logo from "Components/Logo";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 import Thumbnail from "Components/Thumbnail";
@@ -9,9 +10,17 @@ import Thumbnail from "Components/Thumbnail";
 const App: React.FC = () => {
   return (
     <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+            <Thumbnail />
+          </Route>
+        </Switch>
+      </Router>
       <Logo />
-      {/* <Thumbnail /> */}
-      <Landing />
       <Cursor />
     </div>
   );

@@ -10,7 +10,7 @@ const Thumbnail = () => {
 
   return (
     <>
-      <div></div>
+      <div style={{ width: "100vw", height: "100vh" }} id="thumbnail"></div>
     </>
   );
 };

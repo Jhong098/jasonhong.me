@@ -62,14 +62,15 @@ export default class Plane {
   }
 
   async init() {
-    const { innerWidth, innerHeight } = window;
+    const container = document.getElementById("thumbnail");
+    const { clientWidth, clientHeight } = container;
 
-    this.aspect = innerWidth / innerHeight;
+    this.aspect = clientWidth / clientHeight;
     this.camera = new PerspectiveCamera(FOV, this.aspect, 1, 1000);
     this.camera.position.z = CAMERA_DISTANCE;
 
     this.scene = new Scene();
-    this.scene.background = new Color("#000f14");
+    this.scene.background = new Color("#b1a59f");
 
     this.raycaster = new Raycaster();
 
@@ -85,7 +86,7 @@ export default class Plane {
     this.scene.add(this.plane);
 
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(clientWidth, clientHeight);
     this.renderer.render(this.scene, this.camera);
     this.renderer.setAnimationLoop(this.animate);
 
@@ -170,9 +171,9 @@ export default class Plane {
         time: this.time,
         intersect: this.uv,
         ratio: { type: "v2", value: ratio },
-        hoverRadius: { type: "f", value: 0.35 },
-        speed: { type: "f", value: 0.7 },
-        amplitude: { type: "f", value: 10 }
+        hoverRadius: { type: "f", value: 0.47 },
+        speed: { type: "f", value: 0.26 },
+        amplitude: { type: "f", value: 7 }
       },
       side: DoubleSide,
       vertexShader: VERTEX_SHADER,

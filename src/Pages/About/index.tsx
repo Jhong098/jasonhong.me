@@ -3,10 +3,10 @@ import React, { useState, useEffect, useRef } from "react";
 import imagesLoaded from "imagesloaded";
 import RGBShiftEffect from "Components/EffectShell/Effect";
 import { Me, Art, Temple } from "static/img";
-import "./Landing.scss";
+import "./About.scss";
 import HoverImage from "Components/HoverImage";
 
-const Landing = () => {
+const About = () => {
   const [hovered, setHovered] = useState(false);
   const effect = useRef();
 
@@ -69,4 +69,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default About;
