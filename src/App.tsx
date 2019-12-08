@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 import Thumbnail from "Components/Thumbnail";
+import Scroller from "Components/Scroller";
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const App: React.FC = () => {
             <About />
           </Route>
           <Route exact path="/">
-            <Thumbnail />
+            <Scroller />
           </Route>
         </Switch>
       </Router>
