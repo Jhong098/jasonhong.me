@@ -1,481 +1,357 @@
-import * as THREE from "three";
-import gsap from "gsap";
+import imagesLoaded from "imagesloaded";
 
-const store = {
-  ww: window.innerWidth,
-  wh: window.innerHeight
+// helper functions
+const MathUtils = {
+  // map number x from range [a, b] to [c, d]
+  map: (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c,
+  // linear interpolation
+  lerp: (a, b, n) => (1 - n) * a + n * b,
+  // Random float
+  getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
 };
 
-/***/
-/*** GL STUFF ****/
-/***/
+// body element
+const body = document.body;
 
-const backgroundCoverUv = `
-vec2 backgroundCoverUv(vec2 screenSize, vec2 imageSize, vec2 uv) {
-  float screenRatio = screenSize.x / screenSize.y;
-  float imageRatio = imageSize.x / imageSize.y;
+// calculate the viewport size
+let winsize;
+const calcWinsize = () =>
+  (winsize = { width: window.innerWidth, height: window.innerHeight });
+calcWinsize();
+// and recalculate on resize
+window.addEventListener("resize", calcWinsize);
 
-  vec2 newSize = screenRatio < imageRatio 
-      ? vec2(imageSize.x * screenSize.y / imageSize.y, screenSize.y)
-      : vec2(screenSize.x, imageSize.y * screenSize.x / imageSize.x);
+// scroll position
+let docScroll;
+// for scroll speed calculation
+let lastScroll;
+let scrollingSpeed = 0;
+// scroll position update function
+const getPageYScroll = () =>
+  (docScroll = window.pageYOffset || document.documentElement.scrollTop);
+window.addEventListener("scroll", getPageYScroll);
 
-  vec2 newOffset = (screenRatio < imageRatio 
-      ? vec2((newSize.x - screenSize.x) / 2.0, 0.0) 
-      : vec2(0.0, (newSize.y - screenSize.y) / 2.0)) / newSize;
-
-  return uv * screenSize / newSize + newOffset;
-}
-`;
-
-const vertexShader = `
-precision mediump float;
-
-uniform float uVelo;
-
-varying vec2 vUv;
-
-#define M_PI 3.1415926535897932384626433832795
-
-void main(){
-  vec3 pos = position;
-  pos.x = pos.x + ((sin(uv.y * M_PI) * uVelo) * 0.125);
-
-  vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos,1.);
-}
-`;
-
-const fragmentShader = `
-precision mediump float;
-
-${backgroundCoverUv}
-
-uniform sampler2D uTexture;
-
-uniform vec2 uMeshSize;
-uniform vec2 uImageSize;
-
-uniform float uVelo;
-uniform float uScale;
-
-varying vec2 vUv;
-
-void main() {
-  vec2 uv = vUv;
-
-  vec2 texCenter = vec2(0.5);
-  vec2 texUv = backgroundCoverUv(uMeshSize, uImageSize, uv);
-  vec2 texScale = (texUv - texCenter) * uScale + texCenter;
-  vec4 texture = texture2D(uTexture, texScale);
-
-  texScale.x += 0.15 * uVelo;
-  if(uv.x < 1.) texture.g = texture2D(uTexture, texScale).g;
-
-  texScale.x += 0.10 * uVelo;
-  if(uv.x < 1.) texture.b = texture2D(uTexture, texScale).b;
-
-  gl_FragColor = texture;
-}
-`;
-
-const loader = new THREE.TextureLoader();
-loader.crossOrigin = "anonymous";
-
-class Gl {
-  constructor() {
-    this.scene = new THREE.Scene();
-
-    this.camera = new THREE.OrthographicCamera(
-      store.ww / -2,
-      store.ww / 2,
-      store.wh / 2,
-      store.wh / -2,
-      1,
-      10
-    );
-    this.camera.lookAt(this.scene.position);
-    this.camera.position.z = 1;
-
-    this.renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true
+// Item
+class Item {
+  constructor(el) {
+    // the .item element
+    this.DOM = { el: el };
+    // the inner image
+    this.DOM.image = this.DOM.el.querySelector(".content__item-img");
+    this.DOM.imageWrapper = this.DOM.image.parentNode;
+    this.DOM.imageWrapper.style.transformOrigin = "50% 100%";
+    this.DOM.title = this.DOM.el.querySelector(".content__item-title");
+    this.renderedStyles = {
+      // here we define which property will change as we scroll the page and the item is inside the viewport
+      // in this case we will be:
+      // - translate the inner image
+      // - translating/rotating the item's title
+      // - scaling the image wrapper
+      // we interpolate between the previous and current value to achieve a smooth effect
+      innerTranslationY: {
+        // interpolated value
+        previous: 0,
+        // current value
+        current: 0,
+        // amount to interpolate
+        ease: 0.1,
+        // current value setter
+        setValue: () => {
+          // the maximum value to translate the image is set in a CSS variable (--overflow)
+          const toValue = parseInt(
+            getComputedStyle(this.DOM.image).getPropertyValue("--overflow"),
+            10
+          );
+          const fromValue = -1 * toValue;
+          return Math.max(
+            Math.min(
+              MathUtils.map(
+                this.props.top - docScroll,
+                winsize.height,
+                -1 * this.props.height,
+                fromValue,
+                toValue
+              ),
+              toValue
+            ),
+            fromValue
+          );
+        }
+      },
+      titleTranslationY: {
+        previous: 0,
+        current: 0,
+        ease: 0.1,
+        fromValue: Number(MathUtils.getRandomFloat(30, 400)),
+        setValue: () => {
+          const fromValue = this.renderedStyles.titleTranslationY.fromValue;
+          const toValue = -1 * fromValue;
+          const val = MathUtils.map(
+            this.props.top - docScroll,
+            winsize.height,
+            -1 * this.props.height,
+            fromValue,
+            toValue
+          );
+          return fromValue < 0
+            ? Math.min(Math.max(val, fromValue), toValue)
+            : Math.max(Math.min(val, fromValue), toValue);
+        }
+      },
+      itemRotation: {
+        previous: 0,
+        current: 0,
+        ease: 0.1,
+        fromValue: Number(MathUtils.getRandomFloat(-10, 10)),
+        //fromValue: -45,
+        setValue: () => {
+          const fromValue = this.renderedStyles.itemRotation.fromValue;
+          const toValue = 0;
+          const val = MathUtils.map(
+            this.props.top - docScroll,
+            winsize.height,
+            winsize.height / 2 - this.props.height / 2,
+            fromValue,
+            toValue
+          );
+          return fromValue < 0
+            ? Math.min(Math.max(val, fromValue), toValue)
+            : Math.max(Math.min(val, fromValue), toValue);
+        }
+      },
+      imageScaleX: {
+        previous: 0,
+        current: 0,
+        ease: 0.1,
+        setValue: () => {
+          const fromValue = 1;
+          const toValue = 0.7;
+          const val = MathUtils.map(
+            this.props.top - docScroll,
+            winsize.height / 6,
+            -1 * this.props.height,
+            fromValue,
+            toValue
+          );
+          return Math.max(Math.min(val, fromValue), toValue);
+        }
+      },
+      imageScaleY: {
+        previous: 0,
+        current: 0,
+        ease: 0.1,
+        setValue: () => {
+          const fromValue = 1;
+          const toValue = 1.5;
+          const val = MathUtils.map(
+            this.props.top - docScroll,
+            winsize.height / 6,
+            -1 * this.props.height,
+            fromValue,
+            toValue
+          );
+          return Math.min(Math.max(val, fromValue), toValue);
+        }
+      }
+    };
+    // gets the item's height and top (relative to the document)
+    this.getSize();
+    // set the initial values
+    this.update();
+    // use the IntersectionObserver API to check when the element is inside the viewport
+    // only then the element styles will be updated
+    this.observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => (this.isVisible = entry.intersectionRatio > 0));
     });
-    this.renderer.setPixelRatio(1.5);
-    this.renderer.setSize(store.ww, store.wh);
-    this.renderer.setClearColor(0xffffff, 0);
-
-    this.init();
+    this.observer.observe(this.DOM.el);
+    // init/bind events
+    this.initEvents();
   }
-
-  render() {
-    this.renderer.render(this.scene, this.camera);
+  update() {
+    // sets the initial value (no interpolation)
+    for (const key in this.renderedStyles) {
+      this.renderedStyles[key].current = this.renderedStyles[
+        key
+      ].previous = this.renderedStyles[key].setValue();
+    }
+    // apply changes/styles
+    this.layout();
   }
-
-  init() {
-    const domEl = this.renderer.domElement;
-    domEl.classList.add("dom-gl");
-    document.body.appendChild(domEl);
+  getSize() {
+    const rect = this.DOM.el.getBoundingClientRect();
+    this.props = {
+      // item's height
+      height: rect.height,
+      // offset top relative to the document
+      top: docScroll + rect.top
+    };
   }
-}
-
-class GlObject extends THREE.Object3D {
-  init(el) {
-    this.el = el;
-
-    this.resize();
+  initEvents() {
+    window.addEventListener("resize", () => this.resize());
   }
-
   resize() {
-    this.rect = this.el.getBoundingClientRect();
-    const { left, top, width, height } = this.rect;
-
-    this.pos = {
-      x: left + width / 2 - store.ww / 2,
-      y: top + height / 2 - store.wh / 2
-    };
-
-    this.position.y = this.pos.y;
-    this.position.x = this.pos.x;
-
-    this.updateX();
+    // gets the item's height and top (relative to the document)
+    this.getSize();
+    // on resize reset sizes and update styles
+    this.update();
   }
-
-  updateX(current) {
-    current && (this.position.x = current + this.pos.x);
-  }
-}
-
-const planeGeo = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
-const planeMat = new THREE.ShaderMaterial({
-  transparent: true,
-  fragmentShader,
-  vertexShader
-});
-const gl = new Gl();
-
-class Plane extends GlObject {
-  init(el) {
-    super.init(el);
-
-    this.geo = planeGeo;
-    this.mat = planeMat.clone();
-
-    this.mat.uniforms = {
-      uTime: { value: 0 },
-      uTexture: { value: 0 },
-      uMeshSize: {
-        value: new THREE.Vector2(this.rect.width, this.rect.height)
-      },
-      uImageSize: { value: new THREE.Vector2(0, 0) },
-      uScale: { value: 0.75 },
-      uVelo: { value: 0 }
-    };
-
-    this.img = this.el.querySelector("img");
-    this.texture = loader.load(this.img.src, texture => {
-      texture.minFilter = THREE.LinearFilter;
-      texture.generateMipmaps = false;
-
-      this.mat.uniforms.uTexture.value = texture;
-      this.mat.uniforms.uImageSize.value = [
-        this.img.naturalWidth,
-        this.img.naturalHeight
-      ];
-    });
-
-    this.mesh = new THREE.Mesh(this.geo, this.mat);
-    this.mesh.scale.set(this.rect.width, this.rect.height, 1);
-    this.add(this.mesh);
-    gl.scene.add(this);
-  }
-}
-
-class Slider {
-  constructor(el, opts = {}) {
-    this.bindAll();
-
-    this.el = el;
-
-    this.opts = Object.assign(
-      {
-        speed: 2,
-        threshold: 50,
-        ease: 0.075
-      },
-      opts
-    );
-
-    this.ui = {
-      items: this.el.querySelectorAll(".js-slide"),
-      titles: document.querySelectorAll(".js-title"),
-      lines: document.querySelectorAll(".js-progress-line")
-    };
-
-    this.state = {
-      target: 0,
-      current: 0,
-      currentRounded: 0,
-      y: 0,
-      on: {
-        x: 0,
-        y: 0
-      },
-      off: 0,
-      progress: 0,
-      diff: 0,
-      max: 0,
-      min: 0,
-      snap: {
-        points: []
-      },
-      flags: {
-        dragging: false
-      }
-    };
-
-    this.items = [];
-
-    this.init();
-  }
-
-  bindAll() {
-    ["onDown", "onMove", "onUp"].forEach(
-      fn => (this[fn] = this[fn].bind(this))
-    );
-  }
-
-  init() {
-    return gsap.utils.pipe(
-      this.setup(),
-      this.on()
-    );
-  }
-
-  destroy() {
-    this.off();
-    this.state = null;
-    this.items = null;
-    this.opts = null;
-    this.ui = null;
-  }
-
-  on() {
-    window.addEventListener("mousedown", this.onDown);
-    window.addEventListener("mousemove", this.onMove);
-    window.addEventListener("mouseup", this.onUp);
-  }
-
-  off() {
-    window.removeEventListener("mousedown", this.onDown);
-    window.removeEventListener("mousemove", this.onMove);
-    window.removeEventListener("mouseup", this.onUp);
-  }
-
-  setup() {
-    const { ww } = store;
-    const state = this.state;
-    const { items, titles } = this.ui;
-
-    const {
-      width: wrapWidth,
-      left: wrapDiff
-    } = this.el.getBoundingClientRect();
-
-    // Set bounding
-    state.max = -(
-      items[items.length - 1].getBoundingClientRect().right -
-      wrapWidth -
-      wrapDiff
-    );
-    state.min = 0;
-
-    // Global timeline
-    this.tl = gsap
-      .timeline({
-        paused: true,
-        defaults: {
-          duration: 1,
-          ease: "linear"
-        }
-      })
-      .fromTo(
-        ".js-progress-line-2",
-        {
-          scaleX: 1
-        },
-        {
-          scaleX: 0,
-          duration: 0.5,
-          ease: "power3"
-        },
-        0
-      )
-      .fromTo(
-        ".js-titles",
-        {
-          yPercent: 0
-        },
-        {
-          yPercent: -(100 - 100 / titles.length)
-        },
-        0
-      )
-      .fromTo(
-        ".js-progress-line",
-        {
-          scaleX: 0
-        },
-        {
-          scaleX: 1
-        },
-        0
-      );
-
-    // Cache stuff
-    for (let i = 0; i < items.length; i++) {
-      const el = items[i];
-      const { left, right, width } = el.getBoundingClientRect();
-
-      // Create webgl plane
-      const plane = new Plane();
-      plane.init(el);
-
-      // Timeline that plays when visible
-      const tl = gsap.timeline({ paused: true }).fromTo(
-        plane.mat.uniforms.uScale,
-        {
-          value: 0.65
-        },
-        {
-          value: 1,
-          duration: 1,
-          ease: "linear"
-        }
-      );
-
-      // Push to cache
-      this.items.push({
-        el,
-        plane,
-        left,
-        right,
-        width,
-        min: left < ww ? ww * 0.775 : -(ww * 0.225 - wrapWidth * 0.2),
-        max:
-          left > ww
-            ? state.max - ww * 0.775
-            : state.max + (ww * 0.225 - wrapWidth * 0.2),
-        tl,
-        out: false
-      });
-    }
-  }
-
-  calc() {
-    const state = this.state;
-    state.current += (state.target - state.current) * this.opts.ease;
-    state.currentRounded = Math.round(state.current * 100) / 100;
-    state.diff = (state.target - state.current) * 0.0005;
-    state.progress = gsap.utils.wrap(0, 1, state.currentRounded / state.max);
-
-    this.tl && this.tl.progress(state.progress);
-  }
-
   render() {
-    this.calc();
-    this.transformItems();
-  }
-
-  transformItems() {
-    const { flags } = this.state;
-
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i];
-      const { translate, isVisible, progress } = this.isVisible(item);
-
-      item.plane.updateX(translate);
-      item.plane.mat.uniforms.uVelo.value = this.state.diff;
-
-      if (!item.out && item.tl) {
-        item.tl.progress(progress);
-      }
-
-      if (isVisible || flags.resize) {
-        item.out = false;
-      } else if (!item.out) {
-        item.out = true;
-      }
-    }
-  }
-
-  isVisible({ left, right, width, min, max }) {
-    const { ww } = store;
-    const { currentRounded } = this.state;
-    const translate = gsap.utils.wrap(min, max, currentRounded);
-    const threshold = this.opts.threshold;
-    const start = left + translate;
-    const end = right + translate;
-    const isVisible = start < threshold + ww && end > -threshold;
-    const progress = gsap.utils.clamp(
-      0,
-      1,
-      1 - (translate + left + width) / (ww + width)
-    );
-
-    return {
-      translate,
-      isVisible,
-      progress
-    };
-  }
-
-  clampTarget() {
-    const state = this.state;
-
-    state.target = gsap.utils.clamp(state.max, 0, state.target);
-  }
-
-  onDown({ x, y, target }) {
-    const { flags, on } = this.state;
-
-    flags.dragging = true;
-    on.x = x;
-    on.y = y;
-  }
-
-  onUp() {
-    const state = this.state;
-
-    state.flags.dragging = false;
-    state.off = state.target;
-  }
-
-  onMove({ x, y, ...e }) {
-    const state = this.state;
-    if (!state.flags.dragging) return;
-
-    const { off, on } = state;
-    const moveX = x - on.x;
-    const moveY = y - on.y;
-
-    if (Math.abs(moveX) > Math.abs(moveY) && e.cancelable) {
-      e.preventDefault();
-      e.stopPropagation();
+    // update the current and interpolated values
+    for (const key in this.renderedStyles) {
+      this.renderedStyles[key].current = this.renderedStyles[key].setValue();
+      this.renderedStyles[key].previous = MathUtils.lerp(
+        this.renderedStyles[key].previous,
+        this.renderedStyles[key].current,
+        this.renderedStyles[key].ease
+      );
     }
 
-    state.target = off + moveX * this.opts.speed;
+    // and apply changes
+    this.layout();
+  }
+  layout() {
+    // translates the image
+    this.DOM.image.style.transform = `translate3d(0,${this.renderedStyles.innerTranslationY.previous}px,0)`;
+    this.DOM.imageWrapper.style.transform = `scale3d(${this.renderedStyles.imageScaleX.previous},${this.renderedStyles.imageScaleY.previous},1)`;
+    // translate the title
+    this.DOM.title.style.transform = `translate3d(0,${this.renderedStyles.titleTranslationY.previous}px,0)`;
+    // rotate the item
+    this.DOM.el.style.transform = `rotate3d(0,0,1,${this.renderedStyles.itemRotation.previous}deg)`;
   }
 }
 
-/***/
-/*** INIT STUFF ****/
-/***/
-export const init = () => {
-  const slider = new Slider(document.querySelector(".js-slider"));
-  const tick = () => {
-    gl.render();
-    slider.render();
-  };
+// SmoothScroll
+class SmoothScroll {
+  constructor() {
+    // the <main> element
+    this.DOM = { main: document.querySelector("main") };
+    // the scrollable element
+    // we translate this element when scrolling (y-axis)
+    this.DOM.scrollable = this.DOM.main.querySelector("div[data-scroll]");
+    // the items on the page
+    this.items = [];
+    this.DOM.content = this.DOM.main.querySelector(".content");
+    [...this.DOM.content.querySelectorAll(".content__item")].forEach(item =>
+      this.items.push(new Item(item))
+    );
+    // here we define which property will change as we scroll the page
+    // in this case we will be translating on the y-axis
+    // we interpolate between the previous and current value to achieve the smooth scrolling effect
+    this.renderedStyles = {
+      translationY: {
+        // interpolated value
+        previous: 0,
+        // current value
+        current: 0,
+        // amount to interpolate
+        ease: 0.1,
+        // current value setter
+        // in this case the value of the translation will be the same like the document scroll
+        setValue: () => docScroll
+      }
+    };
+    // set the body's height
+    this.setSize();
+    // set the initial values
+    this.update();
+    // the <main> element's style needs to be modified
+    this.style();
+    // init/bind events
+    this.initEvents();
+    // start the render loop
+    requestAnimationFrame(() => this.render());
+  }
+  update() {
+    // sets the initial value (no interpolation) - translate the scroll value
+    for (const key in this.renderedStyles) {
+      this.renderedStyles[key].current = this.renderedStyles[
+        key
+      ].previous = this.renderedStyles[key].setValue();
+    }
+    // translate the scrollable element
+    this.layout();
+  }
+  layout() {
+    this.DOM.scrollable.style.transform = `translate3d(0,${-1 *
+      this.renderedStyles.translationY.previous}px,0)`;
+  }
+  setSize() {
+    // set the heigh of the body in order to keep the scrollbar on the page
+    body.style.height = `${this.DOM.scrollable.scrollHeight}px`;
+  }
+  style() {
+    // the <main> needs to "stick" to the screen and not scroll
+    // for that we set it to position fixed and overflow hidden
+    this.DOM.main.style.position = "fixed";
+    this.DOM.main.style.width = this.DOM.main.style.height = "100%";
+    this.DOM.main.style.top = this.DOM.main.style.left = 0;
+    this.DOM.main.style.overflow = "hidden";
+  }
+  initEvents() {
+    // on resize reset the body's height
+    window.addEventListener("resize", () => this.setSize());
+  }
+  render() {
+    // Get scrolling speed
+    // Update lastScroll
+    scrollingSpeed = Math.abs(docScroll - lastScroll);
+    lastScroll = docScroll;
 
-  gsap.ticker.add(tick);
+    // update the current and interpolated values
+    for (const key in this.renderedStyles) {
+      this.renderedStyles[key].current = this.renderedStyles[key].setValue();
+      this.renderedStyles[key].previous = MathUtils.lerp(
+        this.renderedStyles[key].previous,
+        this.renderedStyles[key].current,
+        this.renderedStyles[key].ease
+      );
+    }
+    // and translate the scrollable element
+    this.layout();
+
+    // for every item
+    for (const item of this.items) {
+      // if the item is inside the viewport call it's render function
+      // this will update item's styles, based on the document scroll value and the item's position on the viewport
+      if (item.isVisible) {
+        if (item.insideViewport) {
+          item.render();
+        } else {
+          item.insideViewport = true;
+          item.update();
+        }
+      } else {
+        item.insideViewport = false;
+      }
+    }
+
+    // loop..
+    requestAnimationFrame(() => this.render());
+  }
+}
+
+/***********************************/
+/********** Preload stuff **********/
+
+// Preload images
+const preloadImages = () => {
+  return new Promise((resolve, reject) => {
+    imagesLoaded(
+      document.querySelectorAll(".content__item-img"),
+      { background: true },
+      resolve
+    );
+  });
+};
+
+export const init = () => {
+  preloadImages().then(() => {
+    // Remove the loader
+    document.body.classList.remove("loading");
+    // Get the scroll position and update the lastScroll variable
+    getPageYScroll();
+    lastScroll = docScroll;
+    // Initialize the Smooth Scrolling
+    new SmoothScroll();
+  });
 };
