@@ -1,5 +1,5 @@
 /**
- * Landing
+ * Export all assets
  */
 export { default as Me } from "./me.jpg";
 export { default as Art } from "./art.jpg";

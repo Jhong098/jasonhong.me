@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./Logo.scss";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   const [toggled, setToggled] = useState<boolean>(false);
@@ -13,13 +14,13 @@ const Logo = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      <a href="/">
+      <Link to="/">
         <motion.span
           animate={toggled ? { color: "#333" } : { color: "#b1a59f" }}
         >
           {toggled ? "HONG" : "洪"}
         </motion.span>
-      </a>
+      </Link>
     </motion.div>
   );
 };

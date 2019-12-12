@@ -1,12 +1,12 @@
 import React from "react";
 import About from "Pages/About";
-import Cursor from "Components/Cursor";
+// import "Components/Cursor/index.js";
 import Logo from "Components/Logo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
-import Thumbnail from "Components/Thumbnail";
-import Scroller from "Components/Scroller";
+// import Thumbnail from "Components/Thumbnail";
+import Landing from "Pages/Landing";
 
 const App: React.FC = () => {
   return (
@@ -17,12 +17,11 @@ const App: React.FC = () => {
             <About />
           </Route>
           <Route exact path="/">
-            <Scroller />
+            <Landing />
           </Route>
         </Switch>
+        <Logo />
       </Router>
-      <Logo />
-      <Cursor />
     </div>
   );
 };

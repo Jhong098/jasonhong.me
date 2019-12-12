@@ -19,7 +19,7 @@ const About = () => {
 
   useEffect(() => {
     const container = document.body;
-    const itemsWrapper = document.querySelector(".landing");
+    const itemsWrapper = document.getElementById("about");
     preloadImages().then(() => {
       // Remove the loader
       effect.current = new RGBShiftEffect(container, itemsWrapper, {
@@ -36,7 +36,7 @@ const About = () => {
   };
 
   return (
-    <div className="landing">
+    <div id="about">
       <div className="bg en">Jason</div>
       <div className="bg ch">人杰</div>
       <div className={`text ${hovered ? "hovered" : ""}`}>
