@@ -1,15 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import {
-  Polyline,
-  Renderer,
-  Transform,
-  Geometry,
-  Program,
-  Mesh,
-  Vec3,
-  Vec2,
-  Color
-} from "ogl";
+import { Polyline, Renderer, Transform, Vec3, Color } from "ogl";
 
 const vertex = `
       attribute vec3 position;

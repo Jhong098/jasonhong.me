@@ -1,6 +1,6 @@
 import React from "react";
 import About from "Pages/About";
-// import "Components/Cursor/index.js";
+import "Components/Cursor/index.js";
 import Logo from "Components/Logo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
