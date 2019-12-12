@@ -31,6 +31,7 @@ const About = () => {
   const handleMouseLeave = () => {
     setHovered(false);
     if (effect && effect.current) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (effect as any).current.onMouseLeave();
     }
   };

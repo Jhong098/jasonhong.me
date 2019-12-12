@@ -91,13 +91,13 @@ class RGBShiftEffect extends EffectShell {
 
   onMouseMove(event) {
     // project mouse position to world coodinates
-    let x = this.mouse.x.map(
+    const x = this.mouse.x.map(
       -1,
       1,
       -this.viewSize.width / 2,
       this.viewSize.width / 2
     );
-    let y = this.mouse.y.map(
+    const y = this.mouse.y.map(
       -1,
       1,
       -this.viewSize.height / 2,
@@ -115,7 +115,7 @@ class RGBShiftEffect extends EffectShell {
 
   onPositionUpdate() {
     // compute offset
-    let offset = this.plane.position
+    const offset = this.plane.position
       .clone()
       .sub(this.position)
       .multiplyScalar(-this.options.strength);
@@ -135,7 +135,7 @@ class RGBShiftEffect extends EffectShell {
     if (!this.currentItem.texture) return;
 
     // compute image ratio
-    let imageRatio =
+    const imageRatio =
       this.currentItem.img.naturalWidth / this.currentItem.img.naturalHeight;
     this.scale = new THREE.Vector3(imageRatio, 1, 1);
     this.uniforms.uTexture.value = this.currentItem.texture;

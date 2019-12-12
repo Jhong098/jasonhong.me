@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/camelcase */
 import * as THREE from "three";
 
 // eslint-disable-next-line no-extend-native
@@ -71,7 +73,7 @@ class EffectShell {
   }
 
   initEffectShell() {
-    let promises = [];
+    const promises = [];
 
     this.items = this.itemsElements;
 
@@ -151,9 +153,9 @@ class EffectShell {
   onMouseOver(index, event) {}
 
   get viewport() {
-    let width = this.container.clientWidth;
-    let height = this.container.clientHeight;
-    let aspectRatio = width / height;
+    const width = this.container.clientWidth;
+    const height = this.container.clientHeight;
+    const aspectRatio = width / height;
     return {
       width,
       height,
@@ -165,10 +167,10 @@ class EffectShell {
     // fit plane to screen
     // https://gist.github.com/ayamflow/96a1f554c3f88eef2f9d0024fc42940f
 
-    let distance = this.camera.position.z;
-    let vFov = (this.camera.fov * Math.PI) / 180;
-    let height = 2 * Math.tan(vFov / 2) * distance;
-    let width = height * this.viewport.aspectRatio;
+    const distance = this.camera.position.z;
+    const vFov = (this.camera.fov * Math.PI) / 180;
+    const height = 2 * Math.tan(vFov / 2) * distance;
+    const width = height * this.viewport.aspectRatio;
     return { width, height, vFov };
   }
 

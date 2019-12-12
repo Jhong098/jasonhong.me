@@ -47,6 +47,7 @@ const vertex = `
 
   const scene = new Transform();
 
+  // eslint-disable-next-line prefer-const
   let polyline;
 
   function resize() {
