@@ -1,0 +1,88 @@
+@import "common.scss";
+
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  padding: 230px;
+  height: 100%;
+
+  .text.hovered {
+    h1 {
+      color: $beige;
+    }
+    span {
+      visibility: hidden;
+    }
+  }
+
+  .bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-size: 44vh;
+    align-items: center;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.04);
+    font-family: serif;
+    justify-content: center;
+
+    &.en {
+      top: 40%;
+      left: 0;
+    }
+
+    &.ch {
+      top: -36%;
+      left: 26%;
+    }
+  }
+
+  h1,
+  span {
+    font-family: "Bebas Neue", cursive;
+    font-size: 50px;
+    line-height: 1.3;
+    display: inline;
+  }
+  .link {
+    color: $dark-grey;
+    text-decoration: none;
+  }
+
+  .image {
+    width: 5rem;
+  }
+
+  .link {
+    cursor: pointer;
+    display: inline;
+  }
+
+  .link img {
+    display: none;
+  }
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.body {
+  background-color: $beige;
+}
+
+.divider {
+  width: 120px;
+  height: 2px;
+  background-color: $dark-grey;
+}
