@@ -1,6 +1,5 @@
 import React from "react";
 import About from "Pages/About";
-import "Components/Cursor/index.js";
 import Logo from "Components/Logo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -11,6 +10,7 @@ import Landing from "Pages/Landing";
 const App: React.FC = () => {
   return (
     <div className="App">
+      <canvas id="cursor" style={{ height: "100%", width: "100%" }} />
       <Router>
         <Switch>
           <Route path="/about">

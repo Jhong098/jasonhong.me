@@ -20,3 +20,4 @@ declare module "Components/EffectShell/Effect";
 declare module "Components/Cursor/utils";
 declare module "Components/Thumbnail/plane";
 declare module "Components/Scroller/scroller";
+declare module "Components/Cursor/index.js";
