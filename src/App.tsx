@@ -10,7 +10,7 @@ import Landing from "Pages/Landing";
 const App: React.FC = () => {
   return (
     <div className="App">
-      <canvas id="cursor" style={{ height: "100%", width: "100%" }} />
+      {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
       <Router>
         <Switch>
           <Route path="/about">

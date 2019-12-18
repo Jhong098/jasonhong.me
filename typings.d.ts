@@ -19,5 +19,6 @@ declare module "Components/EffectShell";
 declare module "Components/EffectShell/Effect";
 declare module "Components/Cursor/utils";
 declare module "Components/Thumbnail/plane";
-declare module "Components/Scroller/scroller";
-declare module "Components/Cursor/index.js";
+declare module "Components/*";
+declare module "lerp";
+declare module "Pages/Landing";
