@@ -5,7 +5,8 @@ import state from "copy";
 
 const offsetContext = createContext(0);
 
-function Block({ children, offset, factor, ...props }) {
+function Block({ children, offset, factor, y, ...props }) {
+  console.log(y);
   const { offset: parentOffset, sectionHeight } = useBlock();
   const ref = useRef();
   offset = offset !== undefined ? offset : parentOffset;
@@ -16,7 +17,15 @@ function Block({ children, offset, factor, ...props }) {
   });
   return (
     <offsetContext.Provider value={offset}>
-      <group {...props} position={[0, -sectionHeight * offset * factor, 0]}>
+      <group
+        {...props}
+        position={[
+          0,
+          -sectionHeight * offset * factor + y &&
+            y.interpolate(y => (y / 800) * 25),
+          0
+        ]}
+      >
         <group ref={ref}>{children}</group>
       </group>
     </offsetContext.Provider>

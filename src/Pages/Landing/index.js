@@ -51,8 +51,11 @@ import lerp from "lerp";
 import { Text, MultilineText } from "Components/Text";
 import Plane from "Components/Plane";
 import { Block, useBlock } from "Components/Block";
+import { a } from "@react-spring/three";
+import { a as aDom } from "@react-spring/web";
 import state from "copy";
 import "./Landing.scss";
+import useYScroll from "../../utils/useYScroll";
 
 function Startup() {
   const ref = useRef();
@@ -74,7 +77,17 @@ function Startup() {
   );
 }
 
-const Paragraph = ({ image, index, offset, factor, header, aspect, text }) => {
+const Paragraph = ({
+  image,
+  index,
+  offset,
+  factor,
+  header,
+  aspect,
+  text,
+  y
+}) => {
+  console.log(offset);
   const { contentMaxWidth: w, canvasWidth, margin, mobile } = useBlock();
   const size = aspect < 1 && !mobile ? 0.65 : 1;
   const alignRight = (canvasWidth - w * size - margin) / 2;
@@ -82,7 +95,7 @@ const Paragraph = ({ image, index, offset, factor, header, aspect, text }) => {
   const left = !(index % 2);
   const color = index % 2 ? "#D40749" : "#2FE8C3";
   return (
-    <Block factor={factor} offset={offset}>
+    <Block factor={factor} offset={offset - 1} y={y}>
       <group position={[left ? -alignRight : alignRight, 0, 0]}>
         <Plane
           map={image}
@@ -139,7 +152,7 @@ const Paragraph = ({ image, index, offset, factor, header, aspect, text }) => {
   );
 };
 
-function Content() {
+function Content({ y }) {
   const images = useLoader(
     TextureLoader,
     state.paragraphs.map(({ image }) => image)
@@ -150,7 +163,7 @@ function Content() {
   const { contentMaxWidth: w, canvasWidth, canvasHeight, mobile } = useBlock();
   return (
     <>
-      <Block factor={1} offset={0}>
+      {/* <Block factor={1} offset={0}>
         <Block factor={1.2}>
           <Text
             left
@@ -162,27 +175,22 @@ function Content() {
           </Text>
         </Block>
         <Block factor={1.0}>
-          <Dom position={[-w / 3.2, -w * 0.08 + 0.25, -1]}>
+          <Dom position={[-w / 3.2, -w * 0.08, -1]}>
             It was the year 2076.{mobile ? <br /> : " "}The substance had
             arrived.
           </Dom>
         </Block>
-      </Block>
-      <Block factor={1.2} offset={5.7}>
-        <MultilineText
-          top
-          left
-          size={w * 0.15}
-          lineHeight={w / 5}
-          position={[-w / 3.5, 0, -1]}
-          color="#2fe8c3"
-          text={"four\nzero\nzero"}
-        />
-      </Block>
+      </Block> */}
       {state.paragraphs.map((props, index) => (
-        <Paragraph key={index} index={index} {...props} image={images[index]} />
+        <Paragraph
+          key={index}
+          index={index}
+          {...props}
+          y={y}
+          image={images[index]}
+        />
       ))}
-      {state.stripes.map(({ offset, color, height }, index) => (
+      {/* {state.stripes.map(({ offset, color, height }, index) => (
         <Block key={index} factor={-1.5} offset={offset}>
           <Plane
             args={[50, height, 32, 32]}
@@ -192,7 +200,7 @@ function Content() {
             position={[0, 0, -10]}
           />
         </Block>
-      ))}
+      ))} */}
       <Block factor={1.25} offset={8}>
         <Dom
           className="bottom-left"
@@ -206,9 +214,11 @@ function Content() {
 }
 
 function Landing() {
-  const scrollArea = useRef();
-  const onScroll = e => (state.top.current = e.target.scrollTop);
-  useEffect(() => void onScroll({ target: scrollArea.current }), []);
+  const [y] = useYScroll([-100, 2400], { domTarget: window });
+  console.log(y);
+  // const scrollArea = useRef();
+  // const onScroll = e => (state.top.current = e.target.scrollTop);
+  // useEffect(() => void onScroll({ target: scrollArea.current }), []);
   return (
     <>
       <Canvas
@@ -221,11 +231,11 @@ function Landing() {
         <Suspense
           fallback={<Dom center className="loading" children="Loading..." />}
         >
-          <Content />
+          <Content y={y} />
           <Startup />
         </Suspense>
       </Canvas>
-      <div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
+      {/* <div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
         {new Array(state.sections).fill().map((_, index) => (
           <div
             key={index}
@@ -233,7 +243,7 @@ function Landing() {
             style={{ height: `${(state.pages / state.sections) * 100}vh` }}
           />
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
