@@ -15,19 +15,22 @@ const SectionImage: React.FC<SectionImageProps> = ({
   onClick
 }) => {
   return (
-    <div className="content__item" onClick={onClick}>
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      className="content__item"
+      onClick={onClick}
+    >
       <div className="content__item-imgwrap">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
+        <div
           className="content__item-img"
           style={{ backgroundImage: `url("${image}")` }}
-        ></motion.div>
+        ></div>
       </div>
       <h2 className="content__item-title content__item-title--layer">
         {titleText}
       </h2>
       <p className="content__item-description">{description}</p>
-    </div>
+    </motion.div>
   );
 };
 
