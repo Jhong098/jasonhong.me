@@ -21,4 +21,6 @@ declare module "Components/Cursor/utils";
 declare module "Components/Thumbnail/plane";
 declare module "Components/*";
 declare module "lerp";
+declare module "Pages/Landing";
+declare module "Components/SectionImage";
 declare module "react-spring/addons";
