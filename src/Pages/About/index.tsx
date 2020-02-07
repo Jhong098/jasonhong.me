@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import imagesLoaded from "imagesloaded";
 import RGBShiftEffect from "Components/EffectShell/Effect";
-import { Me, Art, Temple } from "static/img";
+import { Me, Art, Temple } from "static";
 import "./About.scss";
 import HoverImage from "Components/HoverImage";
 

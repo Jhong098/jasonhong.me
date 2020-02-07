@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Plane from "Components/Thumbnail/plane";
-import { Art } from "static/img";
+import { Art } from "static";
 
 const Thumbnail = () => {
   useEffect(() => {
