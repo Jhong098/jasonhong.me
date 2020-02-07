@@ -3,7 +3,8 @@ import "./Landing.scss";
 import SectionImage from "Components/SectionImage";
 import { Redirect } from "react-router-dom";
 import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
-import copy from "copy";
+import { landing } from "../../copy";
+import Footer from "Components/Footer";
 
 const url = (name, wrap = false) =>
   `${
@@ -16,7 +17,9 @@ class Landing extends React.Component {
   state = {
     redirectTo: ""
   };
+
   parallax;
+
   redirect = to => {
     this.setState(() => ({
       redirectTo: to
@@ -25,12 +28,12 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <Parallax ref={ref => (this.parallax = ref)} pages={3}>
+      <Parallax ref={ref => (this.parallax = ref)} pages={landing.pages}>
         <ParallaxLayer
           offset={1}
           speed={1}
           style={{
-            backgroundColor: "#87BCDE",
+            backgroundColor: "#a1eeec",
             width: "inherit",
             height: "inherit"
           }}
@@ -40,6 +43,15 @@ class Landing extends React.Component {
           speed={1}
           style={{
             backgroundColor: "#805E73",
+            width: "inherit",
+            height: "inherit"
+          }}
+        />
+        <ParallaxLayer
+          offset={3}
+          speed={1}
+          style={{
+            backgroundColor: "#87BCDE",
             width: "inherit",
             height: "inherit"
           }}
@@ -58,29 +70,34 @@ class Landing extends React.Component {
         <main>
           <div className="page">
             <div className="content content--center">
-              {copy.sections.map(({ header, image, text, redirect }, index) => (
-                <ParallaxLayer
-                  key={index}
-                  offset={index}
-                  speed={0.2}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    left: 0
-                  }}
-                  onClick={() =>
-                    this.parallax.scrollTo((index + 1) % copy.sections.length)
-                  }
-                >
-                  <SectionImage
-                    image={image}
-                    titleText={header}
-                    description={text}
-                    onClick={() => this.redirect(redirect)}
-                  />
-                </ParallaxLayer>
-              ))}
+              {landing.sections.map(
+                ({ header, image, text, redirect }, index) => (
+                  <ParallaxLayer
+                    key={index}
+                    offset={index}
+                    speed={0.2}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      left: 0
+                    }}
+                    onClick={() =>
+                      this.parallax.scrollTo(
+                        (index + 1) % landing.sections.length
+                      )
+                    }
+                  >
+                    <SectionImage
+                      image={image}
+                      titleText={header}
+                      description={text}
+                      onClick={() => this.redirect(redirect)}
+                    />
+                    {/* {index === landing.sections.length - 1 && <Footer />} */}
+                  </ParallaxLayer>
+                )
+              )}
             </div>
           </div>
         </main>
