@@ -38,8 +38,6 @@ const About = () => {
 
   return (
     <div id="about">
-      <div className="bg en">Jason</div>
-      <div className="bg ch">人杰</div>
       <div className={`text ${hovered ? "hovered" : ""}`}>
         <HoverImage
           onMouseEnter={() => setHovered(true)}
