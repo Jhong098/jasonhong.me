@@ -10,13 +10,23 @@ const Logo = () => {
       className="logo"
       onMouseEnter={() => setToggled(true)}
       onMouseLeave={() => setToggled(false)}
-      animate={toggled ? { background: "#b1a59f" } : { background: "#333" }}
+      animate={
+        toggled
+          ? {
+              background: "#b1a59f"
+            }
+          : { background: "#333" }
+      }
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
       <Link to="/">
         <motion.span
-          animate={toggled ? { color: "#333" } : { color: "#b1a59f" }}
+          animate={
+            toggled
+              ? { color: "#333", fontFamily: "inherit" }
+              : { color: "#b1a59f", fontFamily: "Ma Shan Zheng" }
+          }
         >
           {toggled ? "HONG" : "洪"}
         </motion.span>
