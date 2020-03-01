@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Landing.scss";
 import SectionImage from "Components/SectionImage";
 import { Redirect } from "react-router-dom";
@@ -12,6 +12,8 @@ const Landing = () => {
   //     redirectTo: to
   //   }));
   // };
+
+  const [redirect, setRedirect] = useState("");
 
   return (
     <>
@@ -27,14 +29,14 @@ const Landing = () => {
                   titleText={header}
                   description={text}
                   key={header}
-                  // onClick={() => redirect(redirect)}
+                  onClick={() => setRedirect(redirect)}
                 />
               )
             )}
           </div>
         </div>
       </main>
-      {/* {this.state.redirectTo === "about" && <Redirect to="/about" />} */}
+      {redirect === "experience" && <Redirect to="/experience" />}
     </>
   );
 };
