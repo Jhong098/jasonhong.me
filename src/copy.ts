@@ -26,6 +26,19 @@ const landing = {
   ]
 };
 
+const experience = [
+  {
+    title: "Canoo",
+    desc: "lorem ipsum",
+    img: Canoo
+  },
+  {
+    title: "Hack the North",
+    desc: "lorem ipsum",
+    img: ""
+  }
+];
+
 const links = [
   {
     name: "linkedin",
@@ -53,4 +66,4 @@ const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer };
+export { landing, links, footer, experience };
