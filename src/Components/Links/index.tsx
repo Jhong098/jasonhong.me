@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const LinksContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   padding: 20px;

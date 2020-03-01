@@ -1,21 +1,13 @@
-import { Art, Me, Temple, linkedin, github, mail, resume, Canoo } from "static";
+import { Art, Temple, linkedin, github, mail, resume, Canoo } from "static";
 
 const landing = {
-  pages: 4,
+  pages: 3,
   sections: [
     {
       header: "Experience",
       redirect: "experience",
       image: Canoo,
       text: "werk."
-    },
-
-    {
-      header: "Me",
-      redirect: "about",
-      image: Me,
-      text:
-        "The man who comes back through the Door in the Wall will never be quite the same as the man who went out. He will be wiser but less sure, happier but less self-satisfied, humbler in acknowledging his ignorance yet better equipped to understand the relationship of words to things, of systematic reasoning to the unfathomable mystery which it tries, forever vainly, to comprehend."
     },
     {
       header: "Travel",

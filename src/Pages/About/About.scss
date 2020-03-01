@@ -8,7 +8,7 @@
   position: relative;
   z-index: 3;
   padding: 230px;
-  height: 100%;
+  height: 100vh;
 
   .text.hovered {
     h1 {
@@ -16,29 +16,6 @@
     }
     span {
       visibility: hidden;
-    }
-  }
-
-  .bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    font-size: 44vh;
-    align-items: center;
-    pointer-events: none;
-    color: rgba(0, 0, 0, 0.04);
-    font-family: serif;
-    justify-content: center;
-
-    &.en {
-      top: 40%;
-      left: 0;
-    }
-
-    &.ch {
-      top: -36%;
-      left: 26%;
     }
   }
 

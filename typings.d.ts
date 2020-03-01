@@ -20,6 +20,5 @@ declare module "Components/EffectShell/Effect";
 declare module "Components/Cursor/utils";
 declare module "Components/Thumbnail/plane";
 declare module "lerp";
-declare module "Pages/Landing";
 declare module "Components/SectionImage";
 declare module "react-spring/addons";
