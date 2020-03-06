@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { landing } from "../../copy";
 import Footer from "Components/Footer";
 import About from "Pages/About";
+import Balls from "Components/Balls";
 
 const Landing = () => {
   // const redirect = to => {
@@ -17,6 +18,7 @@ const Landing = () => {
 
   return (
     <>
+      {/* <Balls /> */}
       <main>
         <div className="page">
           <div className="content content--center">

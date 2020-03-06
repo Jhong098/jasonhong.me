@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-// import PageContainer from "Components/PageContainer";
-// import PageTitle from "Components/PageTitle";
-
 import { useSprings, animated, interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 
-import { experience } from "copy";
-import "./Experiences.scss";
+import "./Cards.scss";
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({
@@ -22,9 +18,9 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
-const Experiences = () => {
+const Cards = ({ images }) => {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
-  const [props, set] = useSprings(experience.length, i => ({
+  const [props, set] = useSprings(images.length, i => ({
     ...to(i),
     from: from(i)
   })); // Create a bunch of springs using the helpers above
@@ -38,7 +34,6 @@ const Experiences = () => {
       direction: [xDir],
       velocity
     }) => {
-      console.log(mx);
       const trigger = velocity > 0.2; // If you flick hard enough it should trigger the card to fly out
       const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
       if (!down && trigger) gone.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
@@ -48,7 +43,7 @@ const Experiences = () => {
         const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
         const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.1 : 1; // Active cards lift up a bit
-        if (!down && gone.size === experience.length)
+        if (!down && gone.size === images.length)
           setTimeout(() => gone.clear() || set(i => to(i)), 600);
         return {
           x,
@@ -63,7 +58,7 @@ const Experiences = () => {
 
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div id="experiences">
+    <div id="cards">
       {
         <>
           {props.map(({ x, y, rot, scale }, i) => (
@@ -80,11 +75,9 @@ const Experiences = () => {
                 {...bind(i)}
                 style={{
                   transform: interpolate([rot, scale], trans),
-                  backgroundImage: `url(${experience[i].img})`
+                  backgroundImage: `url(${images[i]})`
                 }}
-              >
-                <p>{experience[i].desc}</p>
-              </animated.div>
+              />
             </animated.div>
           ))}
         </>
@@ -93,4 +86,4 @@ const Experiences = () => {
   );
 };
 
-export default Experiences;
+export default Cards;
