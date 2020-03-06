@@ -35,7 +35,7 @@ const experience = [
   {
     title: "Hack the North",
     desc: "lorem ipsum",
-    img: ""
+    img: Temple
   }
 ];
 
