@@ -33,6 +33,8 @@ const Landing = () => {
                 />
               )
             )}
+
+            <Footer />
           </div>
         </div>
       </main>
