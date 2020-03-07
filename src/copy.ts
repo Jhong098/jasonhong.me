@@ -26,7 +26,7 @@ const landing = {
   ]
 };
 
-const experience = [
+const experiencesList = [
   {
     title: "Canoo",
     desc: "lorem ipsum",
@@ -66,4 +66,4 @@ const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer, experience };
+export { landing, links, footer, experiencesList };
