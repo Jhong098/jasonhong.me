@@ -7,6 +7,7 @@ import "./App.scss";
 import Landing from "Pages/Landing";
 import Links from "Components/Links";
 import Experiences from "Pages/Experiences";
+import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
 
 const App: React.FC = () => {
   return (
@@ -18,8 +19,11 @@ const App: React.FC = () => {
           <Route exact path="/">
             <Landing />
           </Route>
-          <Route path="/experience">
+          <Route exact path="/experience">
             <Experiences />
+          </Route>
+          <Route path="/experience/:number">
+            <ExperienceDetails />
           </Route>
         </Switch>
         <Logo />

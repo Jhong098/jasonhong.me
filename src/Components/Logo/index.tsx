@@ -6,21 +6,21 @@ import { Link } from "react-router-dom";
 const Logo = () => {
   const [toggled, setToggled] = useState<boolean>(false);
   return (
-    <motion.div
-      className="logo"
-      onMouseEnter={() => setToggled(true)}
-      onMouseLeave={() => setToggled(false)}
-      animate={
-        toggled
-          ? {
-              background: "#b1a59f"
-            }
-          : { background: "#333" }
-      }
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-    >
-      <Link to="/">
+    <Link to="/">
+      <motion.div
+        className="logo"
+        onMouseEnter={() => setToggled(true)}
+        onMouseLeave={() => setToggled(false)}
+        animate={
+          toggled
+            ? {
+                background: "#b1a59f"
+              }
+            : { background: "#333" }
+        }
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
         <motion.span
           animate={
             toggled
@@ -30,8 +30,8 @@ const Logo = () => {
         >
           {toggled ? "HONG" : "洪"}
         </motion.span>
-      </Link>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 
