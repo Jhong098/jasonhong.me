@@ -40,3 +40,22 @@
     }
 }
 
+#experience-details {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    .bg-img {
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top:0;
+        right: 55%;
+        bottom: 0;
+        width: 45%;
+        background-attachment: fixed;
+        background-position: 0;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    }
+}
+
