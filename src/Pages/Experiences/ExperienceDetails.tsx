@@ -9,7 +9,8 @@ const ExperienceDetails = () => {
   return (
     <div id="experience-details">
       <div className="bg-img" style={{ backgroundImage: `url(${img})` }}></div>
-      <h1>{title}</h1>
+      <h1 className="title">{title}</h1>
+      <div className="desc">{desc}</div>
     </div>
   );
 };
