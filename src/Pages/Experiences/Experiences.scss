@@ -1,3 +1,5 @@
+@import "common.scss";
+
 #experience-container {
     width: 100%;
     display: flex;
@@ -56,6 +58,27 @@
         background-position: 0;
         background-repeat: no-repeat;
         background-size: auto 100%;
+    }
+
+    .title {
+        color: $dark-grey;
+        position: absolute;
+        left:0;
+        right: 0;
+        text-align: center;
+        font-size: 7vw;
+        font-weight: 700;
+        top: 50%;
+        margin-top: -5.5vw;
+    }
+
+    .desc {
+        position: absolute;
+        left: 50%;
+        top: 65%;
+        font-weight: 500;
+        color: $dark-grey;
+        font-size: 20px;
     }
 }
 
