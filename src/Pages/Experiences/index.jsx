@@ -7,6 +7,7 @@ import { animated, useSpring } from "react-spring";
 import { experiencesList } from "copy";
 import "./Experiences.scss";
 import { motion } from "framer-motion";
+import { useRouteMatch, Link } from "react-router-dom";
 
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
 // const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
@@ -14,6 +15,7 @@ const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
 const trans3 = (x, y) => `translate3d(${x / 6 - 150}px,${y / 6 - 200}px,0)`;
 
 const Experiences = () => {
+  const { url } = useRouteMatch();
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 550, friction: 140 }
@@ -27,12 +29,13 @@ const Experiences = () => {
     >
       <ul>
         {experiencesList.map(({ title }, i) => (
-          <li
-            key={title}
-            className={`experience-title ${i === hovered && "active"}`}
-            onMouseEnter={() => setHovered(i)}
-          >
-            {title}
+          <li key={title} onMouseEnter={() => setHovered(i)}>
+            <Link
+              className={`experience-title ${i === hovered ? "active" : " "}`}
+              to={`${url}/${i}`}
+            >
+              {title}
+            </Link>
           </li>
         ))}
       </ul>

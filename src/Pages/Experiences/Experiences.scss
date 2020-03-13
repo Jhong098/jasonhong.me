@@ -33,7 +33,7 @@
         transition-duration: .3s;
         mix-blend-mode: difference;
 
-        &:hover {
+        &:hover, &.active {
             color: #000;
             -webkit-text-stroke: transparent;
         }
