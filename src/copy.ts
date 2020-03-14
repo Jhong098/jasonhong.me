@@ -29,13 +29,22 @@ const landing = {
 const experiencesList = [
   {
     title: "Canoo",
-    desc: "lorem ipsum",
-    img: Canoo
+    desc: ["Software Tools and Automation", "Torrance, California"],
+    img: Canoo,
+    details: [
+      "Increased productivity by creating software release management tool with React, Typescript, Python, and Flask to monitor and control builds for 10+ vehicle components.",
+      "Sped up software release generation by 2x with asyncio in Python 3",
+      "Enhanced code quality and coverage by adding linter, unit tests in Jenkins CI/CD pipelines for all software tools"
+    ]
   },
   {
     title: "Hack the North",
-    desc: "lorem ipsum",
-    img: Temple
+    desc: ["Frontend Developer", "Waterloo, Ontario"],
+    img: Temple,
+    details: [
+      "Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month",
+      "Improved maintainability and customizability by creating a themeable React component library for all Hack the North projects"
+    ]
   }
 ];
 

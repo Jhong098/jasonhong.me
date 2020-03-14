@@ -5,12 +5,26 @@ import "./Experiences.scss";
 
 const ExperienceDetails = () => {
   const { number } = useParams();
-  const { title, img, desc } = experiencesList[number || 0];
+  const { title, img, desc, details } = experiencesList[number || 0];
   return (
     <div id="experience-details">
-      <div className="bg-img" style={{ backgroundImage: `url(${img})` }}></div>
-      <h1 className="title">{title}</h1>
-      <div className="desc">{desc}</div>
+      <div className="section-1">
+        <div
+          className="bg-img"
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
+        <h1 className="title">{title}</h1>
+        <div className="desc">
+          {desc.map((str: string) => (
+            <p>{str}</p>
+          ))}
+        </div>
+      </div>
+      <div className="section-2">
+        {details.map((str: string) => (
+          <p>{str}</p>
+        ))}
+      </div>
     </div>
   );
 };
