@@ -4,16 +4,19 @@ import Logo from "Components/Logo";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useLocation
+  Route
+  // useLocation
 } from "react-router-dom";
+// import { AnimatePresence } from "framer-motion";
 
 import "./App.scss";
+
 import Landing from "Pages/Landing";
-import Links from "Components/Links";
+import Travel from "Pages/Travel";
 import Experiences from "Pages/Experiences";
 import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
-import { AnimatePresence } from "framer-motion";
+
+import Links from "Components/Links";
 
 const App = () => {
   // const location = useLocation();
@@ -32,6 +35,9 @@ const App = () => {
           </Route>
           <Route path="/experience/:number">
             <ExperienceDetails />
+          </Route>
+          <Route exact path="/travel">
+            <Travel />
           </Route>
         </Switch>
         {/* </AnimatePresence> */}
