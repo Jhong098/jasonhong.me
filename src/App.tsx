@@ -18,6 +18,7 @@ import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
 import Art from "Pages/Art";
 
 import Links from "Components/Links";
+import Footer from "Components/Footer";
 
 const App = () => {
   // const location = useLocation();
@@ -47,6 +48,7 @@ const App = () => {
         {/* </AnimatePresence> */}
         <Logo />
       </Router>
+      <Footer />
     </div>
   );
 };
