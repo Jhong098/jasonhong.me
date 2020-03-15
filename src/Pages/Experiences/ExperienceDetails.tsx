@@ -16,13 +16,13 @@ const ExperienceDetails = () => {
         <h1 className="title">{title}</h1>
         <div className="desc">
           {desc.map((str: string) => (
-            <p>{str}</p>
+            <p key={str}>{str}</p>
           ))}
         </div>
       </div>
       <div className="section-2">
         {details.map((str: string) => (
-          <p>{str}</p>
+          <p key={str}>{str}</p>
         ))}
       </div>
     </div>

@@ -30,7 +30,7 @@ const SectionImage = ({ image, titleText, description, onClick }) => {
     >
       <animated.div
         className="content__item-imgwrap"
-        style={{ transform: props.xy.interpolate(trans1) }}
+        style={{ transform: props.xy.to(trans1) }}
       >
         <div
           className="content__item-img"
@@ -40,7 +40,7 @@ const SectionImage = ({ image, titleText, description, onClick }) => {
         ></div>
       </animated.div>
       <animated.h2
-        style={{ transform: props.xy.interpolate(trans3) }}
+        style={{ transform: props.xy.to(trans3) }}
         className="content__item-title content__item-title--layer"
       >
         {titleText}

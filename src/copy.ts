@@ -11,7 +11,11 @@ import {
   hk3,
   hk4,
   hk5,
-  hk6
+  hk6,
+  art1,
+  art2,
+  art3,
+  art4
 } from "static";
 
 const landing = {
@@ -112,8 +116,27 @@ const travel = [
   }
 ];
 
+const art = [
+  {
+    img: art1,
+    desc: "The Studio, 2015"
+  },
+  {
+    img: art2,
+    desc: "Vases, 2015"
+  },
+  {
+    img: art3,
+    desc: "Skull, 2014"
+  },
+  {
+    img: art4,
+    desc: "Hand with Reflecting Sphere, 2014"
+  }
+];
+
 const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer, experiencesList, travel };
+export { landing, links, footer, experiencesList, travel, art };
