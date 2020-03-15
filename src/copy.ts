@@ -15,7 +15,8 @@ import {
   art1,
   art2,
   art3,
-  art4
+  art4,
+  Resume
 } from "static";
 
 const landing = {
@@ -85,7 +86,7 @@ const links = [
   {
     name: "resume",
     img: resume,
-    link: ""
+    link: Resume
   }
 ];
 

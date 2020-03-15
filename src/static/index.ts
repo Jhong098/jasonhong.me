@@ -5,6 +5,7 @@ export { default as Me } from "./img/me.jpg";
 export { default as Art } from "./img/art.jpg";
 export { default as Temple } from "./img/taiwan_temple.jpeg";
 export { default as Canoo } from "./img/canoo-car.jpg";
+export { default as Resume } from "./resume.pdf";
 
 export { default as link } from "./icons/link.svg";
 export { default as resume } from "./icons/file.svg";

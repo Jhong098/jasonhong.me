@@ -2,13 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useSpring, animated } from "react-spring";
 
-// interface SectionImageProps {
-//   image: string;
-//   titleText: string;
-//   description: string;
-//   onClick: () => void;
-// }
-
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
 const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
 // const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
