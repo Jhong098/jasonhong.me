@@ -1,4 +1,18 @@
-import { Art, Temple, linkedin, github, mail, resume, Canoo } from "static";
+import {
+  Art,
+  Temple,
+  linkedin,
+  github,
+  mail,
+  resume,
+  Canoo,
+  hk1,
+  hk2,
+  hk3,
+  hk4,
+  hk5,
+  hk6
+} from "static";
 
 const landing = {
   pages: 3,
@@ -71,8 +85,35 @@ const links = [
   }
 ];
 
+const travel = [
+  {
+    img: hk1,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    img: hk2,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    img: hk3,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    img: hk4,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    img: hk5,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    img: hk6,
+    desc: "Hong Kong, 2016"
+  }
+];
+
 const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer, experiencesList };
+export { landing, links, footer, experiencesList, travel };
