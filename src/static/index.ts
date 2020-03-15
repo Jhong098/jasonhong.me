@@ -19,3 +19,9 @@ export { default as hk3 } from "./img/travel/hongkong_3.jpg";
 export { default as hk4 } from "./img/travel/hongkong_4.jpg";
 export { default as hk5 } from "./img/travel/hongkong_5.jpg";
 export { default as hk6 } from "./img/travel/hongkong_6.jpg";
+
+/* Art */
+export { default as art1 } from "./img/art/art_1.jpg";
+export { default as art2 } from "./img/art/art_2.jpg";
+export { default as art3 } from "./img/art/art_3.jpg";
+export { default as art4 } from "./img/art/art_4.jpg";

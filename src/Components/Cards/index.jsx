@@ -107,7 +107,7 @@ const Cards = ({ images }) => {
                     zIndex: 5,
                     color: "#fff",
                     mixBlendMode: "difference",
-                    transform: transProps.xy.interpolate(trans3)
+                    transform: transProps.xy.to(trans3)
                   }}
                 >
                   {images[i].desc}

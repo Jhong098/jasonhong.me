@@ -15,6 +15,7 @@ import Landing from "Pages/Landing";
 import Travel from "Pages/Travel";
 import Experiences from "Pages/Experiences";
 import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
+import Art from "Pages/Art";
 
 import Links from "Components/Links";
 
@@ -38,6 +39,9 @@ const App = () => {
           </Route>
           <Route exact path="/travel">
             <Travel />
+          </Route>
+          <Route exact path="/art">
+            <Art />
           </Route>
         </Switch>
         {/* </AnimatePresence> */}

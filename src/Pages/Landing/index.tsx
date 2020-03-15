@@ -40,9 +40,11 @@ const Landing = () => {
           </div>
         </div>
       </main>
-      {landing.sections.map(({ redirect: path }) => (
-        <>{redirect === path && <Redirect to={`/${path}`} />}</>
-      ))}
+      {landing.sections
+        .filter(({ redirect: r }) => redirect === r)
+        .map(({ redirect: path }) => (
+          <Redirect key={path} to={`/${path}`} />
+        ))}
       {/* {redirect === "experience" && <Redirect to="/experience" />}
       {redirect === "experience" && <Redirect to="/experience" />} */}
     </>
