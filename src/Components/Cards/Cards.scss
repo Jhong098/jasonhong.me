@@ -13,13 +13,13 @@
         align-items: center;
         justify-content: center;
 
-        & > div {
+        .card {
             background-color: white;
             background-size: auto 100%;
             background-repeat: no-repeat;
             background-position: center center;
-            width: 45vh;
-            max-width: 300px;
+            width: 65vh;
+            max-width: 350px;
             height: 85vh;
             max-height: 570px;
             will-change: transform;
