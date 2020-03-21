@@ -8,42 +8,21 @@
   font-size: 16px;
 }
 
-body {
-  margin: 0;
-}
-
 #root {
   width: 100vw;
   height: 100vh;
 }
 
 body {
+  width: 100%;
   margin: 0;
-  --color-text: #dc6e25;
-  --color-bg: #efded3;
-  --color-link: #000;
-  --color-link-hover: #dc6e25;
   --aspect-ratio: 1/1.5;
   --imgwidthmax: 600px;
   --size-title: 9rem;
   --font-weight-title: 400;
-  color: var(--color-text);
-  background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-link);
-  outline: none;
-}
-
-a:hover,
-a:focus {
-  color: var(--color-link-hover);
-  outline: none;
 }
 
 .page {

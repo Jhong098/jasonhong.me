@@ -19,37 +19,46 @@ import Art from "Pages/Art";
 
 import Links from "Components/Links";
 import Footer from "Components/Footer";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+`;
 
 const App = () => {
   // const location = useLocation();
   return (
-    <div className="App">
-      {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
-      <Links />
-      <Router>
-        {/* <AnimatePresence> */}
-        <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/experience">
-            <Experiences />
-          </Route>
-          <Route path="/experience/:number">
-            <ExperienceDetails />
-          </Route>
-          <Route exact path="/travel">
-            <Travel />
-          </Route>
-          <Route exact path="/art">
-            <Art />
-          </Route>
-        </Switch>
-        {/* </AnimatePresence> */}
-        <Logo />
-      </Router>
-      <Footer />
-    </div>
+    <Wrapper>
+      <div className="App">
+        {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
+        <Links />
+        <Router>
+          {/* <AnimatePresence> */}
+          <Switch>
+            <Route exact path="/">
+              <Landing />
+            </Route>
+            <Route exact path="/experience">
+              <Experiences />
+            </Route>
+            <Route path="/experience/:number">
+              <ExperienceDetails />
+            </Route>
+            <Route exact path="/travel">
+              <Travel />
+            </Route>
+            <Route exact path="/art">
+              <Art />
+            </Route>
+          </Switch>
+          {/* </AnimatePresence> */}
+          <Logo />
+        </Router>
+        <Footer />
+      </div>
+    </Wrapper>
   );
 };
 
