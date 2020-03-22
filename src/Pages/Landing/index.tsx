@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Landing.scss";
 import SectionImage from "Components/SectionImage";
 import { Redirect } from "react-router-dom";
@@ -6,13 +6,11 @@ import { landing } from "../../copy";
 import About from "Pages/About";
 import { motion, useViewportScroll } from "framer-motion";
 import { PRIMARY_HIGHLIGHT } from "const";
+import BG from "Components/BG";
+import { useIntersection } from "react-use";
+import { arrow, circle } from "static";
 
 const transition = { duration: 1.5, ease: "easeInOut" };
-
-const bgStages = {
-  hidden: { width: "50%", transition },
-  expanded: { width: "100%", transition }
-};
 
 const textStages = {
   hidden: { left: "40vw", transition },
@@ -26,17 +24,26 @@ const introStages = {
 
 const EXPAND_THRESHOLD = 50;
 const WINDOW_HEIGHT = window.innerHeight;
+const WINDOW_WIDTH = window.innerWidth;
 
 const Landing = () => {
+  const experienceRef = useRef(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const isIntersectingExperience = useIntersection(experienceRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.25
+  });
+
   const { scrollY } = useViewportScroll();
   const [redirect, setRedirect] = useState("");
   const [isScrolled, setIsScrolled] = useState(scrollY.get() > 0);
 
+  console.log(isIntersectingExperience);
+
   useEffect(
     () =>
       scrollY.onChange(latest => {
-        console.log("changed");
-        console.log(latest);
         setIsScrolled(latest >= EXPAND_THRESHOLD);
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,33 +51,34 @@ const Landing = () => {
   );
 
   return (
-    <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      <motion.div
-        style={{
-          backgroundColor: PRIMARY_HIGHLIGHT,
-          height: WINDOW_HEIGHT - 80,
-          position: "fixed",
-          zIndex: 0
-        }}
-        initial="hidden"
-        animate={isScrolled ? "expanded" : "hidden"}
-        exit="hidden"
-        variants={bgStages}
-      ></motion.div>
-      <div style={{ padding: 70 }}>
+    <div id="landing">
+      <About />
+      {/* <div style={{ padding: 70, width: "100%" }} ref={introRef}>
         <motion.div
           style={{
             overflow: "hidden",
             position: "relative",
-            zIndex: 1,
-            marginBottom: 20
+            zIndex: 1
           }}
         >
-          <motion.h1 style={{ fontSize: "70px" }} animate={{ y: [50, 0] }}>
+          <motion.h1 style={{ fontSize: "90px" }} animate={{ y: [50, 0] }}>
             WELCOME, I'm Jason.
           </motion.h1>
         </motion.div>
-        <motion.div
+        <div className="hero-subtitle">
+          <img src={arrow} alt="arrow" />
+          <ul>
+            <li>Developer</li>
+            <li>Student</li>
+            <li>Traveller</li>
+          </ul>
+        </div>
+
+        <div className="highlight">
+          <img src={circle} alt="circle" />
+        </div> */}
+
+      {/* <motion.div
           style={{
             position: "relative",
             overflow: "hidden",
@@ -78,15 +86,26 @@ const Landing = () => {
             maxWidth: "45%"
           }}
         >
-          <motion.h1 animate={{ y: [-50, 0] }}>
+          <motion.p animate={{ y: [-50, 0] }}>
             I'm a third-year Computer Engineering student who is passionate
             about creating things with technology.
-          </motion.h1>
-          {/* <About /> */}
-        </motion.div>
-      </div>
+          </motion.p>
+          // {/* <About />
+        </motion.div> */}
+      {/* </div> */}
+      {/* 
+      {introRef && introRef.current && (
+        <BG
+          color={PRIMARY_HIGHLIGHT}
+          startWidth={0}
+          startHeight={0}
+          endHeight={introRef.current.offsetHeight}
+          endWidth={introRef.current.offsetWidth}
+          stage={isScrolled ? "expanded" : "hidden"}
+        />
+      )} */}
 
-      <div className="page">
+      <div className="page section" ref={experienceRef}>
         <div className="content content--center">
           {landing.sections.map(({ header, image, text, redirect }, index) => (
             <SectionImage

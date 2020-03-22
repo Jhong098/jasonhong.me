@@ -12,6 +12,8 @@ export { default as resume } from "./icons/file.svg";
 export { default as linkedin } from "./icons/linkedin.svg";
 export { default as github } from "./icons/github.svg";
 export { default as mail } from "./icons/mail.svg";
+export { default as arrow } from "./icons/arrow.svg";
+export { default as circle } from "./icons/quarter-circle.svg";
 
 /* Travel */
 export { default as hk1 } from "./img/travel/hongkong_1.jpg";
