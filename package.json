@@ -11,6 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-hook/window-scroll": "^1.0.7",
     "@types/dat.gui": "^0.7.5",
     "@types/imagesloaded": "^4.1.2",
     "@types/react": "16.9.16",
@@ -31,8 +32,9 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-masonry-css": "^1.0.14",
+    "react-particles-js": "^2.7.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.4.0",
     "react-spring": "^9.0.0-beta.34",
     "react-three-fiber": "^4.0.19",
     "react-use-gesture": "^7.0.0-beta.11",

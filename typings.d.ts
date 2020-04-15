@@ -25,4 +25,5 @@ declare module "Components/SectionImage";
 declare module "Components/Balls";
 declare module "Components/Cards";
 declare module "Pages/Experiences";
+declare module "Components/ScrollCarousel";
 declare module "react-spring/addons";
