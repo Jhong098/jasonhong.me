@@ -1,39 +1,56 @@
 import React, { useState } from "react";
 import "./Landing.scss";
 import SectionImage from "Components/SectionImage";
-import { Redirect } from "react-router-dom";
-import { landing } from "../../copy";
+import { landing, experiencesList } from "../../copy";
 import About from "Pages/About";
+import styled from "styled-components";
+import ScrollCarousel from "Components/ScrollCarousel";
+import Background from "Components/Background";
+
+const Box = styled.div`
+  position: relative;
+  flex-shrink: 0;
+  width: 70rem;
+  height: 100vh;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Landing = () => {
-  const [redirect, setRedirect] = useState("");
-
   return (
     <>
       <main>
+        <Background />
         <div className="page">
           <div className="content content--center">
             <About />
-
-            {landing.sections.map(
+            <ScrollCarousel>
+              {experiencesList.map(({ img, title }, i) => (
+                <Box>
+                  <SectionImage
+                    image={img}
+                    titleText={title}
+                    key={title}
+                    redirect={`experience/${i}`}
+                  />
+                </Box>
+              ))}
+            </ScrollCarousel>
+            {/* {landing.sections.map(
               ({ header, image, text, redirect }, index) => (
                 <SectionImage
                   image={image}
                   titleText={header}
-                  description={text}
                   key={header}
                   onClick={() => setRedirect(redirect)}
                 />
               )
-            )}
+            )} */}
           </div>
         </div>
       </main>
-      {landing.sections
-        .filter(({ redirect: r }) => redirect === r)
-        .map(({ redirect: path }) => (
-          <Redirect key={path} to={`/${path}`} />
-        ))}
     </>
   );
 };
