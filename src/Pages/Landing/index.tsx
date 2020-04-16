@@ -6,6 +6,8 @@ import About from "Pages/About";
 import styled from "styled-components";
 import ScrollCarousel from "Components/ScrollCarousel";
 import Background from "Components/Background";
+// import RotateText from "Components/RotateText";
+import Marquee from "Components/Marquee";
 
 const Box = styled.div`
   position: relative;
@@ -23,6 +25,7 @@ const Landing = () => {
     <>
       <main>
         <Background />
+        <Marquee text="showreel" />
         <div className="page">
           <div className="content content--center">
             <About />
