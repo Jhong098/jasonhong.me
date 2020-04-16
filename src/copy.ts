@@ -25,20 +25,20 @@ const landing = {
     {
       header: "Experience",
       redirect: "experience",
-      image: Canoo,
+      images: [Canoo],
       text: "werk."
     },
     {
       header: "Travel",
       redirect: "travel",
-      image: Temple,
+      images: [hk1, hk2, hk3, hk4],
       text:
         "The substance can take you to heaven but it can also take you to hell. Or else to both, together or alternately. Or else (if you're lucky, or if you've made yourself ready) beyond either of them. And then beyond the beyond, back to where you started from — back to here, back to New Rotham sted, back to business as usual. Only now, of course, business as usual is completely different."
     },
     {
       header: "Art",
       redirect: "art",
-      image: Art,
+      images: [art1, art2, art3, art4],
       text:
         "Two thousand pharmacologists and bio-chemists were subsidized. Six years later it was being produced commercially."
     }
