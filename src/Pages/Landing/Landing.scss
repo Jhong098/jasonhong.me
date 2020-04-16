@@ -24,8 +24,8 @@ body {
   --color-link: #000;
   --color-link-hover: #dc6e25;
   --aspect-ratio: 1/1.5;
-  --imgwidthmax: 600px;
-  --size-title: 8rem;
+  --imgwidthmax: 450px;
+  --size-title: 7rem;
   --font-weight-title: 400;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -77,4 +77,15 @@ a:focus {
 
 .content {
   grid-area: grid;
+
+  .sections {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8vw;
+    justify-content: space-evenly;
+
+    & > * {
+      margin: 2vw;
+    }
+  }
 }
