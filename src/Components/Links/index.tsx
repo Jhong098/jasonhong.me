@@ -1,8 +1,9 @@
 import React from "react";
 import { links } from "copy";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const LinksContainer = styled.div`
+const LinksContainer = styled(motion.div)`
   position: fixed;
   bottom: 10px;
   left: 10px;
@@ -25,7 +26,7 @@ const LinksContainer = styled.div`
 
 const Links = () => {
   return (
-    <LinksContainer>
+    <LinksContainer animate={{ opacity: [0, 1] }}>
       {links.map(({ name, img, link }) => (
         <a href={link} target="_blank" rel="noopener noreferrer" key={name}>
           {img("link-icon")}

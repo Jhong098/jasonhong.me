@@ -5,6 +5,7 @@ import Highlights from "./highlights";
 import Footer from "Components/Footer";
 import SectionImage from "Components/SectionImage";
 import { landing } from "copy";
+import ExperienceOverview from "Components/ExperienceOverview";
 
 const Landing = () => {
   return (
@@ -13,6 +14,7 @@ const Landing = () => {
         <div className="page">
           <div className="content content--center">
             <About />
+            <ExperienceOverview />
             <Highlights />
             <div className="sections">
               {landing.sections.map(({ images, redirect, header, text }) => (
