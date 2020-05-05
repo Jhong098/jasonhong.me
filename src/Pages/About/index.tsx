@@ -1,69 +1,17 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useRef } from "react";
-import imagesLoaded from "imagesloaded";
-import RGBShiftEffect from "Components/EffectShell/Effect";
 import { Me, Art, Temple } from "static";
 import "./About.scss";
-import HoverImage from "Components/HoverImage";
 
 const About = () => {
-  const [hovered, setHovered] = useState(false);
-  const effect = useRef();
-
-  // Preload images
-  const preloadImages = () => {
-    return new Promise((resolve, reject) => {
-      imagesLoaded(document.querySelectorAll("img"), resolve);
-    });
-  };
-
-  useEffect(() => {
-    const container = document.body;
-    const itemsWrapper = document.getElementById("about");
-    preloadImages().then(() => {
-      // Remove the loader
-      effect.current = new RGBShiftEffect(container, itemsWrapper, {
-        strength: 0.25
-      });
-    });
-  }, []);
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-    if (effect && effect.current) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (effect as any).current.onMouseLeave();
-    }
-  };
-
   return (
     <div id="about">
-      <div className={`text ${hovered ? "hovered" : ""}`}>
-        <HoverImage
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={handleMouseLeave}
-          text="Jason Hong"
-          imageSrc={Me}
-        />
-        <span>
-          {" "}
-          is a Computer Engineering student at the University of Waterloo. He
-          loves to
-        </span>
-        <HoverImage
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={handleMouseLeave}
-          text=" travel, "
-          imageSrc={Temple}
-        />
-        <HoverImage
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={handleMouseLeave}
-          text="draw"
-          imageSrc={Art}
-        />
-        <span>, and take photos</span>
-      </div>
+      <p>Nice to meet you, my name is </p>
+      <h1>Jason Hong.</h1>
+      <h2>I build things with technology.</h2>
+      <p>
+        I'm a Computer Engineering student at the University of Waterloo. I like
+        to travel, draw and take photos.
+      </p>
     </div>
   );
 };

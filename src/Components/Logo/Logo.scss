@@ -1,5 +1,5 @@
 @import "common.scss";
-@import url('https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap");
 
 .logo {
   position: fixed;
@@ -20,5 +20,11 @@
 
   span {
     font-size: 20px;
+  }
+
+  &.toggled {
+    span {
+      font-size: 15px;
+    }
   }
 }

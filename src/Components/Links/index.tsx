@@ -18,7 +18,7 @@ const LinksContainer = styled.div`
   .link-icon {
     color: #a8b2d1;
     &:hover {
-      stroke: white;
+      stroke: #64ffda;
     }
   }
 `;

@@ -8,7 +8,7 @@ const Logo = () => {
   return (
     <Link to="/">
       <motion.div
-        className="logo"
+        className={`logo ${toggled ? "toggled" : ""}`}
         onMouseEnter={() => setToggled(true)}
         onMouseLeave={() => setToggled(false)}
         animate={
