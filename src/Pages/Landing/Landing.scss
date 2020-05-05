@@ -1,3 +1,5 @@
+@import "common.scss";
+
 *,
 *::after,
 *::before {
@@ -20,15 +22,14 @@ body {
 body {
   margin: 0;
   --color-text: #dc6e25;
-  --color-bg: #efded3;
   --color-link: #000;
   --color-link-hover: #dc6e25;
   --aspect-ratio: 1/1.5;
   --imgwidthmax: 450px;
   --size-title: 7rem;
   --font-weight-title: 400;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  color: $light-grey;
+  background-color: $dark-navy;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

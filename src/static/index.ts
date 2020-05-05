@@ -9,9 +9,10 @@ export { default as Resume } from "./resume.pdf";
 
 export { default as link } from "./icons/link.svg";
 export { default as resume } from "./icons/file.svg";
-export { default as linkedin } from "./icons/linkedin.svg";
-export { default as github } from "./icons/github.svg";
-export { default as mail } from "./icons/mail.svg";
+export { ReactComponent as Linkedin } from "./icons/linkedin.svg";
+export { ReactComponent as Github } from "./icons/github.svg";
+export { ReactComponent as Mail } from "./icons/mail.svg";
+export { ReactComponent as Instagram } from "./icons/instagram.svg";
 
 /* Travel */
 export { default as hk1 } from "./img/travel/hongkong_1.jpg";

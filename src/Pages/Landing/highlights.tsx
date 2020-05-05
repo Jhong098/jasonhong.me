@@ -1,5 +1,5 @@
 import React from "react";
-import Marquee from "Components/Marquee";
+// import Marquee from "Components/Marquee";
 import ScrollCarousel from "Components/ScrollCarousel";
 import { experiencesList } from "copy";
 import SectionImage from "Components/SectionImage";
@@ -20,7 +20,7 @@ const Box = styled.div`
 const Highlights = () => {
   return (
     <div id="highlights">
-      <Marquee text="HIGHLIGHTS" />
+      {/* <Marquee text="HIGHLIGHTS" /> */}
 
       <ScrollCarousel>
         {experiencesList.map(({ img, title }, i) => (
