@@ -18,11 +18,13 @@ import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
 import Art from "Pages/Art";
 
 import Links from "Components/Links";
+import Background from "Components/Background";
 
 const App = () => {
   // const location = useLocation();
   return (
     <div className="App">
+      <Background />
       {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
       <Links />
       <Router>
