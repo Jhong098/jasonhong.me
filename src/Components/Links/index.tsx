@@ -1,23 +1,25 @@
 import React from "react";
 import { links } from "copy";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 const LinksContainer = styled.div`
   position: fixed;
-  top: 10px;
-  right: 10px;
+  bottom: 10px;
+  left: 10px;
   padding: 20px;
-  margin: 10px;
   display: flex;
   z-index: 5;
+  flex-direction: column;
 
   a {
     margin: 10px;
   }
 
-  img {
-    -webkit-backface-visibility: hidden;
+  .link-icon {
+    color: #a8b2d1;
+    &:hover {
+      stroke: white;
+    }
   }
 `;
 
@@ -25,14 +27,9 @@ const Links = () => {
   return (
     <LinksContainer>
       {links.map(({ name, img, link }) => (
-        <motion.a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          key={name}
-        >
-          <motion.img whileHover={{ scale: 1.1 }} src={img} alt={name} />
-        </motion.a>
+        <a href={link} target="_blank" rel="noopener noreferrer" key={name}>
+          {img("link-icon")}
+        </a>
       ))}
     </LinksContainer>
   );

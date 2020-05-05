@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Landing.scss";
 import About from "Pages/About";
 import Background from "Components/Background";

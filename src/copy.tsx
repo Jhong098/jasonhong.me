@@ -1,10 +1,11 @@
+import React from "react";
 import {
-  Art,
+  // Art,
   Temple,
-  linkedin,
-  github,
-  mail,
-  resume,
+  Linkedin,
+  Github,
+  Mail,
+  Instagram,
   Canoo,
   hk1,
   hk2,
@@ -69,26 +70,31 @@ const experiencesList = [
 
 const links = [
   {
+    name: "instagram",
+    img: (className: string) => <Instagram className={className} />,
+    link: "https://www.instagram.com/hong.json/"
+  },
+  {
     name: "linkedin",
-    img: linkedin,
+    img: (className: string) => <Linkedin className={className} />,
     link: "https://www.linkedin.com/in/jason-hong/"
   },
   {
     name: "github",
-    img: github,
+    img: (className: string) => <Github className={className} />,
     link: "https://github.com/Jhong098"
   },
   {
     name: "email",
-    img: mail,
+    img: (className: string) => <Mail className={className} />,
     link: "mailto:jhong098@gmail.com"
-  },
-  {
-    name: "resume",
-    img: resume,
-    link: Resume
   }
 ];
+
+const resume = {
+  name: "resume",
+  link: Resume
+};
 
 const travel = [
   {
@@ -140,4 +146,4 @@ const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer, experiencesList, travel, art };
+export { landing, links, footer, experiencesList, travel, art, resume };
