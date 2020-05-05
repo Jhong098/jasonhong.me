@@ -8,28 +8,33 @@ const Logo = () => {
   return (
     <Link to="/">
       <motion.div
-        className={`logo ${toggled ? "toggled" : ""}`}
-        onMouseEnter={() => setToggled(true)}
-        onMouseLeave={() => setToggled(false)}
-        animate={
-          toggled
-            ? {
-                background: "#b1a59f"
-              }
-            : { background: "#333" }
-        }
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        animate={{ y: [-60, 0] }}
+        transition={{ ease: "easeInOut", duration: 1 }}
       >
-        <motion.span
+        <motion.div
+          className={`logo ${toggled ? "toggled" : ""}`}
+          onMouseEnter={() => setToggled(true)}
+          onMouseLeave={() => setToggled(false)}
           animate={
             toggled
-              ? { color: "#333", fontFamily: "inherit" }
-              : { color: "#b1a59f", fontFamily: "Ma Shan Zheng" }
+              ? {
+                  background: "#b1a59f"
+                }
+              : { background: "#333" }
           }
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
-          {toggled ? "HONG" : "洪"}
-        </motion.span>
+          <motion.span
+            animate={
+              toggled
+                ? { color: "#333", fontFamily: "inherit" }
+                : { color: "#b1a59f", fontFamily: "Ma Shan Zheng" }
+            }
+          >
+            {toggled ? "HONG" : "洪"}
+          </motion.span>
+        </motion.div>
       </motion.div>
     </Link>
   );
