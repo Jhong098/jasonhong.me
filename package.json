@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@react-hook/window-scroll": "^1.0.7",
-    "@types/dat.gui": "^0.7.5",
     "@types/imagesloaded": "^4.1.2",
     "@types/react": "16.9.16",
     "@types/react-dom": "16.9.4",
@@ -25,9 +24,6 @@
     "lerp": "^1.0.3",
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
-    "ogl": "0.0.33",
-    "paper": "^0.12.3",
-    "postprocessing": "^6.12.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-intersection-observer": "^8.26.1",
@@ -38,10 +34,9 @@
     "react-spring": "^9.0.0-beta.34",
     "react-three-fiber": "^4.0.19",
     "react-use-gesture": "^7.0.0-beta.11",
-    "simplex-noise": "^2.4.0",
     "styled-components": "^4.4.1",
     "three": "^0.114.0",
-    "typescript": "3.7.3"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.11.0",

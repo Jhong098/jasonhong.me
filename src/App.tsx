@@ -13,12 +13,12 @@ import "./App.scss";
 
 import Landing from "Pages/Landing";
 import Travel from "Pages/Travel";
-import Experiences from "Pages/Experiences";
-import ExperienceDetails from "Pages/Experiences/ExperienceDetails";
 import Art from "Pages/Art";
 
 import Links from "Components/Links";
 import Background from "Components/Background";
+
+import "normalize.css";
 
 const App = () => {
   // const location = useLocation();
@@ -32,12 +32,6 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Landing />
-          </Route>
-          <Route exact path="/experience">
-            <Experiences />
-          </Route>
-          <Route path="/experience/:number">
-            <ExperienceDetails />
           </Route>
           <Route exact path="/travel">
             <Travel />

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Landing.scss";
 import About from "Pages/About"; // import RotateText from "Components/RotateText";
-import Highlights from "./highlights";
+// import Highlights from "./highlights";
 import Footer from "Components/Footer";
 import SectionImage from "Components/SectionImage";
 import { landing } from "copy";
@@ -15,7 +15,6 @@ const Landing = () => {
           <div className="content content--center">
             <About />
             <ExperienceOverview />
-            <Highlights />
             <div className="sections">
               {landing.sections.map(({ images, redirect, header, text }) => (
                 <SectionImage
