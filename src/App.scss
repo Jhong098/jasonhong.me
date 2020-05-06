@@ -25,6 +25,24 @@
   font-family: "Jost", sans-serif;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  margin: 0; /* 2 */
+  border-width: 0;
+  border-radius: 0;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 canvas {
   display: block;
   position: absolute;
