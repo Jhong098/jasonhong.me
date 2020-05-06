@@ -24,12 +24,6 @@ const landing = {
   pages: 3,
   sections: [
     {
-      header: "Experience",
-      redirect: "experience",
-      images: [Canoo],
-      text: "werk."
-    },
-    {
       header: "Travel",
       redirect: "travel",
       images: [hk1, hk2, hk3, hk4],
@@ -49,7 +43,10 @@ const landing = {
 const experiencesList = [
   {
     title: "Canoo",
-    desc: ["Software Tools and Automation", "Torrance, California"],
+    role: "Software Tools and Automation",
+    location: "Torrance, California",
+    time: "Sept - Dec 2019",
+    link: "canoo.com",
     img: Canoo,
     details: [
       "Increased productivity by creating software release management tool with React, Typescript, Python, and Flask to monitor and control builds for 10+ vehicle components.",
@@ -59,7 +56,10 @@ const experiencesList = [
   },
   {
     title: "Hack the North",
-    desc: ["Frontend Developer", "Waterloo, Ontario"],
+    role: "Frontend Developer",
+    location: "Waterloo, Ontario",
+    time: "Jan - Dec 2019",
+    link: "hackthenorth.com",
     img: Temple,
     details: [
       "Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month",

@@ -28,9 +28,15 @@ const Links = () => {
   return (
     <LinksContainer animate={{ opacity: [0, 1] }}>
       {links.map(({ name, img, link }) => (
-        <a href={link} target="_blank" rel="noopener noreferrer" key={name}>
+        <motion.a
+          whileHover={{ y: -3 }}
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={name}
+        >
           {img("link-icon")}
-        </a>
+        </motion.a>
       ))}
     </LinksContainer>
   );
