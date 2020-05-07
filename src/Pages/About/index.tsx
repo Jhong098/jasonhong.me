@@ -3,9 +3,22 @@ import { Me, Art, Temple } from "static";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import "./About.scss";
+import { media } from "breakpoints";
+import { theme } from "styles";
 
 const AnimatedTextContainer = styled.div`
   overflow: hidden;
+
+  h1 {
+    color: ${theme.colors.white};
+    font-size: 60px;
+    ${media.tablet`font-size: ${theme.fontSizes.h3}`}
+  }
+
+  h2 {
+    font-size: 50px;
+    ${media.tablet`font-size: ${theme.fontSizes.xxl}`}
+  }
 `;
 
 const transition = {

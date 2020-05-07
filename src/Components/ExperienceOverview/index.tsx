@@ -20,6 +20,7 @@ interface ItemOptionProps extends ItemProps {
 }
 
 const Container = styled.div`
+  margin-top: 50px;
   padding-top: 50px;
 `;
 
@@ -30,6 +31,45 @@ const FlexContainer = styled.div`
   ${media.thone`
   display: block;
 `};
+`;
+
+const StyledItemContainer = styled.ul`
+  display: block;
+  position: relative;
+  width: max-content;
+  z-index: 3;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  ${media.thone`
+  display: flex;
+  overflow-x: scroll;
+  margin-bottom: 30px;
+  width: calc(100% + 100px);
+  margin-left: -50px;
+`};
+  ${media.phablet`
+  width: calc(100% + 50px);
+  margin-left: -25px;
+`};
+  li {
+    &:first-of-type {
+      ${media.thone`
+      margin-left: 50px;
+    `};
+      ${media.phablet`
+      margin-left: 25px;
+    `};
+    }
+    &:last-of-type {
+      ${media.thone`
+      padding-right: 50px;
+    `};
+      ${media.phablet`
+      padding-right: 25px;
+    `};
+    }
+  }
 `;
 
 const ItemButton = styled.button<ItemProps>`
@@ -108,6 +148,7 @@ const StyledContent = styled.div`
   }
   ul {
     ${mixins.fancyList};
+    ${media.tablet`font-size: ${theme.fontSizes.sm}`}
   }
 `;
 
@@ -120,6 +161,8 @@ const StyledJobTitle = styled.h4`
   :first-child {
     color: ${colors.white};
   }
+
+  ${media.tablet`font-size: ${theme.fontSizes.lg}`}
 `;
 const StyledCompany = styled.span`
   color: ${colors.neonBlue};
@@ -155,7 +198,7 @@ const Selector: React.FC<{ handleClick: any; selectedIndex: number }> = ({
   selectedIndex
 }) => {
   return (
-    <ul style={{ padding: 0, margin: 0 }}>
+    <StyledItemContainer>
       {experiencesList.map(({ title }, i) => (
         <ItemOption
           key={title}
@@ -166,7 +209,7 @@ const Selector: React.FC<{ handleClick: any; selectedIndex: number }> = ({
         />
       ))}
       <StyledHighlight selectedIndex={selectedIndex} />
-    </ul>
+    </StyledItemContainer>
   );
 };
 
@@ -190,7 +233,7 @@ const Content: React.FC<{ selectedIndex: number }> = ({ selectedIndex }) => {
       </StyledJobDetails>
       <ul>
         {details.map((text: string) => (
-          <li>{text}</li>
+          <li key={text}>{text}</li>
         ))}
       </ul>
     </StyledContent>
