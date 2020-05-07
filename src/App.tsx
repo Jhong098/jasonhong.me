@@ -1,13 +1,5 @@
 import React from "react";
-
-import Logo from "Components/Logo";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-  // useLocation
-} from "react-router-dom";
-// import { AnimatePresence } from "framer-motion";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 

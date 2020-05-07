@@ -8,7 +8,6 @@ import styled from "styled-components";
 import Projects from "Components/Projects";
 import Hobbies from "Components/Hobbies";
 import Nav from "Components/Nav";
-// import { media } from "breakpoints";
 
 const Container = styled.div`
   padding: 0 15vw;
