@@ -28,7 +28,6 @@ const App = () => {
       {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
       <Links />
       <Router>
-        {/* <AnimatePresence> */}
         <Switch>
           <Route exact path="/">
             <Landing />
@@ -40,8 +39,6 @@ const App = () => {
             <Art />
           </Route>
         </Switch>
-        {/* </AnimatePresence> */}
-        <Logo />
       </Router>
     </div>
   );

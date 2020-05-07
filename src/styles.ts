@@ -30,7 +30,9 @@ const theme = {
     xl: "20px",
     xxl: "22px",
     h3: "32px"
-  }
+  },
+  navHeight: "100px",
+  navScrollHeight: "70px"
 };
 
 const mixins = {

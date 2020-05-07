@@ -7,6 +7,7 @@ import ExperienceOverview from "Components/ExperienceOverview";
 import styled from "styled-components";
 import Projects from "Components/Projects";
 import Hobbies from "Components/Hobbies";
+import Nav from "Components/Nav";
 // import { media } from "breakpoints";
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ const Container = styled.div`
 const Landing = () => {
   return (
     <>
+      <Nav />
       <main>
         <Container className="page">
           <About />
