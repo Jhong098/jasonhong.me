@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./SectionImage.scss";
 
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
-const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
+const trans1 = (x, y) => `translate3d(${x / 15}px,${y / 15}px,0)`;
 // const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
 const trans3 = (x, y) => `translate3d(${x / 6 - 150}px,${y / 6 - 200}px,0)`;
 // const trans4 = (x: any, y: any) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`;
@@ -14,7 +14,7 @@ const trans3 = (x, y) => `translate3d(${x / 6 - 150}px,${y / 6 - 200}px,0)`;
 const SectionImage = ({ image, titleText, redirect }) => {
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 10, tension: 550, friction: 140 }
+    config: { mass: 10, tension: 550, friction: 180 }
   }));
 
   return (

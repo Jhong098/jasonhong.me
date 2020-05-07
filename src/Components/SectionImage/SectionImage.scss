@@ -30,20 +30,11 @@
   opacity: 0.8;
 }
 
-.content__item-number {
-  opacity: 0.03;
-  font-size: 20vw;
-  position: absolute;
-  top: -7vw;
-  right: -10vw;
-  line-height: 1;
-}
-
 .content__item-title {
   position: relative;
   font-size: var(--size-title);
   padding: 0 3vw;
-  margin: calc(var(--size-title) * -1 / 2) 0 0 0;
+  // margin: calc(var(--size-title) * -1 / 2) 0 0 0;
   align-self: start;
   line-height: 1;
   font-family: var(--font-title);

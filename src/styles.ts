@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { media } from "breakpoints";
 
 const theme = {
   colors: {
@@ -19,7 +20,7 @@ const theme = {
   },
   tabHeight: 42,
   tabWidth: 120,
-  borderRadius: "3px",
+  borderRadius: 3,
   fontSizes: {
     xs: "12px",
     smish: "13px",
@@ -33,6 +34,22 @@ const theme = {
 };
 
 const mixins = {
+  sectionPadding: css`
+    padding-top: 200px;
+    padding-bottom: 200px;
+    ${media.desktop`
+      padding-top: 200px;
+      padding-bottom: 200px;
+    `};
+    ${media.tablet`
+      padding-top: 150px;
+      padding-bottom: 150px;
+    `};
+    ${media.phablet`
+      padding-top: 125px;
+      padding-bottom: 125px;
+    `};
+  `,
   inlineLink: css`
     display: inline-block;
     text-decoration: none;
@@ -81,6 +98,19 @@ const mixins = {
         left: 0;
         color: ${theme.colors.neonBlue};
       }
+    }
+  `,
+  flexCenter: css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
+  boxShadow: css`
+    box-shadow: 0 10px 30px -15px ${theme.colors.darkNavy};
+    transition: ${theme.transition};
+    &:hover,
+    &:focus {
+      box-shadow: 0 20px 30px -15px ${theme.colors.darkNavy};
     }
   `
 };

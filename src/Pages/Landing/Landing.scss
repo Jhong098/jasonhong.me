@@ -21,9 +21,9 @@ body {
 
 body {
   margin: 0;
-  --color-text: #dc6e25;
-  --color-link: #000;
-  --color-link-hover: #dc6e25;
+  --color-text: $light-grey;
+  --color-link: $white;
+  --color-link-hover: $neon-blue;
   --aspect-ratio: 1/1.5;
   --imgwidthmax: 450px;
   --size-title: 7rem;
@@ -37,14 +37,14 @@ body {
 
 a {
   text-decoration: none;
+  outline: none;
   color: var(--color-link);
-  outline: none;
-}
 
-a:hover,
-a:focus {
-  color: var(--color-link-hover);
-  outline: none;
+  &:hover,
+  &:focus {
+    outline: none;
+    color: var(--color-link-hover);
+  }
 }
 
 .page {
@@ -53,39 +53,4 @@ a:focus {
   margin: 0 auto;
   grid-template-columns: 100%;
   grid-template-areas: "grid";
-}
-
-.page__title {
-  grid-area: header;
-  margin: 0 0 1rem;
-  font-size: inherit;
-  font-weight: 400;
-}
-
-.credits {
-  text-align: center;
-}
-
-.credits--fixed {
-  position: fixed;
-  bottom: 5vw;
-  margin: 0;
-  left: 5vw;
-  width: 90vw;
-  text-align: right;
-}
-
-.content {
-  grid-area: grid;
-
-  .sections {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 8vw;
-    justify-content: space-evenly;
-
-    & > * {
-      margin: 2vw;
-    }
-  }
 }
