@@ -23,10 +23,10 @@ const StyledFeaturedImg = styled(motion.img)`
   filter: grayscale(100%) contrast(1) brightness(90%);
   object-fit: cover;
   height: 500px;
+
   ${media.tablet`
     object-fit: cover;
-    width: auto;
-    height: 100%;
+    width: 100%;
     filter: grayscale(100%) contrast(1) brightness(80%);
   `};
 `;
@@ -38,10 +38,7 @@ const StyledImgContainer = styled(Link)`
   background-color: ${colors.neonBlue};
   border-radius: ${theme.borderRadius + 1}px;
   transition: ${theme.transition};
-  ${media.tablet`height: 100%;`};
-  ${media.thone`
-    opacity: 0.25;
-  `};
+  ${media.tablet`height: 40vh;`};
   overflow: hidden;
   &:hover,
   &:focus {
@@ -72,10 +69,10 @@ const StyledImgContainer = styled(Link)`
 const Grid = styled.div`
   margin-top: ${spaces.lg};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: ${spaces.md};
   position: relative;
-  ${media.desktop`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
+  ${media.tablet`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
 `;
 
 const TextContainer = styled(motion.div)`
