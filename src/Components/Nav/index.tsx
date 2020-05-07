@@ -6,8 +6,8 @@ import { theme } from "styles";
 
 const { colors, fontSizes } = theme;
 
-const MIN_DELTA = 80;
-const TIMEOUT_DELAY = 400;
+const MIN_DELTA = 60;
+const TIMEOUT_DELAY = 200;
 
 const Container = styled.header<{ scrollDir: string | null }>`
   position: fixed;
@@ -15,16 +15,15 @@ const Container = styled.header<{ scrollDir: string | null }>`
   display: flex;
   justify-content: space-between;
   top: 0;
+  left: 0;
   padding: 0px 50px;
   background-color: ${colors.darkNavy};
   transition: ${theme.transition};
   z-index: 11;
   width: 100%;
-  height: ${props =>
-    props.scrollDir === null ? theme.navHeight : theme.navScrollHeight};
+  height: ${theme.navHeight};
   transform: translateY(
-    ${props =>
-      props.scrollDir === "down" ? `-${theme.navScrollHeight}` : "0px"}
+    ${props => (props.scrollDir === "down" ? `-${theme.navHeight}` : "0px")}
   );
 `;
 
@@ -59,6 +58,8 @@ const Nav = () => {
       setScrollDir(isPastDelta && isScrolledDown ? "down" : "up");
     }, TIMEOUT_DELAY);
   });
+
+  console.log(scrollDir);
 
   return (
     <Container scrollDir={scrollDir}>
