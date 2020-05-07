@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Me, Art, Temple } from "static";
+import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import "./About.scss";
