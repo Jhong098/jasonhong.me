@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Divider from "Components/Divider";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { experiencesList } from "copy";
 import { theme, mixins } from "styles";
 import { sizes, media } from "breakpoints";
 import SectionHeader from "Components/SectionHeader";
+import sr, { srConfig } from "utils/scrollReveal";
 
-const { colors, fontSizes, transition } = theme;
+const { colors, fontSizes } = theme;
 
 interface ItemProps {
   isSelected: boolean;
@@ -16,11 +16,11 @@ interface ItemProps {
 interface ItemOptionProps extends ItemProps {
   index: number;
   text: string;
-  handleClick: any;
+  handleClick: (index: number) => void;
 }
 
 const Container = styled.div`
-  margin-top: 50px;
+  ${mixins.sectionPadding}
   padding-top: 50px;
 `;
 
@@ -243,15 +243,20 @@ const Content: React.FC<{ selectedIndex: number }> = ({ selectedIndex }) => {
 export default function ExperienceOverview() {
   const [selected, setSelected] = useState(0);
   const controls = useAnimation();
+  const revealRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (revealRef.current) sr?.reveal(revealRef.current, srConfig());
+  }, []);
 
   useEffect(() => {
     controls.start({
       opacity: [0, 1]
     });
-  }, [selected]);
+  }, [controls, selected]);
 
   return (
-    <Container id="experiences">
+    <Container id="experiences" ref={revealRef}>
       <SectionHeader text="Experiences" />
       <FlexContainer>
         <Selector

@@ -17,7 +17,8 @@ import {
   art2,
   art3,
   art4,
-  Resume
+  Resume,
+  HTN
 } from "static";
 
 const landing = {
@@ -27,15 +28,13 @@ const landing = {
       header: "Travel",
       redirect: "travel",
       images: [hk1, hk2, hk3, hk4],
-      text:
-        "The substance can take you to heaven but it can also take you to hell. Or else to both, together or alternately. Or else (if you're lucky, or if you've made yourself ready) beyond either of them. And then beyond the beyond, back to where you started from — back to here, back to New Rotham sted, back to business as usual. Only now, of course, business as usual is completely different."
+      text: "Not all those who wander are lost"
     },
     {
       header: "Art",
       redirect: "art",
       images: [art1, art2, art3, art4],
-      text:
-        "Two thousand pharmacologists and bio-chemists were subsidized. Six years later it was being produced commercially."
+      text: "We don’t make mistakes, just happy little accidents"
     }
   ]
 };
@@ -142,8 +141,47 @@ const art = [
   }
 ];
 
+const projects = [
+  {
+    title: "Hack the North Website",
+    time: "2019",
+    img: HTN,
+    desc: "2019 website for the largest hackathon in Canada.",
+    techs: ["React", "TypeScript", "Styled Components"],
+    link: "https://hackthenorth.com",
+    github: "https://github.com/hackthenorth/hackthenorth.com"
+  },
+  {
+    title: "Hack the North Website1",
+    time: "2019",
+    img: HTN,
+    desc: "2019 website for the largest hackathon in Canada.",
+    techs: ["React", "TypeScript", "Styled Components"],
+    link: "https://hackthenorth.com",
+    github: "https://github.com/hackthenorth/hackthenorth.com"
+  },
+  {
+    title: "Hack the North Website2",
+    time: "2019",
+    img: HTN,
+    desc: "2019 website for the largest hackathon in Canada.",
+    techs: ["React", "TypeScript", "Styled Components"],
+    link: "https://hackthenorth.com",
+    github: "https://github.com/hackthenorth/hackthenorth.com"
+  }
+];
+
 const footer = {
   text: "Built with ☕+💗"
 };
 
-export { landing, links, footer, experiencesList, travel, art, resume };
+export {
+  landing,
+  links,
+  projects,
+  footer,
+  experiencesList,
+  travel,
+  art,
+  resume
+};
