@@ -7,10 +7,7 @@ const Logo = () => {
   const [toggled, setToggled] = useState<boolean>(false);
   return (
     <Link to="/">
-      <motion.div
-        animate={{ y: [-60, 0] }}
-        transition={{ ease: "easeInOut", duration: 1 }}
-      >
+      <motion.div>
         <motion.div
           className={`logo ${toggled ? "toggled" : ""}`}
           onMouseEnter={() => setToggled(true)}
