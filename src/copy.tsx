@@ -46,7 +46,7 @@ const experiencesList = [
     role: "Software Tools and Automation",
     location: "Torrance, California",
     time: "Sept - Dec 2019",
-    link: "canoo.com",
+    link: "https://canoo.com",
     img: Canoo,
     details: [
       "Increased productivity by creating software release management tool with React, Typescript, Python, and Flask to monitor and control builds for 10+ vehicle components.",
@@ -59,7 +59,7 @@ const experiencesList = [
     role: "Frontend Developer",
     location: "Waterloo, Ontario",
     time: "Jan - Dec 2019",
-    link: "hackthenorth.com",
+    link: "https://hackthenorth.com",
     img: Temple,
     details: [
       "Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month",
