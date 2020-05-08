@@ -22,11 +22,15 @@ const AnimatedTextContainer = styled.div`
     font-size: 50px;
     ${media.tablet`font-size: ${fontSizes.xxl}`}
   }
+
+  .highlight {
+    color: ${colors.neonBlue};
+  }
 `;
 
 const ButtonContainer = styled(motion.div)`
   width: 100px;
-  margin-top: ${spaces.lg};
+  margin-top: ${spaces.md};
 `;
 
 const transition = {
@@ -59,6 +63,16 @@ const About = () => {
         <motion.p animate={{ y: [35, 0] }} transition={transition}>
           I'm a Computer Engineering student at the University of Waterloo. I
           like to travel, draw and take photos.
+        </motion.p>
+      </AnimatedTextContainer>
+
+      <AnimatedTextContainer>
+        <motion.p
+          animate={{ y: [35, 0] }}
+          transition={transition}
+          className="highlight"
+        >
+          Currently looking for Fall 2020 Software Internship!
         </motion.p>
       </AnimatedTextContainer>
 
