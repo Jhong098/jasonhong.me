@@ -8,7 +8,6 @@ import NavLinks from "Components/NavLinks";
 import Hamburger from "Components/Hamburger";
 import Drawer from "Components/Drawer";
 import { sizes, media } from "breakpoints";
-import Links from "Components/Links";
 
 const { colors, spaces } = theme;
 
