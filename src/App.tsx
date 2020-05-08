@@ -6,6 +6,7 @@ import "./App.scss";
 import Landing from "Pages/Landing";
 import Travel from "Pages/Travel";
 import Art from "Pages/Art";
+import NotFound from "Pages/404";
 import Background from "Components/Background";
 
 import "normalize.css";
@@ -25,6 +26,9 @@ const App = () => {
           </Route>
           <Route exact path="/art">
             <Art />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </Router>

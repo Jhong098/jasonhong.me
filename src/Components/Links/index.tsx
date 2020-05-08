@@ -16,7 +16,7 @@ const LinksContainer = styled(motion.div)<NavLinksProps>`
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: ${theme.spaces.xl};
+    padding: ${theme.spaces.lg};
   `}
   display: flex;
   z-index: 5;
