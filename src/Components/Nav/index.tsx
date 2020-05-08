@@ -22,7 +22,7 @@ const Container = styled.header<{ scrollDir: string | null }>`
   justify-content: space-between;
   top: 0;
   left: 0;
-  padding: 0px ${spaces.xl};
+  padding: 0px ${spaces.lg};
   background-color: ${colors.darkNavy};
   transition: ${theme.transition};
   z-index: 11;
@@ -31,8 +31,8 @@ const Container = styled.header<{ scrollDir: string | null }>`
   transform: translateY(
     ${props => (props.scrollDir === "down" ? `-${theme.navHeight}` : "0px")}
   );
-  ${media.desktop`padding: 0 ${spaces.lg};`};
-  ${media.tablet`padding: 0 ${spaces.md};`};
+  ${media.desktop`padding: 0 ${spaces.md};`};
+  ${media.tablet`padding: 0 ${spaces.sm};`};
 `;
 
 const SectionContainer = styled.ul`
