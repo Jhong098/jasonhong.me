@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
@@ -10,6 +11,7 @@ const { colors, fontSizes } = theme;
 
 interface NavLinksProps {
   isMobile?: boolean;
+  handleClick?: () => void;
 }
 
 const Section = styled.li<NavLinksProps>`
@@ -26,12 +28,15 @@ const Section = styled.li<NavLinksProps>`
   }
 `;
 
-const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false }) => {
+const NavLinks: React.FC<NavLinksProps> = ({
+  isMobile = false,
+  handleClick = () => {}
+}) => {
   return (
     <>
       {navLinks.map(link => (
-        <Section isMobile={isMobile}>
-          <Link to={link} smooth={true}>
+        <Section isMobile={isMobile} key={link}>
+          <Link to={link} smooth={true} onClick={handleClick}>
             {link}
           </Link>
         </Section>
@@ -41,6 +46,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false }) => {
           href={Resume}
           target="_blank"
           rel="nofollow noopener noreferrer"
+          onClick={handleClick}
         >
           resume
         </StyledLink>

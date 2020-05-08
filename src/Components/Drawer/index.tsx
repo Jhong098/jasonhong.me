@@ -64,24 +64,12 @@ const NavList = styled.ol`
 `;
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, toggle }) => {
-  const handleToggle = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { target } = e;
-    const isLink = (target as any).hasAttribute("href");
-    const isNotMenu =
-      (target as any).classList &&
-      (target as any).classList[0].includes("Container");
-
-    if (isLink || isNotMenu) {
-      toggle();
-    }
-    // toggle();
-  };
   return (
-    <Container isOpen={isOpen} onClick={handleToggle}>
+    <Container isOpen={isOpen} onClick={toggle} aria-hidden={!isOpen}>
       <SideDrawer>
         <LinkContainer>
           <NavList>
-            <NavLinks isMobile />
+            <NavLinks isMobile handleClick={toggle} />
           </NavList>
         </LinkContainer>
         <Links isMobile />
