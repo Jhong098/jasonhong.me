@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 import Logo from "Components/Logo";
 import useScroll from "utils/useScroll";
 import { theme } from "styles";
@@ -53,25 +54,24 @@ const Nav = () => {
     }, TIMEOUT_DELAY);
   });
 
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <Container scrollDir={scrollDir}>
+      <Helmet>
+        <body className={isDrawerOpen ? "blur" : ""} />
+      </Helmet>
       <Logo />
       <SectionContainer>
         {isMobile ? (
-          <Hamburger
-            isOpen={isDrawerOpen}
-            toggle={() => setIsDrawerOpen(!isDrawerOpen)}
-          />
+          <Hamburger isOpen={isDrawerOpen} toggle={handleDrawerOpen} />
         ) : (
           <NavLinks />
         )}
       </SectionContainer>
-      {isMobile && (
-        <Drawer
-          isOpen={isDrawerOpen}
-          toggle={() => setIsDrawerOpen(!isDrawerOpen)}
-        />
-      )}
+      {isMobile && <Drawer isOpen={isDrawerOpen} toggle={handleDrawerOpen} />}
     </Container>
   );
 };
