@@ -6,14 +6,11 @@ import "./App.scss";
 import Landing from "Pages/Landing";
 import Travel from "Pages/Travel";
 import Art from "Pages/Art";
-
-import Links from "Components/Links";
 import Background from "Components/Background";
 
 import "normalize.css";
 
 const App = () => {
-  // const location = useLocation();
   return (
     <div className="App">
       <Background />
