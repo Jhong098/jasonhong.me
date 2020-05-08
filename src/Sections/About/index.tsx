@@ -7,7 +7,7 @@ import { theme } from "styles";
 import { StyledLink } from "Components/Button";
 import { email } from "copy";
 
-const { fontSizes, spaces, colors } = theme;
+const { fontSizes, spaces, colors, fonts } = theme;
 
 const AnimatedTextContainer = styled.div`
   overflow: hidden;
@@ -26,6 +26,10 @@ const AnimatedTextContainer = styled.div`
   .highlight {
     color: ${colors.neonBlue};
   }
+
+  .serif {
+    font-family: ${fonts.serif};
+  }
 `;
 
 const ButtonContainer = styled(motion.div)`
@@ -42,7 +46,11 @@ const About = () => {
   return (
     <div id="about">
       <AnimatedTextContainer>
-        <motion.p animate={{ y: [35, 0] }} transition={transition}>
+        <motion.p
+          animate={{ y: [35, 0] }}
+          transition={transition}
+          className="serif"
+        >
           Nice to meet you, my name is{" "}
         </motion.p>
       </AnimatedTextContainer>

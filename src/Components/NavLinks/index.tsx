@@ -7,7 +7,7 @@ import { Resume } from "static";
 import { theme } from "styles";
 import { navLinks } from "copy";
 
-const { colors, fontSizes } = theme;
+const { colors, fontSizes, fonts } = theme;
 
 interface NavLinksProps {
   isMobile?: boolean;
@@ -20,6 +20,7 @@ const Section = styled.li<NavLinksProps>`
   font-size: ${({ isMobile }) => (isMobile ? fontSizes.lg : fontSizes.md)};
 
   a {
+    font-family: ${fonts.serif};
     padding: ${({ isMobile }) => (isMobile ? "8px 10px" : "8px 10px")};
     cursor: pointer;
     &:hover {

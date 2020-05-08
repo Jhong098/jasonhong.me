@@ -4,7 +4,7 @@ import { mixins, theme } from "styles";
 import { media } from "breakpoints";
 import { Github } from "static";
 
-const { fontSizes, colors } = theme;
+const { fontSizes, colors, fonts } = theme;
 
 interface ProjectProps {
   title: string;
@@ -30,10 +30,11 @@ const ProjectContent = styled.div`
 `;
 
 const ProjectLabel = styled.h4`
+  font-family: ${fonts.serif};
   font-size: ${fontSizes.smish};
   font-weight: normal;
   color: ${colors.neonBlue};
-  margin-top: 10px;
+  margin: 10px 0;
   padding-top: 0;
 `;
 
@@ -84,6 +85,7 @@ const StyledTechList = styled.ul`
   margin: 25px 0 10px;
   list-style: none;
   li {
+    font-family: ${fonts.serif};
     font-size: ${fontSizes.smish};
     color: ${colors.lightGrey};
     margin-right: ${theme.spaces.md};

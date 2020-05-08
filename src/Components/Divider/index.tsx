@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Line = styled.div`
   height: 1px;
   width: 100%;
+  opacity: 0;
   background-color: #a8b2d1;
 `;
 
