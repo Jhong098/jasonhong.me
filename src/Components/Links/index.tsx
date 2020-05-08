@@ -2,15 +2,25 @@ import React from "react";
 import { links } from "copy";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { theme } from "styles";
 
-const LinksContainer = styled(motion.div)`
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  padding: 20px;
+interface NavLinksProps {
+  isMobile?: boolean;
+}
+
+const LinksContainer = styled(motion.div)<NavLinksProps>`
+  ${({ isMobile }) =>
+    isMobile
+      ? ""
+      : `
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: ${theme.spaces.xl};
+  `}
   display: flex;
   z-index: 5;
-  flex-direction: column;
+  flex-direction: ${({ isMobile }) => (isMobile ? "row" : "column")};
 
   a {
     margin: 10px;
@@ -24,9 +34,9 @@ const LinksContainer = styled(motion.div)`
   }
 `;
 
-const Links = () => {
+const Links: React.FC<NavLinksProps> = ({ isMobile = false }) => {
   return (
-    <LinksContainer animate={{ opacity: [0, 1] }}>
+    <LinksContainer animate={{ opacity: [0, 1] }} isMobile={isMobile}>
       {links.map(({ name, img, link }) => (
         <motion.a
           whileHover={{ y: -3 }}
