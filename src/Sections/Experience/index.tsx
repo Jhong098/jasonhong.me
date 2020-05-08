@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
@@ -240,7 +241,7 @@ const Content: React.FC<{ selectedIndex: number }> = ({ selectedIndex }) => {
   );
 };
 
-export default function ExperienceOverview() {
+export default function Experience() {
   const [selected, setSelected] = useState(0);
   const controls = useAnimation();
   const revealRef = useRef<HTMLDivElement>(null);

@@ -1,12 +1,12 @@
 import React from "react";
 import "./Landing.scss";
-import About from "Pages/About"; // import RotateText from "Components/RotateText";
+import About from "Sections/About";
 import Footer from "Components/Footer";
 
-import ExperienceOverview from "Components/ExperienceOverview";
+import Experience from "Sections/Experience";
 import styled from "styled-components";
-import Projects from "Components/Projects";
-import Hobbies from "Components/Hobbies";
+import Projects from "Sections/Projects";
+import Hobbies from "Sections/Hobbies";
 import Nav from "Components/Nav";
 import Links from "Components/Links";
 import { useMediaQuery } from "react-responsive";
@@ -25,7 +25,7 @@ const Landing = () => {
       <main>
         <Container className="page">
           <About />
-          <ExperienceOverview />
+          <Experience />
           <Projects />
           <Hobbies />
         </Container>
