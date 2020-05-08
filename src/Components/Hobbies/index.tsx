@@ -104,7 +104,7 @@ const Hobbies = () => {
   }, []);
 
   return (
-    <Container>
+    <Container id="hobbies">
       <div ref={revealHeader}>
         <SectionHeader text="Hobbies" />
       </div>
@@ -113,6 +113,7 @@ const Hobbies = () => {
         {landing.sections.map(({ images, redirect, header, text }) => (
           <StyledImgContainer
             to={redirect}
+            key={header}
             ref={el => revealHobbies.current.push(el)}
           >
             <StyledFeaturedImg src={images[0]} alt={header} />

@@ -30,7 +30,7 @@ const Projects = () => {
     <ProjectContainer id="projects">
       <SectionHeader text="Projects" />
       <div>
-        {projects.map(({ title, time, img, desc, techs, link, github }, i) => (
+        {projects.map(({ title, time, img, desc, techs, link, github }) => (
           <Project
             revealProjects={revealProjects}
             key={title}
