@@ -4,19 +4,22 @@ import { media } from "breakpoints";
 const theme = {
   colors: {
     darkNavy: "#0a192f",
+    lightNavy: "#172a45",
     lightestNavy: "#303C55",
     beige: "#b1a59f",
     darkGrey: "#333",
     lightGrey: "#a8b2d1",
     neonBlue: "#64ffda",
-    white: "#e6f1ff"
+    white: "#e6f1ff",
+    shadow: "#101d30"
   },
   transition: "all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)",
   easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
   spaces: {
     sm: "10px",
     md: "20px",
-    lg: "40px"
+    lg: "40px",
+    xl: "50px"
   },
   tabHeight: 42,
   tabWidth: 120,
@@ -31,7 +34,12 @@ const theme = {
     xxl: "22px",
     h3: "32px"
   },
-  navHeight: "70px"
+  navHeight: "70px",
+  hamburgerWidth: 30,
+  hamBefore: `top 0.1s ease-in 0.25s, opacity 0.1s ease-in`,
+  hamBeforeActive: `top 0.1s ease-out, opacity 0.1s ease-out 0.12s`,
+  hamAfter: `bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19)`,
+  hamAfterActive: `bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s`
 };
 
 const mixins = {
@@ -113,6 +121,28 @@ const mixins = {
     &:focus {
       box-shadow: 0 20px 30px -15px ${theme.colors.darkNavy};
     }
+  `,
+  smallButton: css`
+    color: ${theme.colors.neonBlue};
+    background-color: transparent;
+    border: 1px solid ${theme.colors.neonBlue};
+    border-radius: ${theme.borderRadius}px;
+    padding: 0.6rem 1rem;
+    font-size: ${theme.fontSizes.md};
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: ${theme.transition};
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 0.7;
+    }
+  `,
+  flexBetween: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   `
 };
 

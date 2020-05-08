@@ -18,7 +18,6 @@ const App = () => {
     <div className="App">
       <Background />
       {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
-      <Links />
       <Router>
         <Switch>
           <Route exact path="/">
