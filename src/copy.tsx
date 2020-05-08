@@ -175,6 +175,10 @@ const footer = {
   text: "Built with ☕+💗"
 };
 
+const email = "jhong098@gmail.com";
+
+const navLinks = ["experience", "projects", "hobbies"];
+
 export {
   landing,
   links,
@@ -183,5 +187,7 @@ export {
   experiencesList,
   travel,
   art,
-  resume
+  resume,
+  email,
+  navLinks
 };
