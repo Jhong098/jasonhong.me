@@ -1,12 +1,16 @@
 import React, { memo } from "react";
-import Divider from "Components/Divider";
+import styled from "styled-components";
+import { theme } from "styles";
+
+const Wrapper = styled.div`
+  margin: ${theme.spaces.lg} 0;
+`;
 
 const SectionHeader: React.FC<{ text: string }> = ({ text }) => {
   return (
-    <>
-      <Divider />
+    <Wrapper>
       <h2>{text}</h2>
-    </>
+    </Wrapper>
   );
 };
 

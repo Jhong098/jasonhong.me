@@ -35,7 +35,7 @@ const Projects = () => {
   return (
     <ProjectContainer id="projects">
       <div ref={revealHeader}>
-        <SectionHeader text="Projects" />
+        <SectionHeader text="Check out these projects..." />
       </div>
 
       <div>

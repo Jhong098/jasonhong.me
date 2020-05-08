@@ -8,7 +8,7 @@ import { sizes, media } from "breakpoints";
 import SectionHeader from "Components/SectionHeader";
 import sr, { srConfig } from "utils/scrollReveal";
 
-const { colors, fontSizes } = theme;
+const { colors, fontSizes, fonts } = theme;
 
 interface ItemProps {
   isSelected: boolean;
@@ -84,6 +84,7 @@ const ItemButton = styled.button<ItemProps>`
   border-left: 2px solid ${colors.lightestNavy};
   text-align: left;
   white-space: nowrap;
+  font-family: ${fonts.serif};
   font-size: ${fontSizes.sm};
   color: ${props => (props.isSelected ? colors.neonBlue : colors.lightGrey)};
   ${media.tablet`padding: 0 15px 2px;`};
@@ -169,6 +170,7 @@ const StyledCompany = styled.span`
   color: ${colors.neonBlue};
 `;
 const StyledJobDetails = styled.h5`
+  font-family: ${fonts.serif};
   font-size: ${fontSizes.smish};
   font-weight: normal;
   letter-spacing: 0.05em;
@@ -258,7 +260,7 @@ export default function Experience() {
 
   return (
     <Container id="experience" ref={revealRef}>
-      <SectionHeader text="Experience" />
+      <SectionHeader text="I've worked at..." />
       <FlexContainer>
         <Selector
           selectedIndex={selected}

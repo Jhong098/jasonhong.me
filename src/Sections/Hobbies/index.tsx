@@ -106,7 +106,7 @@ const Hobbies = () => {
   return (
     <Container id="hobbies">
       <div ref={revealHeader}>
-        <SectionHeader text="Hobbies" />
+        <SectionHeader text="Get To Know Me" />
       </div>
 
       <Grid>
