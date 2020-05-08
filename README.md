@@ -1,36 +1,16 @@
-# Hack the North Template
+# jasonhong.me (2020 Version)
 
-Template repository for 2019 HTN projects. Use this template as a starting point for new repositories to avoid the boilerplate!
+Personal Website built with React, Typescript, Styled-Components and hosted with Netlify.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/df0bf9ae-b73f-4fb4-b8c0-015642fc4a31/deploy-status)](https://app.netlify.com/sites/loving-wright-44ccfb/deploys)
 
-### Running locally
+## Running Locally
 
-First, clone the repo
+dev server:
+`npm install && npm start`
 
-```
-$ git clone git@github.com:hackathon/template.hackthenorth.com.git
-$ cd template.hackthenorth.com
-```
+prod build: `npm run build`
 
-Then install dependencies and get it running
+## Inspirations
 
-```
-$ npm install
-$ npm run start
-```
-
-Navigate to `localhost:3000` in your browser.
-
-### Setup Includes
-
-- React (Create-React-App)
-- Styled-components
-- North
-- TypeScript
-- eslint
-- prettier
-- stylelint
-- editorconfig
-- imagemin (with script)
-- ua-parser
-- 2019 font files (Castledown, Inter)
+[Brittany Chiang](https://brittanychiang.com/)
