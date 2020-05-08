@@ -256,8 +256,8 @@ export default function ExperienceOverview() {
   }, [controls, selected]);
 
   return (
-    <Container id="experiences" ref={revealRef}>
-      <SectionHeader text="Experiences" />
+    <Container id="experience" ref={revealRef}>
+      <SectionHeader text="Experience" />
       <FlexContainer>
         <Selector
           selectedIndex={selected}

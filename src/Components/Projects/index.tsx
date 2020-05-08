@@ -17,7 +17,13 @@ const ProjectContainer = styled.div`
 
 const Projects = () => {
   const revealProjects = useRef<(HTMLDivElement | null)[]>([]);
+  const revealHeader = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
+    if (revealHeader.current) {
+      sr?.reveal(revealHeader.current, srConfig());
+    }
+
     if (revealProjects.current) {
       revealProjects.current.forEach((ref, i) => {
         if (ref) {
@@ -28,7 +34,10 @@ const Projects = () => {
   }, []);
   return (
     <ProjectContainer id="projects">
-      <SectionHeader text="Projects" />
+      <div ref={revealHeader}>
+        <SectionHeader text="Projects" />
+      </div>
+
       <div>
         {projects.map(({ title, time, img, desc, techs, link, github }) => (
           <Project
