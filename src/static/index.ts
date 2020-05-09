@@ -18,6 +18,7 @@ export { ReactComponent as LeftArrow } from "./icons/arrow-left.svg";
 export { ReactComponent as RightArrow } from "./icons/arrow-right.svg";
 export { ReactComponent as Grid } from "./icons/grid.svg";
 export { ReactComponent as Cards } from "./icons/copy.svg";
+export { ReactComponent as Close } from "./icons/x.svg";
 
 /* Travel */
 export { default as hk1 } from "./img/travel/hongkong_1.jpg";
