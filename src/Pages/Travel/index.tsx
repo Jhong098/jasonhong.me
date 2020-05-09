@@ -7,16 +7,39 @@ import { theme } from "styles";
 import { Grid, Cards as CardsIcon, LeftArrow } from "static";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import LightBox from "Components/LightBox";
 
 const { colors, spaces } = theme;
 
-interface ImageProps {
+interface GridProps {
   images: { img: string; desc: string }[];
+  handleLightBoxToggle: () => void;
 }
 
-const trans3 = (x: any, y: any) => `translate3d(${x / 10}px,${y / 10}px,0)`;
+interface LightBoxState {
+  isOpen: boolean;
+}
 
-const Container = styled.div`
+const trans3 = (x: number, y: number) =>
+  `translate3d(${x / 10}px,${y / 10}px,0)`;
+
+const Container = styled.div<LightBoxState>`
+  &:after {
+    content: "";
+    z-index: 20;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+    transition: all 0.5s;
+    pointer-events: none;
+  }
+`;
+
+const GridContainer = styled.div`
   padding: 80px 15vw 0;
   columns: 4 200px;
   column-gap: 1rem;
@@ -43,6 +66,7 @@ const Container = styled.div`
 
 const ImageDesc = styled.h2`
   margin: 0;
+  pointer-events: none;
 `;
 
 const BackButton = styled(Link)`
@@ -50,7 +74,7 @@ const BackButton = styled(Link)`
   left: ${spaces.md};
   top: ${spaces.md};
   cursor: pointer;
-  z-index: 20;
+  z-index: 19;
   display: flex;
   align-items: center;
 
@@ -68,7 +92,7 @@ const ViewToggle = styled.button`
   right: ${spaces.md};
   top: ${spaces.md};
   cursor: pointer;
-  z-index: 20;
+  z-index: 19;
   color: ${colors.lightGrey};
 
   &:hover {
@@ -78,12 +102,16 @@ const ViewToggle = styled.button`
 
 const Image = styled.img`
   cursor: pointer;
+
+  &:hover {
+    filter: grayscale(100%) contrast(1) brightness(90%);
+  }
 `;
 
-const GridView: React.FC<ImageProps> = ({ images }) => {
+const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [hovered, setHovered] = useState<number | null>(null);
-  console.log(hovered);
+  const [openImage, setOpenImage] = useState("");
 
   const [transProps, setTransProps] = useSpring(() => ({
     xy: [0, 0],
@@ -99,47 +127,64 @@ const GridView: React.FC<ImageProps> = ({ images }) => {
   };
 
   return (
-    <Container>
-      {images.map(({ img, desc }, i) => (
-        <div
-          style={{ position: "relative" }}
-          key={i}
-          ref={(el: HTMLDivElement | null) => imageRefs.current.push(el)}
-        >
-          <Image
-            key={img}
-            src={img}
-            alt={desc}
-            onMouseOver={() => setHovered(i)}
-            onMouseMove={({ clientX: x, clientY: y }) =>
-              getRelMousePosition(x, y, i)
-            }
-          />
-          {hovered === i && (
-            <animated.div
-              style={{
-                position: "absolute",
-                top: "30%",
-                left: 0,
-                zIndex: 5,
-                color: "#fff",
-                mixBlendMode: "difference",
-                transform: transProps.xy.to(trans3)
+    <>
+      {openImage && (
+        <LightBox
+          image={openImage}
+          handleClose={() => {
+            setOpenImage("");
+            handleLightBoxToggle();
+          }}
+        />
+      )}
+      <GridContainer>
+        {images.map(({ img, desc }, i) => (
+          <div
+            style={{ position: "relative" }}
+            key={i}
+            ref={(el: HTMLDivElement | null) => imageRefs.current.push(el)}
+          >
+            <Image
+              key={img}
+              src={img}
+              alt={desc}
+              onMouseOver={() => setHovered(i)}
+              onMouseMove={({ clientX: x, clientY: y }) =>
+                getRelMousePosition(x, y, i)
+              }
+              onClick={() => {
+                setOpenImage(img);
+                handleLightBoxToggle();
               }}
-            >
-              <ImageDesc>{desc}</ImageDesc>
-            </animated.div>
-          )}
-        </div>
-      ))}
-    </Container>
+            />
+            {hovered === i && (
+              <animated.div
+                style={{
+                  position: "absolute",
+                  top: "30%",
+                  left: 0,
+                  zIndex: 5,
+                  color: "#fff",
+                  pointerEvents: "none",
+                  transform: transProps.xy.to(trans3)
+                }}
+              >
+                <ImageDesc>{desc}</ImageDesc>
+              </animated.div>
+            )}
+          </div>
+        ))}
+      </GridContainer>
+    </>
   );
 };
 
 const Travel = () => {
   const [isCardView, setIsCard] = useState(false);
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+
   return (
-    <div id="travel">
+    <Container id="travel" isOpen={isLightBoxOpen}>
       <BackButton to="/">
         <LeftArrow />
         Back
@@ -147,8 +192,15 @@ const Travel = () => {
       <ViewToggle onClick={() => setIsCard(!isCardView)}>
         {isCardView ? <Grid /> : <CardsIcon />}
       </ViewToggle>
-      {isCardView ? <Cards images={travel} /> : <GridView images={travel} />}
-    </div>
+      {isCardView ? (
+        <Cards images={travel} />
+      ) : (
+        <GridView
+          images={travel}
+          handleLightBoxToggle={() => setIsLightBoxOpen(!isLightBoxOpen)}
+        />
+      )}
+    </Container>
   );
 };
 

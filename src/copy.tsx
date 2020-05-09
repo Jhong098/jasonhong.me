@@ -1,12 +1,9 @@
 import React from "react";
 import {
-  // Art,
-  Temple,
   Linkedin,
   Github,
   Mail,
   Instagram,
-  Canoo,
   hk1,
   hk2,
   hk3,
