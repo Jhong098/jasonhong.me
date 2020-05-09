@@ -73,7 +73,7 @@ const experiencesList = [
     ]
   },
   {
-    title: "Palette (now Monogram)",
+    title: "Monogram",
     role: "Software Developer",
     location: "Kitchener, Ontario",
     time: "May - Aug 2018",
