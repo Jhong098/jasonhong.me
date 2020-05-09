@@ -232,7 +232,7 @@ const Content: React.FC<{ selectedIndex: number }> = ({ selectedIndex }) => {
         </StyledCompany>
       </StyledJobTitle>
       <StyledJobDetails>
-        <span>{time}</span> - <span>{location}</span>
+        <span>{time}</span> | <span>{location}</span>
       </StyledJobDetails>
       <ul>
         {details.map((text: string) => (
