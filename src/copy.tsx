@@ -46,7 +46,6 @@ const experiencesList = [
     location: "Torrance, California",
     time: "Sept - Dec 2019",
     link: "https://canoo.com",
-    img: Canoo,
     details: [
       "Increased productivity by creating software release management tool with React, Typescript, Python, and Flask to monitor and control builds for 10+ vehicle components.",
       "Sped up software release generation by 2x with asyncio in Python 3",
@@ -59,10 +58,45 @@ const experiencesList = [
     location: "Waterloo, Ontario",
     time: "Jan - Dec 2019",
     link: "https://hackthenorth.com",
-    img: Temple,
     details: [
       "Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month",
       "Improved maintainability and customizability by creating a themeable React component library for all Hack the North projects"
+    ]
+  },
+  {
+    title: "StackAdapt",
+    role: "Software Engineering",
+    location: "Toronto, Ontario",
+    time: "Jan - Apr 2019",
+    link: "https://stackadapt.com",
+    details: [
+      "Implemented customization and productivity features on web platform that manages 3000+ ad campaigns with Ruby on Rails, React, and Redux ",
+      "Increased ad bidding effectiveness for 1000+ bid requests per minute by adding logic in Go application to allow users to dynamically control the bidding frequency",
+      "Designed user preset system based on user type for hundreds of active users"
+    ]
+  },
+  {
+    title: "Palette (now Monogram)",
+    role: "Software Developer",
+    location: "Kitchener, Ontario",
+    time: "May - Aug 2018",
+    link: "https://monogramcc.com/",
+    details: [
+      "Improved performance for Qt desktop application and various content-creating software plugins by refactoring legacy code",
+      "Boosted responsiveness and maintainability by developing USB serial communication interface in Node",
+      "Ensured 95% test coverage by writing effective unit tests"
+    ]
+  },
+  {
+    title: "Jam3",
+    role: "Software Developer",
+    location: "Toronto, Ontario",
+    time: "Sep – Dec 2017",
+    link: "https://jam3.com/",
+    details: [
+      "Built responsive, pixel-perfect campaign websites for Facebook Messenger Kids and Youtube AdBlitz 2018 with React and Angular",
+      "Collaborated with 3D designer to creaste interactive AR Masks using Spark AR Studio for Coca-Cola",
+      "Expedited company administrative workflow by creating a seat-planner application with the MEAN stack"
     ]
   }
 ];

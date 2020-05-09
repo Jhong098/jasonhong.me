@@ -1,8 +1,26 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { useSpring, useSprings, animated, interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
+import { sizes } from "breakpoints";
+import { useMediaQuery } from "react-responsive";
 
 import "./Cards.scss";
+import { LeftArrow, RightArrow } from "static";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`;
+
+const Hint = styled.p`
+  display: flex;
+
+  > span {
+    margin: 0 5px;
+  }
+`;
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({
@@ -24,6 +42,8 @@ const trans3 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
 const CLEAR_INTERVAL = 600;
 
 const Cards = ({ images }) => {
+  const isMobile = useMediaQuery({ maxWidth: sizes.phablet });
+
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [props, set] = useSprings(images.length, i => ({
     ...to(i),
@@ -71,9 +91,18 @@ const Cards = ({ images }) => {
     }
   });
 
-  // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div id="cards">
+    <Container id="cards">
+      <Hint>
+        <span>
+          <LeftArrow />
+        </span>
+        {isMobile ? "Swipe" : "Drag"}
+        <span>
+          <RightArrow />
+        </span>
+      </Hint>
+
       {
         <>
           {props.map(({ x, y, rot, scale }, i) => (
@@ -98,7 +127,8 @@ const Cards = ({ images }) => {
                   setTransProps({ xy: [x, y] })
                 }
               />
-              {hovered === i && (
+
+              {(hovered === i || isMobile) && (
                 <animated.div
                   style={{
                     position: "absolute",
@@ -117,7 +147,7 @@ const Cards = ({ images }) => {
           ))}
         </>
       }
-    </div>
+    </Container>
   );
 };
 
