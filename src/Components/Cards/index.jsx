@@ -109,10 +109,7 @@ const Cards = ({ images }) => {
             <animated.div
               key={i}
               style={{
-                transform: interpolate(
-                  [x, y],
-                  (x, y) => `translate3d(${x}px,${y}px,0)`
-                )
+                transform: to([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
               }}
             >
               <animated.div

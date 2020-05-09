@@ -1,14 +1,9 @@
 import React from "react";
-import Cards from "Components/Cards";
-
 import { art } from "copy";
+import Gallery from "Components/Gallery";
 
 const Art = () => {
-  return (
-    <div id="art">
-      <Cards images={art} />
-    </div>
-  );
+  return <Gallery id="art" images={art} />;
 };
 
 export default Art;
