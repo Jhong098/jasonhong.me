@@ -14,6 +14,10 @@ export { ReactComponent as Linkedin } from "./icons/linkedin.svg";
 export { ReactComponent as Github } from "./icons/github.svg";
 export { ReactComponent as Mail } from "./icons/mail.svg";
 export { ReactComponent as Instagram } from "./icons/instagram.svg";
+export { ReactComponent as LeftArrow } from "./icons/arrow-left.svg";
+export { ReactComponent as RightArrow } from "./icons/arrow-right.svg";
+export { ReactComponent as Grid } from "./icons/grid.svg";
+export { ReactComponent as Cards } from "./icons/copy.svg";
 
 /* Travel */
 export { default as hk1 } from "./img/travel/hongkong_1.jpg";
