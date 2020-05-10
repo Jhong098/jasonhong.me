@@ -20,7 +20,6 @@ const GridContainer = styled(motion.div)`
   column-gap: 1rem;
   img {
     width: 150px;
-    background: #ec985a;
     color: white;
     margin: 0 1rem 1rem 0;
     display: inline-block;

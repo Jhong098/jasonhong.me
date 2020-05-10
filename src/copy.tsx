@@ -19,7 +19,6 @@ import {
   jp1,
   jp2,
   jp3,
-  jp4,
   tw1,
   van1,
   van2,
@@ -215,11 +214,6 @@ const travel: ImageType[] = [
   {
     thumb: jp3,
     full: jp3_HD,
-    desc: "Japan, 2016"
-  },
-  {
-    thumb: jp4,
-    full: "",
     desc: "Japan, 2016"
   },
   {

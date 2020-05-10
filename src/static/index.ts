@@ -49,7 +49,6 @@ export { default as jp2 } from "./img/travel/jap_2.jpg";
 export { default as jp2_HD } from "./img/travel/jap_2_HD.jpg";
 export { default as jp3 } from "./img/travel/jap_3.jpg";
 export { default as jp3_HD } from "./img/travel/jap_3_HD.jpg";
-export { default as jp4 } from "./img/travel/jap_4.JPG";
 export { default as tw1 } from "./img/travel/tai_1.jpg";
 export { default as tw2 } from "./img/travel/tai_2.jpeg";
 export { default as tw3 } from "./img/travel/tai_3.jpg";
