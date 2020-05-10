@@ -39,19 +39,22 @@ const Projects = () => {
       </div>
 
       <div>
-        {projects.map(({ title, time, img, desc, techs, link, github }) => (
-          <Project
-            revealProjects={revealProjects}
-            key={title}
-            title={title}
-            time={time}
-            img={img}
-            desc={desc}
-            techs={techs}
-            link={link}
-            github={github}
-          />
-        ))}
+        {projects.map(
+          ({ title, time, img, video, desc, techs, link, github }) => (
+            <Project
+              revealProjects={revealProjects}
+              key={title}
+              title={title}
+              time={time}
+              img={img}
+              video={video}
+              desc={desc}
+              techs={techs}
+              link={link}
+              github={github}
+            />
+          )
+        )}
       </div>
     </ProjectContainer>
   );

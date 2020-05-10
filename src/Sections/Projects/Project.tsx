@@ -10,6 +10,7 @@ interface ProjectProps {
   title: string;
   time: string;
   img: string;
+  video: string;
   desc: string;
   techs: string[];
   link: string;
@@ -76,6 +77,7 @@ const StyledDescription = styled.div`
     ${mixins.inlineLink};
   }
 `;
+
 const StyledTechList = styled.ul`
   position: relative;
   z-index: 2;
@@ -100,6 +102,7 @@ const StyledTechList = styled.ul`
     `};
   }
 `;
+
 const StyledLinkWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -118,7 +121,8 @@ const StyledLinkWrapper = styled.div`
     }
   }
 `;
-const StyledFeaturedImg = styled.img`
+
+const StyledVideo = styled.video`
   width: 100%;
   max-width: 100%;
   vertical-align: middle;
@@ -134,7 +138,7 @@ const StyledFeaturedImg = styled.img`
   `};
 `;
 
-const StyledImgContainer = styled.a`
+const StyledMediaContainer = styled.a`
   ${mixins.boxShadow};
   grid-column: 6 / -1;
   grid-row: 1 / -1;
@@ -152,7 +156,7 @@ const StyledImgContainer = styled.a`
   &:focus {
     background: transparent;
     &:before,
-    ${StyledFeaturedImg} {
+    ${StyledVideo} {
       background: transparent;
       filter: none;
     }
@@ -172,6 +176,7 @@ const StyledImgContainer = styled.a`
     mix-blend-mode: screen;
   }
 `;
+
 const StyledProject = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -206,7 +211,7 @@ const StyledProject = styled.div`
       margin-left: 0;
       margin-right: -10px;
     }
-    ${StyledImgContainer} {
+    ${StyledMediaContainer} {
       grid-column: 1 / 8;
       ${media.tablet`height: 100%;`};
       ${media.thone`
@@ -221,12 +226,14 @@ const Project: React.FC<ProjectProps> = ({
   title,
   time,
   img,
+  video,
   desc,
   techs,
   link,
   github,
   revealProjects
 }) => {
+  console.log(img);
   return (
     <StyledProject
       key={title}
@@ -252,13 +259,15 @@ const Project: React.FC<ProjectProps> = ({
         </StyledLinkWrapper>
       </ProjectContent>
 
-      <StyledImgContainer
+      <StyledMediaContainer
         href={link}
         target="_blank"
         rel="nofollow noopener noreferrer"
       >
-        <StyledFeaturedImg src={img} alt={title} />
-      </StyledImgContainer>
+        <StyledVideo autoPlay loop muted playsInline>
+          <source src={video} type="video/webm"></source>
+        </StyledVideo>
+      </StyledMediaContainer>
     </StyledProject>
   );
 };

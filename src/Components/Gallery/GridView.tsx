@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useSpring } from "react-spring";
 import LightBox from "Components/LightBox";
 import { animated } from "react-spring";
 import { ImageType } from "utils/types";
+import { useAnimation, motion } from "framer-motion";
 
 interface GridProps {
   images: ImageType[];
@@ -13,7 +14,7 @@ interface GridProps {
 const trans3 = (x: number, y: number) =>
   `translate3d(${x / 10}px,${y / 10}px,0)`;
 
-const GridContainer = styled.div`
+const GridContainer = styled(motion.div)`
   padding: 80px 15vw 0;
   columns: 4 200px;
   column-gap: 1rem;
@@ -38,8 +39,9 @@ const GridContainer = styled.div`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(motion.img)`
   cursor: pointer;
+  opacity: 0;
 
   &:hover {
     filter: grayscale(100%) contrast(1) brightness(90%);
@@ -55,6 +57,8 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [hovered, setHovered] = useState<number | null>(null);
   const [openImage, setOpenImage] = useState("");
+  const controls = useAnimation();
+  const loaded = useRef(0);
 
   const [transProps, setTransProps] = useSpring(() => ({
     xy: [0, 0],
@@ -66,6 +70,16 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
     const container = imageRefs.current[i]?.getBoundingClientRect();
     if (container) {
       setTransProps({ xy: [x - container.left, y - container.top] });
+    }
+  };
+
+  const handleLoaded = () => {
+    if (loaded.current + 1 === images.length) {
+      controls.start({
+        opacity: 1
+      });
+    } else {
+      loaded.current += 1;
     }
   };
 
@@ -81,24 +95,26 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
         />
       )}
       <GridContainer>
-        {images.map(({ img, desc }, i) => (
+        {images.map(({ thumb, full, desc }, i) => (
           <div
             style={{ position: "relative" }}
             key={i}
             ref={(el: HTMLDivElement | null) => imageRefs.current.push(el)}
           >
             <Image
-              key={img}
-              src={img}
+              key={thumb}
+              src={thumb}
               alt={desc}
               onMouseOver={() => setHovered(i)}
               onMouseMove={({ clientX: x, clientY: y }) =>
                 getRelMousePosition(x, y, i)
               }
               onClick={() => {
-                setOpenImage(img);
+                setOpenImage(full || thumb);
                 handleLightBoxToggle();
               }}
+              onLoad={handleLoaded}
+              animate={controls}
             />
             {hovered === i && (
               <animated.div

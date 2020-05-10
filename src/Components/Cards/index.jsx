@@ -109,7 +109,10 @@ const Cards = ({ images }) => {
             <animated.div
               key={i}
               style={{
-                transform: to([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
+                transform: interpolate(
+                  [x, y],
+                  (x, y) => `translate3d(${x}px,${y}px,0)`
+                )
               }}
             >
               <animated.div
@@ -117,7 +120,7 @@ const Cards = ({ images }) => {
                 className="card"
                 style={{
                   transform: interpolate([rot, scale], trans),
-                  backgroundImage: `url(${images[i].img})`
+                  backgroundImage: `url(${images[i].full || images[i].thumb})`
                 }}
                 onMouseOver={() => setHovered(i)}
                 onMouseMove={({ clientX: x, clientY: y }) =>
