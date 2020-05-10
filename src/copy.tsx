@@ -43,7 +43,8 @@ import {
   van3_HD,
   Hackioca,
   HTN_Video,
-  Hackioca_Video
+  Hackioca_Video,
+  VisionMotion
 } from "static";
 import { ImageType } from "utils/types";
 
@@ -298,14 +299,15 @@ const projects = [
     github: "https://github.com/hackthenorth/hackioca.com"
   },
   {
-    title: "Hack the North Website2",
-    time: "2019",
-    img: HTN,
-    video: HTN_Video,
-    desc: "2019 website for the largest hackathon in Canada.",
-    techs: ["React", "TypeScript", "Styled Components"],
-    link: "https://hackthenorth.com",
-    github: "https://github.com/hackthenorth/hackthenorth.com"
+    title: "VisionMotion",
+    time: "2018",
+    img: VisionMotion,
+    video: "",
+    desc:
+      "Mobile app that uses the camera to track an object and graph position, velocity, and acceleration.",
+    techs: ["Android", "OpenCV"],
+    link: "https://visionmotion.williamqin.com/",
+    github: "https://github.com/WilliamLQin/Vision-Motion"
   }
 ];
 

@@ -13,6 +13,7 @@ export { default as HTN } from "./img/htn.png";
 export { default as HTN_Video } from "./videos/htn.webm";
 export { default as Hackioca } from "./img/hackioca.jpg";
 export { default as Hackioca_Video } from "./videos/hackioca.webm";
+export { default as VisionMotion } from "./img/vision-motion.jpg";
 
 /* Icons */
 

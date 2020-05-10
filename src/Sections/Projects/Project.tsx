@@ -122,20 +122,26 @@ const StyledLinkWrapper = styled.div`
   }
 `;
 
+const Media = `  width: 100%;
+max-width: 100%;
+vertical-align: middle;
+border-radius: ${theme.borderRadius}px;
+position: relative;
+mix-blend-mode: multiply;
+filter: grayscale(100%) contrast(1) brightness(90%);
+${media.tablet`
+  object-fit: cover;
+  width: auto;
+  height: 100%;
+  filter: grayscale(100%) contrast(1) brightness(80%);
+`};`;
+
 const StyledVideo = styled.video`
-  width: 100%;
-  max-width: 100%;
-  vertical-align: middle;
-  border-radius: ${theme.borderRadius}px;
-  position: relative;
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
-  ${media.tablet`
-    object-fit: cover;
-    width: auto;
-    height: 100%;
-    filter: grayscale(100%) contrast(1) brightness(80%);
-  `};
+  ${Media}
+`;
+
+const StyledImg = styled.img`
+  ${Media}
 `;
 
 const StyledMediaContainer = styled.a`
@@ -264,9 +270,13 @@ const Project: React.FC<ProjectProps> = ({
         target="_blank"
         rel="nofollow noopener noreferrer"
       >
-        <StyledVideo autoPlay loop muted playsInline>
-          <source src={video} type="video/webm"></source>
-        </StyledVideo>
+        {video ? (
+          <StyledVideo autoPlay loop muted playsInline>
+            <source src={video} type="video/webm"></source>
+          </StyledVideo>
+        ) : (
+          <StyledImg src={img} alt={desc} />
+        )}
       </StyledMediaContainer>
     </StyledProject>
   );
