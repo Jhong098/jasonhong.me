@@ -1,1 +1,1 @@
-export type ImageType = { img: string; desc: string };
+export type ImageType = { thumb: string; full: string; desc: string };

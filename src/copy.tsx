@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import React from "react";
 import {
   Linkedin,
@@ -9,14 +10,42 @@ import {
   hk3,
   hk4,
   hk5,
-  hk6,
   art1,
   art2,
   art3,
   art4,
   Resume,
-  HTN
+  HTN,
+  jp1,
+  jp2,
+  jp3,
+  jp4,
+  tw1,
+  van1,
+  van2,
+  van3,
+  tw2,
+  hk6,
+  hk7,
+  hk8,
+  hk9,
+  hk6_HD,
+  hk7_HD,
+  hk8_HD,
+  hk9_HD,
+  jp1_HD,
+  jp2_HD,
+  jp3_HD,
+  tw3,
+  tw3_HD,
+  van1_HD,
+  van2_HD,
+  van3_HD,
+  Hackioca,
+  HTN_Video,
+  Hackioca_Video
 } from "static";
+import { ImageType } from "utils/types";
 
 const landing = {
   pages: 3,
@@ -126,75 +155,153 @@ const resume = {
   link: Resume
 };
 
-const travel = [
+const travel: ImageType[] = [
   {
-    img: hk1,
+    thumb: hk1,
+    full: "",
     desc: "Hong Kong, 2016"
   },
   {
-    img: hk2,
+    thumb: hk2,
+    full: "",
     desc: "Hong Kong, 2016"
   },
   {
-    img: hk3,
+    thumb: hk3,
+    full: "",
     desc: "Hong Kong, 2016"
   },
   {
-    img: hk4,
+    thumb: hk4,
+    full: "",
     desc: "Hong Kong, 2016"
   },
   {
-    img: hk5,
+    thumb: hk5,
+    full: "",
     desc: "Hong Kong, 2016"
   },
   {
-    img: hk6,
+    thumb: hk6,
+    full: hk6_HD,
     desc: "Hong Kong, 2016"
+  },
+  {
+    thumb: hk7,
+    full: hk7_HD,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    thumb: hk8,
+    full: hk8_HD,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    thumb: hk9,
+    full: hk9_HD,
+    desc: "Hong Kong, 2016"
+  },
+  {
+    thumb: jp1,
+    full: jp1_HD,
+    desc: "Japan, 2016"
+  },
+  {
+    thumb: jp2,
+    full: jp2_HD,
+    desc: "Japan, 2016"
+  },
+  {
+    thumb: jp3,
+    full: jp3_HD,
+    desc: "Japan, 2016"
+  },
+  {
+    thumb: jp4,
+    full: "",
+    desc: "Japan, 2016"
+  },
+  {
+    thumb: tw1,
+    full: "",
+    desc: "Taiwan, 2016"
+  },
+  {
+    thumb: tw2,
+    full: "",
+    desc: "Taiwan, 2019"
+  },
+  {
+    thumb: tw3,
+    full: tw3_HD,
+    desc: "Taiwan, 2019"
+  },
+  {
+    thumb: van1,
+    full: van1_HD,
+    desc: "Vancouver, 2016"
+  },
+  {
+    thumb: van2,
+    full: van2_HD,
+    desc: "Vancouver, 2016"
+  },
+  {
+    thumb: van3,
+    full: van3_HD,
+    desc: "Vancouver, 2016"
   }
 ];
 
-const art = [
+const art: ImageType[] = [
   {
-    img: art1,
+    thumb: art1,
+    full: "",
     desc: "The Studio, 2015"
   },
   {
-    img: art2,
+    thumb: art2,
+    full: "",
     desc: "Vases, 2015"
   },
   {
-    img: art3,
+    thumb: art3,
+    full: "",
     desc: "Skull, 2014"
   },
   {
-    img: art4,
+    thumb: art4,
+    full: "",
     desc: "Hand with Reflecting Sphere, 2014"
   }
 ];
 
 const projects = [
   {
-    title: "Hack the North Website",
+    title: "hackthenorth.com",
     time: "2019",
     img: HTN,
+    video: HTN_Video,
     desc: "2019 website for the largest hackathon in Canada.",
     techs: ["React", "TypeScript", "Styled Components"],
     link: "https://hackthenorth.com",
     github: "https://github.com/hackthenorth/hackthenorth.com"
   },
   {
-    title: "Hack the North Website1",
+    title: "hackioca.com",
     time: "2019",
-    img: HTN,
-    desc: "2019 website for the largest hackathon in Canada.",
+    img: Hackioca,
+    video: Hackioca_Video,
+    desc: "Hack the North 2019 April Fool's Day website.",
     techs: ["React", "TypeScript", "Styled Components"],
-    link: "https://hackthenorth.com",
-    github: "https://github.com/hackthenorth/hackthenorth.com"
+    link: "https://hackioca.com",
+    github: "https://github.com/hackthenorth/hackioca.com"
   },
   {
     title: "Hack the North Website2",
     time: "2019",
     img: HTN,
+    video: HTN_Video,
     desc: "2019 website for the largest hackathon in Canada.",
     techs: ["React", "TypeScript", "Styled Components"],
     link: "https://hackthenorth.com",

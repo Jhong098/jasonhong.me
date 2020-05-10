@@ -1,12 +1,20 @@
+/* eslint-disable @typescript-eslint/camelcase */
 /**
  * Export all assets
  */
 export { default as Me } from "./img/me.jpg";
 export { default as Art } from "./img/art.jpg";
-export { default as Temple } from "./img/taiwan_temple.jpeg";
 export { default as Canoo } from "./img/canoo-car.jpg";
-export { default as HTN } from "./img/htn.png";
+
 export { default as Resume } from "./resume.pdf";
+
+/* Projects */
+export { default as HTN } from "./img/htn.png";
+export { default as HTN_Video } from "./videos/htn.webm";
+export { default as Hackioca } from "./img/hackioca.jpg";
+export { default as Hackioca_Video } from "./videos/hackioca.webm";
+
+/* Icons */
 
 export { default as link } from "./icons/link.svg";
 export { default as resume } from "./icons/file.svg";
@@ -21,12 +29,38 @@ export { ReactComponent as Cards } from "./icons/copy.svg";
 export { ReactComponent as Close } from "./icons/x.svg";
 
 /* Travel */
-export { default as hk1 } from "./img/travel/hongkong_1.jpg";
-export { default as hk2 } from "./img/travel/hongkong_2.jpg";
-export { default as hk3 } from "./img/travel/hongkong_3.jpg";
-export { default as hk4 } from "./img/travel/hongkong_4.jpg";
-export { default as hk5 } from "./img/travel/hongkong_5.jpg";
-export { default as hk6 } from "./img/travel/hongkong_6.jpg";
+export { default as hk1 } from "./img/travel/hk_1.jpg";
+export { default as hk2 } from "./img/travel/hk_2.jpg";
+export { default as hk3 } from "./img/travel/hk_3.jpg";
+export { default as hk4 } from "./img/travel/hk_4.jpg";
+export { default as hk5 } from "./img/travel/hk_5.jpg";
+export { default as hk6 } from "./img/travel/hk_6.jpg";
+export { default as hk6_HD } from "./img/travel/hk_6_HD.jpg";
+export { default as hk7 } from "./img/travel/hk_7.jpg";
+export { default as hk7_HD } from "./img/travel/hk_7_HD.jpg";
+export { default as hk8 } from "./img/travel/hk_8.jpg";
+export { default as hk8_HD } from "./img/travel/hk_8_HD.jpg";
+export { default as hk9 } from "./img/travel/hk_9.jpg";
+export { default as hk9_HD } from "./img/travel/hk_9_HD.jpg";
+export { default as jp1 } from "./img/travel/jap_1.jpg";
+export { default as jp1_HD } from "./img/travel/jap_1_HD.jpg";
+export { default as jp2 } from "./img/travel/jap_2.jpg";
+export { default as jp2_HD } from "./img/travel/jap_2_HD.jpg";
+export { default as jp3 } from "./img/travel/jap_3.jpg";
+export { default as jp3_HD } from "./img/travel/jap_3_HD.jpg";
+export { default as jp4 } from "./img/travel/jap_4.JPG";
+export { default as tw1 } from "./img/travel/tai_1.jpg";
+export { default as tw2 } from "./img/travel/tai_2.jpeg";
+export { default as tw3 } from "./img/travel/tai_3.jpg";
+export { default as tw3_HD } from "./img/travel/tai_3_HD.jpg";
+export { default as tw4 } from "./img/travel/tai_4.jpg";
+export { default as tw4_HD } from "./img/travel/tai_4_HD.jpg";
+export { default as van1 } from "./img/travel/van_1.jpg";
+export { default as van1_HD } from "./img/travel/van_1_HD.jpg";
+export { default as van2 } from "./img/travel/van_2.jpg";
+export { default as van2_HD } from "./img/travel/van_2_HD.jpg";
+export { default as van3 } from "./img/travel/van_3.jpg";
+export { default as van3_HD } from "./img/travel/van_3_HD.jpg";
 
 /* Art */
 export { default as art1 } from "./img/art/art_1.jpg";
