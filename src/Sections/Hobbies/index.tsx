@@ -7,7 +7,7 @@ import { landing } from "copy";
 import { media } from "breakpoints";
 import { Link } from "react-router-dom";
 import sr, { srConfig } from "utils/scrollReveal";
-const { colors, spaces } = theme;
+const { colors, spaces, fonts, fontSizes } = theme;
 
 const Container = styled.div`
   ${mixins.sectionPadding}
@@ -47,7 +47,7 @@ const StyledImgContainer = styled(Link)`
     ${StyledFeaturedImg} {
       background: transparent;
       filter: none;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
   &:before {
@@ -85,6 +85,13 @@ const TextContainer = styled(motion.div)`
   ${mixins.flexCenter}
   flex-direction: column;
   color: ${colors.white};
+
+  ${media.thone`text-align: center;`}
+
+  p {
+    font-family: ${fonts.serif};
+    font-size: ${fontSizes.sm};
+  }
 `;
 
 const Hobbies = () => {
@@ -119,7 +126,7 @@ const Hobbies = () => {
             <StyledFeaturedImg src={images[0]} alt={header} />
             <TextContainer>
               <h1>{header}</h1>
-              <h5>{text}</h5>
+              <p>{text}</p>
             </TextContainer>
           </StyledImgContainer>
         ))}

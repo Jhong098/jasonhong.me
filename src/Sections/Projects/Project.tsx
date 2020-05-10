@@ -122,26 +122,34 @@ const StyledLinkWrapper = styled.div`
   }
 `;
 
-const Media = `  width: 100%;
-max-width: 100%;
-vertical-align: middle;
-border-radius: ${theme.borderRadius}px;
-position: relative;
-mix-blend-mode: multiply;
-filter: grayscale(100%) contrast(1) brightness(90%);
-${media.tablet`
-  object-fit: cover;
-  width: auto;
-  height: 100%;
-  filter: grayscale(100%) contrast(1) brightness(80%);
-`};`;
+const Media = `
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  border-radius: ${theme.borderRadius}px;
+  position: relative;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1) brightness(90%);
+
+`;
 
 const StyledVideo = styled.video`
-  ${Media}
+  ${Media};
+  ${media.tablet`
+    object-fit: cover;
+    width: auto;
+    height: 100%;
+    filter: grayscale(100%) contrast(1) brightness(80%);
+  `};
 `;
 
 const StyledImg = styled.img`
-  ${Media}
+  ${Media};
+  ${media.tablet`
+    object-fit: cover;
+    width: auto;
+    filter: grayscale(100%) contrast(1) brightness(80%);
+  `};
 `;
 
 const StyledMediaContainer = styled.a`
