@@ -87,13 +87,16 @@ const ItemButton = styled.button<ItemProps>`
   font-family: ${fonts.serif};
   font-size: ${fontSizes.sm};
   color: ${props => (props.isSelected ? colors.neonBlue : colors.lightGrey)};
+
   ${media.tablet`padding: 0 15px 2px;`};
   ${media.thone`
+    font-size: ${fontSizes.smish};
     padding: 0 15px;
     text-align: center;
+    justify-content: center;
     border-left: 0;
     border-bottom: 2px solid ${colors.lightestNavy};
-    min-width: 120px;
+    min-width: 140px;
   `};
   &:hover,
   &:focus {
@@ -190,7 +193,7 @@ const ItemOption: React.FC<ItemOptionProps> = ({
   return (
     <li>
       <ItemButton isSelected={isSelected} onClick={() => handleClick(index)}>
-        {text}
+        <span>{text}</span>
       </ItemButton>
     </li>
   );
