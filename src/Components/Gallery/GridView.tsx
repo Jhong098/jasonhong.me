@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useSpring } from "react-spring";
 import LightBox from "Components/LightBox";
 import { animated } from "react-spring";

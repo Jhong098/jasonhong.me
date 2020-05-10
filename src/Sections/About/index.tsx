@@ -25,6 +25,7 @@ const AnimatedTextContainer = styled.div`
 
   .highlight {
     color: ${colors.neonBlue};
+    margin-bottom: ${spaces.md};
   }
 
   .serif {
