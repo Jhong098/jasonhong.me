@@ -22,7 +22,7 @@ const theme = {
     xl: "50px"
   },
   tabHeight: 42,
-  tabWidth: 120,
+  tabWidth: 140,
   borderRadius: 3,
   fontSizes: {
     xs: "12px",
