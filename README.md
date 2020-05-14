@@ -11,6 +11,3 @@ dev server:
 
 prod build: `npm run build`
 
-## Inspirations
-
-[Brittany Chiang](https://brittanychiang.com/)
