@@ -247,7 +247,6 @@ const Project: React.FC<ProjectProps> = ({
   github,
   revealProjects
 }) => {
-  console.log(img);
   return (
     <StyledProject
       key={title}
@@ -266,11 +265,13 @@ const Project: React.FC<ProjectProps> = ({
             <li key={tech}>{tech}</li>
           ))}
         </StyledTechList>
-        <StyledLinkWrapper>
-          <a href={github} target="_blank" rel="nofollow noopener noreferrer">
-            <Github />
-          </a>
-        </StyledLinkWrapper>
+        {github && (
+          <StyledLinkWrapper>
+            <a href={github} target="_blank" rel="nofollow noopener noreferrer">
+              <Github />
+            </a>
+          </StyledLinkWrapper>
+        )}
       </ProjectContent>
 
       <StyledMediaContainer
