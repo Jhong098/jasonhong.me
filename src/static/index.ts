@@ -6,11 +6,13 @@ export { default as Me } from "./img/me.jpg";
 export { default as Art } from "./img/art.jpg";
 export { default as Canoo } from "./img/canoo-car.jpg";
 
-export { default as Resume } from "./resume.pdf";
+export { default as Resume } from "./F20_Resume.pdf";
 
 /* Projects */
 export { default as HTN } from "./img/htn.png";
 export { default as HTN_Video } from "./videos/htn.webm";
+export { default as HackerApps } from "./img/hackerapps.jpg";
+export { default as HackerApps_Video } from "./videos/hackerapps.webm";
 export { default as Hackioca } from "./img/hackioca.jpg";
 export { default as Hackioca_Video } from "./videos/hackioca.webm";
 export { default as VisionMotion } from "./img/vision-motion.jpg";

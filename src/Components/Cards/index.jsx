@@ -120,7 +120,7 @@ const Cards = ({ images }) => {
                 className="card"
                 style={{
                   transform: interpolate([rot, scale], trans),
-                  backgroundImage: `url(${images[i].full || images[i].thumb})`
+                  backgroundImage: `url(${images[i].thumb})`
                 }}
                 onMouseOver={() => setHovered(i)}
                 onMouseMove={({ clientX: x, clientY: y }) =>

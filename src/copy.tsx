@@ -43,7 +43,9 @@ import {
   Hackioca,
   HTN_Video,
   Hackioca_Video,
-  VisionMotion
+  VisionMotion,
+  HackerApps,
+  HackerApps_Video
 } from "static";
 import { ImageType } from "utils/types";
 
@@ -281,6 +283,16 @@ const projects = [
     techs: ["React", "TypeScript", "Styled Components"],
     link: "https://hackthenorth.com",
     github: "https://github.com/hackthenorth/hackthenorth.com"
+  },
+  {
+    title: "Hacker Applications",
+    time: "2019",
+    img: HackerApps,
+    video: HackerApps_Video,
+    desc: "Hacker application for Hack the North 2019",
+    techs: ["React", "TypeScript", "Styled Components", "MapBox"],
+    link: "https://your.hackthenorth.com/",
+    github: ""
   },
   {
     title: "hackioca.com",
