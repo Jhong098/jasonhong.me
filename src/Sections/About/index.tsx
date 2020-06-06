@@ -5,7 +5,7 @@ import "./About.scss";
 import { media } from "breakpoints";
 import { theme } from "styles";
 import { StyledLink } from "Components/Button";
-import { email } from "copy";
+import { email, landing } from "copy";
 
 const { fontSizes, spaces, colors, fonts } = theme;
 
@@ -81,7 +81,7 @@ const About = () => {
           transition={transition}
           className="highlight"
         >
-          Currently looking for Fall 2020 Software Internship!
+          {landing.CTA}
         </motion.p>
       </AnimatedTextContainer>
 
