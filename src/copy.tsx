@@ -50,7 +50,7 @@ import {
 import { ImageType } from "utils/types";
 
 const landing = {
-  pages: 3,
+  CTA: "Looking for Full-time SWE opportunities!",
   sections: [
     {
       header: "Travel",
