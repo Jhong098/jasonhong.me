@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./Landing.scss";
 import About from "Sections/About";
 import Footer from "Components/Footer";
 
 import Experience from "Sections/Experience";
 import styled from "styled-components";
-import Projects from "Sections/Projects";
-import Hobbies from "Sections/Hobbies";
+
 import Nav from "Components/Nav";
 import Links from "Components/Links";
 import { useMediaQuery } from "react-responsive";
@@ -15,6 +14,9 @@ import { sizes } from "breakpoints";
 const Container = styled.div`
   padding: 0 15vw;
 `;
+
+const Projects = lazy(() => import("Sections/Projects"));
+const Hobbies = lazy(() => import("Sections/Hobbies"));
 
 const Landing = () => {
   const isMobile = useMediaQuery({ maxWidth: sizes.phablet });
@@ -26,8 +28,12 @@ const Landing = () => {
         <Container className="page">
           <About />
           <Experience />
-          <Projects />
-          <Hobbies />
+          <Suspense fallback={null}>
+            <Projects />
+          </Suspense>
+          <Suspense fallback={null}>
+            <Hobbies />
+          </Suspense>
         </Container>
       </main>
       <Footer />
