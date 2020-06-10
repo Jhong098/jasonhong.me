@@ -5,6 +5,7 @@ import LightBox from "Components/LightBox";
 import { animated } from "react-spring";
 import { ImageType } from "utils/types";
 import { useAnimation, motion } from "framer-motion";
+import Loader from "Components/Loader";
 
 interface GridProps {
   images: ImageType[];
@@ -26,7 +27,7 @@ const GridContainer = styled(motion.div)`
     width: 100%;
     text-align: center;
     font-family: system-ui;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 2rem;
   }
   @for $i from 1 through 36 {
@@ -58,6 +59,7 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
   const [openImage, setOpenImage] = useState("");
   const controls = useAnimation();
   const loaded = useRef(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const [transProps, setTransProps] = useSpring(() => ({
     xy: [0, 0],
@@ -77,6 +79,7 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
       controls.start({
         opacity: 1
       });
+      setImagesLoaded(true);
     } else {
       loaded.current += 1;
     }
@@ -94,6 +97,7 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
         />
       )}
       <GridContainer>
+        {!imagesLoaded && <Loader />}
         {images.map(({ thumb, full, desc }, i) => (
           <div
             style={{ position: "relative" }}
@@ -115,21 +119,23 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
               onLoad={handleLoaded}
               animate={controls}
             />
-            {hovered === i && (
-              <animated.div
-                style={{
-                  position: "absolute",
-                  top: "30%",
-                  left: 0,
-                  zIndex: 5,
-                  color: "#fff",
-                  pointerEvents: "none",
-                  transform: transProps.xy.to(trans3)
-                }}
-              >
-                <ImageDesc>{desc}</ImageDesc>
-              </animated.div>
-            )}
+            <motion.div initial={{ opacity: 0 }} animate={controls}>
+              {hovered === i && (
+                <animated.div
+                  style={{
+                    position: "absolute",
+                    top: "30%",
+                    left: 0,
+                    zIndex: 5,
+                    color: "#fff",
+                    pointerEvents: "none",
+                    transform: transProps.xy.to(trans3)
+                  }}
+                >
+                  <ImageDesc>{desc}</ImageDesc>
+                </animated.div>
+              )}
+            </motion.div>
           </div>
         ))}
       </GridContainer>

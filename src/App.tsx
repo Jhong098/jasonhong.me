@@ -1,36 +1,38 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.scss";
-
 import Landing from "Pages/Landing";
-import Travel from "Pages/Travel";
-import Art from "Pages/Art";
 import NotFound from "Pages/404";
 import Background from "Components/Background";
 
 import "normalize.css";
+import "./App.scss";
+import Loader from "Components/Loader";
+
+const Travel = lazy(() => import("Pages/Travel"));
+const Art = lazy(() => import("Pages/Art"));
 
 const App = () => {
   return (
     <div className="App">
       <Background />
-      {/* <canvas id="cursor" style={{ height: "100%", width: "100%" }} /> */}
       <Router>
-        <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/travel">
-            <Travel />
-          </Route>
-          <Route exact path="/art">
-            <Art />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route exact path="/">
+              <Landing />
+            </Route>
+            <Route exact path="/travel">
+              <Travel />
+            </Route>
+            <Route exact path="/art">
+              <Art />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Suspense>
       </Router>
     </div>
   );
