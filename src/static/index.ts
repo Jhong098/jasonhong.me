@@ -2,10 +2,6 @@
 /**
  * Export all assets
  */
-export { default as Me } from "./img/me.jpg";
-export { default as Art } from "./img/art.jpg";
-export { default as Canoo } from "./img/canoo-car.jpg";
-
 export { default as Resume } from "./F20_Resume.pdf";
 
 /* Projects */
