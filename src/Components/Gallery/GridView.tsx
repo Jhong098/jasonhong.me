@@ -125,7 +125,7 @@ const GridView: React.FC<GridProps> = ({ images, handleLightBoxToggle }) => {
                   style={{
                     position: "absolute",
                     top: "40%",
-                    left: 0,
+                    left: "10%",
                     zIndex: 5,
                     color: "#fff",
                     pointerEvents: "none",
