@@ -29,10 +29,10 @@ const Landing = () => {
         <Container className="page">
           <About />
           <Experience />
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={null}>
             <Projects />
           </Suspense>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={null}>
             <Hobbies />
           </Suspense>
         </Container>
