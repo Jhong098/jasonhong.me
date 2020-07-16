@@ -10,7 +10,6 @@ import Nav from "Components/Nav";
 import Links from "Components/Links";
 import { useMediaQuery } from "react-responsive";
 import { sizes } from "breakpoints";
-import Loader from "Components/Loader";
 
 const Container = styled.div`
   padding: 0 15vw;
