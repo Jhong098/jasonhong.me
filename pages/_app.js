@@ -6,10 +6,12 @@ import {
 } from "@chakra-ui/core";
 import { Global, css } from "@emotion/core";
 
+import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 
 import theme from "../styles/theme";
 import { prismLightTheme, prismDarkTheme } from "../styles/prism";
+import SEO from "../next-seo.config";
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -59,6 +61,7 @@ const MyApp = ({ Component, pageProps }) => {
             <meta content="#ffffff" name="msapplication-TileColor" />
           </Head>
         </GlobalStyle>
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </ColorModeProvider>
     </ThemeProvider>
