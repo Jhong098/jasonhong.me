@@ -2,16 +2,16 @@ import {
   ThemeProvider,
   CSSReset,
   ColorModeProvider,
-  useColorMode,
-} from "@chakra-ui/core";
-import { Global, css } from "@emotion/core";
+  useColorMode
+} from '@chakra-ui/core';
+import { Global, css } from '@emotion/core';
 
-import { DefaultSeo } from "next-seo";
-import Head from "next/head";
+import { DefaultSeo } from 'next-seo';
+import Head from 'next/head';
 
-import theme from "../styles/theme";
-import { prismLightTheme, prismDarkTheme } from "../styles/prism";
-import SEO from "../next-seo.config";
+import theme from '../styles/theme';
+import { prismLightTheme, prismDarkTheme } from '../styles/prism';
+import SEO from '../next-seo.config';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -21,7 +21,7 @@ const GlobalStyle = ({ children }) => {
       <CSSReset />
       <Global
         styles={css`
-          ${colorMode === "light" ? prismLightTheme : prismDarkTheme};
+          ${colorMode === 'light' ? prismLightTheme : prismDarkTheme};
 
           ::selection {
             background-color: #47a3f3;
@@ -37,7 +37,7 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === "light" ? "white" : "#171923"};
+            background: ${colorMode === 'light' ? 'white' : '#171923'};
           }
         `}
       />
