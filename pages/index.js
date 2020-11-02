@@ -46,7 +46,7 @@ const Index = () => {
           <SectionHeading>Projects</SectionHeading>
           <ProjectCard
             title="hackthenorth.com"
-            description="Hack the North landing page 2019"
+            description="Landing page for the largest hackathon in Canada that saw 30,000 unique visitors per month"
             href="https://2019.hackthenorth.com"
             icon="hackthenorth"
             tags={[
@@ -57,7 +57,7 @@ const Index = () => {
           />
           <ProjectCard
             title="Hacker Applications"
-            description="Hack the North 2019 Hacker Application"
+            description="Hack the North 2019 hacker application experience that processed 8000+ applications in total"
             href="https://your.hackthenorth.com/"
             icon="hackthenorth"
             tags={[
@@ -65,6 +65,27 @@ const Index = () => {
               { text: 'Typescript', color: 'blue' },
               { text: 'Styled-Components', color: 'purple' },
               { text: 'Mapbox', color: 'grey' }
+            ]}
+          />
+          <ProjectCard
+            title="Hackioca"
+            description="Hack the North 2019 April Fool's Prank that attracted thousands of gullible hackers to sign-up"
+            href="https://hackioca.com"
+            icon="bbt"
+            tags={[
+              { text: 'React', color: 'cyan' },
+              { text: 'Typescript', color: 'blue' },
+              { text: 'Styled-Components', color: 'purple' }
+            ]}
+          />
+          <ProjectCard
+            title="Vision Motion"
+            description="Mobile app that uses the camera to track an object and graph position, velocity, and acceleration"
+            href="https://visionmotion.williamqin.com/"
+            icon="eye"
+            tags={[
+              { text: 'Android', color: 'green' },
+              { text: 'OpenCV', color: 'orange' }
             ]}
           />
         </Section>

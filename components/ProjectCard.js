@@ -45,14 +45,14 @@ const ProjectCard = ({ title, description, href, icon, tags }) => {
           color={iconColor[colorMode]}
           size="63px"
           ml={2}
-          mr={4}
+          mr={6}
         />
         <Stack>
           <Heading as="h4" size="md" fontWeight="bold" mb={4}>
             {title}
           </Heading>
           <Text lineHeight="1.3">{description}</Text>
-          <Flex>{tags.map(getBadge)}</Flex>
+          <Flex mt={2}>{tags.map(getBadge)}</Flex>
         </Stack>
       </Flex>
     </Link>
