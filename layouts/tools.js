@@ -1,27 +1,25 @@
-import React from 'react';
 import { NextSeo } from 'next-seo';
 import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
 
 import Container from 'components/PageWrapper';
 
+import { secondaryTextColor } from "styles/darkMode"
+
 const DESC =
-  "Here's what tech I'm currently using for coding, photography, painting, and music.";
+  "Here's what I'm currently using to create things.";
+const url = 'https://jasonhong.me/tools';
 
 export default function UsesLayout({ children }) {
   const { colorMode } = useColorMode();
-  const textColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
 
   return (
     <Container>
       <NextSeo
-        title="Uses – Jason Hong"
+        title="Tools – Jason Hong"
         description={DESC}
-        canonical="https://leerob.io/uses"
+        canonical={url}
         openGraph={{
-          url: 'https://leerob.io/uses',
+          url,
           title: 'Uses – Lee Robinson',
           description: DESC
         }}
@@ -42,11 +40,11 @@ export default function UsesLayout({ children }) {
           maxWidth="700px"
           w="100%"
         >
-          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-            My Gear
+          <Heading mb={2} as="h1" size="2xl">
+            My Tools
           </Heading>
           <Flex mt={2} w="100%">
-            <Text fontSize="sm" color={textColor[colorMode]}>
+            <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
               {DESC}
             </Text>
           </Flex>
