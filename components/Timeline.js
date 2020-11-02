@@ -88,7 +88,7 @@ const YearDivider = () => {
 const YearItems = ({ year, items }) => {
   const { colorMode } = useColorMode();
   return (
-    <AccordionItem>
+    <AccordionItem defaultIsOpen>
       <AccordionHeader>
         <Box flex="1" textAlign="left">
           <Heading as="h3" size="lg" fontWeight="bold">
