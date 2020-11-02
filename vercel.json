@@ -1,32 +1,40 @@
 {
-    "version": 2,
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "redirects": [
-      {
-        "source": "/projects",
-        "destination": "/about"
-      }
-    ],
-    "headers": [
-      {
-        "source": "/api/github",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=120, stale-while-revalidate=60"
-          }
-        ]
-      },
-      {
-        "source": "/api/top-tracks",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=86400, stale-while-revalidate=43200"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/projects",
+      "destination": "/about"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/github",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120, stale-while-revalidate=60"
+        }
+      ]
+    },
+    {
+      "source": "/api/top-tracks",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=43200"
+        }
+      ]
+    },
+    {
+      "source": "/api/now-playing",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, stale-while-revalidate=30"
+        }
+      ]
+    }
+  ]
+}
