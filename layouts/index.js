@@ -65,7 +65,7 @@ export default function BlogLayout({ children, frontMatter }) {
               <Avatar
                 size="xs"
                 name="Jason Hong"
-                src="https://bit.ly/33vEjhB"
+                src="/static/images/avatar.jpg"
                 mr={2}
               />
               <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
