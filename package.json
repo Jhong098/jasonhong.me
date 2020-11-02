@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-20",
+  "name": "jasonhong.me",
   "version": "0.2.0",
   "author": {
     "name": "Jason Hong",
@@ -28,6 +28,7 @@
     "next-google-fonts": "^1.2.1",
     "next-mdx-enhanced": "^5.0.0",
     "next-seo": "^4.14.1",
+    "prismjs": "^1.22.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-use-dimensions": "^1.2.1",

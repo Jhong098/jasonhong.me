@@ -45,10 +45,27 @@ const Index = () => {
         <Section>
           <SectionHeading>Projects</SectionHeading>
           <ProjectCard
-            title="Hack the North"
+            title="hackthenorth.com"
             description="Hack the North landing page 2019"
-            href="https://hackthenorth.com"
-            icon="react2025"
+            href="https://2019.hackthenorth.com"
+            icon="hackthenorth"
+            tags={[
+              { text: 'React', color: 'cyan' },
+              { text: 'Typescript', color: 'blue' },
+              { text: 'Styled-Components', color: 'purple' }
+            ]}
+          />
+          <ProjectCard
+            title="Hacker Applications"
+            description="Hack the North 2019 Hacker Application"
+            href="https://your.hackthenorth.com/"
+            icon="hackthenorth"
+            tags={[
+              { text: 'React', color: 'cyan' },
+              { text: 'Typescript', color: 'blue' },
+              { text: 'Styled-Components', color: 'purple' },
+              { text: 'Mapbox', color: 'grey' }
+            ]}
           />
         </Section>
         <Section>

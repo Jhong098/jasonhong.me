@@ -5,12 +5,19 @@ import {
   Text,
   Stack,
   Icon,
-  useColorMode
+  useColorMode,
+  Badge
 } from '@chakra-ui/core';
 
 import { borderColor, iconColor } from 'styles/darkMode';
 
-const ProjectCard = ({ title, description, href, icon }) => {
+const getBadge = ({ text, color }) => (
+  <Badge variantColor={color} mr={2}>
+    {text}
+  </Badge>
+);
+
+const ProjectCard = ({ title, description, href, icon, tags }) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -33,24 +40,19 @@ const ProjectCard = ({ title, description, href, icon }) => {
         p={4}
       >
         <Icon
-          aria-label="LinkedIn"
+          aria-label={title}
           name={icon}
           color={iconColor[colorMode]}
-          size="32px"
+          size="63px"
           ml={2}
           mr={4}
         />
         <Stack>
-          <Heading
-            as="h4"
-            size="md"
-            fontWeight="bold"
-            mb={4}
-            letterSpacing="tighter"
-          >
+          <Heading as="h4" size="md" fontWeight="bold" mb={4}>
             {title}
           </Heading>
           <Text lineHeight="1.3">{description}</Text>
+          <Flex>{tags.map(getBadge)}</Flex>
         </Stack>
       </Flex>
     </Link>
