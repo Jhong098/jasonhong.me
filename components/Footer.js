@@ -1,6 +1,8 @@
 import NextLink from 'next/link';
 import { Flex, Link, IconButton } from '@chakra-ui/core';
 
+import NowPlaying from './NowPlaying';
+
 const SOCIAL_LINKS = [
   {
     aria: 'Github',
@@ -49,6 +51,7 @@ const getIcon = ({ aria, icon, href, title }) => (
 const Footer = () => (
   <footer>
     <Flex align="center" mb={4} direction="column">
+      <NowPlaying />
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
       <div>
         <NextLink href="/tools" passHref>
