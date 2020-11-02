@@ -4,14 +4,16 @@ import {
   ColorModeProvider,
   useColorMode
 } from '@chakra-ui/core';
+import { MDXProvider } from '@mdx-js/react';
 import { Global, css } from '@emotion/core';
 
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 
-import theme from '../styles/theme';
-import { prismLightTheme, prismDarkTheme } from '../styles/prism';
-import SEO from '../next-seo.config';
+import theme from 'styles/theme';
+import { prismLightTheme, prismDarkTheme } from 'styles/prism';
+import SEO from 'next-seo.config';
+import MDXComponents from 'components/MDX';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -49,21 +51,23 @@ const GlobalStyle = ({ children }) => {
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
-      <ColorModeProvider value="light">
-        <GlobalStyle>
-          <Head>
-            <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-            <meta
-              content="width=device-width, initial-scale=1"
-              name="viewport"
-            />
-            <meta content="#ffffff" name="theme-color" />
-            <meta content="#ffffff" name="msapplication-TileColor" />
-          </Head>
-        </GlobalStyle>
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-      </ColorModeProvider>
+      <MDXProvider components={MDXComponents}>
+        <ColorModeProvider value="light">
+          <GlobalStyle>
+            <Head>
+              <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+              <meta
+                content="width=device-width, initial-scale=1"
+                name="viewport"
+              />
+              <meta content="#ffffff" name="theme-color" />
+              <meta content="#ffffff" name="msapplication-TileColor" />
+            </Head>
+          </GlobalStyle>
+          <DefaultSeo {...SEO} />
+          <Component {...pageProps} />
+        </ColorModeProvider>
+      </MDXProvider>
     </ThemeProvider>
   );
 };

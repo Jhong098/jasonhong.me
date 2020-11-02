@@ -51,15 +51,15 @@ const Footer = () => (
     <Flex align="center" mb={4} direction="column">
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
       <div>
-        <NextLink href="/gear" passHref>
+        <NextLink href="/tools" passHref>
           <Link
             fontSize="sm"
             color="gray.500"
             minWidth="100px"
             mr={2}
-            title="Gear"
+            title="Tools"
           >
-            {`>gear`}
+            {`>tools`}
           </Link>
         </NextLink>
       </div>

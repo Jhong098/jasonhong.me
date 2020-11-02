@@ -18,6 +18,10 @@ const PageWrapper = ({ children }) => {
 
   const LINKS = [
     {
+      href: '/',
+      text: 'Home'
+    },
+    {
       href: '/dashboard',
       text: 'Dashboard'
     },
@@ -28,10 +32,6 @@ const PageWrapper = ({ children }) => {
     {
       href: '/about',
       text: 'About'
-    },
-    {
-      href: '/home',
-      text: 'Home'
     }
   ];
 
