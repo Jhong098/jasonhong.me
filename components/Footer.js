@@ -71,7 +71,7 @@ const getLink = ({ href, title, text }) => (
 
 const Footer = () => (
   <footer>
-    <Flex align="center" mb={4} direction="column">
+    <Flex align="center" mt={8} mb={4} direction="column">
       <NowPlaying />
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
       <div>{INTERNAL_LINKS.map(getLink)}</div>
