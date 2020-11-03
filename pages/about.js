@@ -13,7 +13,7 @@ import {
 import Container from 'components/PageWrapper';
 import { CustomLink } from 'components/MDX';
 
-import { secondaryTextColor } from "styles/darkMode"
+import { secondaryTextColor } from 'styles/darkMode';
 
 const url = 'https://jasonhong.me/about';
 const title = 'About Me – Jason Hong';
@@ -46,16 +46,18 @@ const About = () => {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+            <Heading mb={2} as="h1" size="2xl">
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              Nice to see you, I’m Jason. I'm a Computer Engineering student at the University of Waterloo. 
+              Nice to see you, I’m Jason. I'm a Computer Engineering student at
+              the University of Waterloo.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={8}>
-              I was born in Nanjing, China and moved to Vancouver, Canada when I was 10 years-old. I like to travel, draw and take photos.
+              I was born in Nanjing, China and moved to Vancouver, Canada when I
+              was 10 years-old. I like to travel, draw and take photos.
             </Text>
-            
+
             <iframe
               height="280"
               src="https://www.google.com/maps/d/embed?mid=1-IAkVuRwpGjw1DGjpGW85aFYZxDsXzkz&hl=en"

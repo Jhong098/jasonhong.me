@@ -20,10 +20,6 @@ const LINKS = [
   {
     href: '/about',
     text: 'About'
-  },
-  {
-    href: '/resume.pdf',
-    text: 'Resume'
   }
 ];
 
@@ -40,7 +36,13 @@ const Nav = () => {
 
   const getLink = ({ href, text }) => (
     <NextLink href={href} passHref key={text}>
-      <Button as="a" variant="ghost" p={[1, 4]}>
+      <Button
+        as="a"
+        variant="ghost"
+        p={[1, 4]}
+        fontSize={['md', 'lg']}
+        letterSpacing="tight"
+      >
         {text}
       </Button>
     </NextLink>
@@ -59,12 +61,12 @@ const Nav = () => {
       mb={8}
       mx="auto"
     >
-      <Box>{LINKS.map(getLink)}</Box>
       <IconButton
         aria-label="toggle dark mode"
         icon={colorMode === 'dark' ? 'sun' : 'moon'}
         onClick={toggleColorMode}
       />
+      <Box>{LINKS.map(getLink)}</Box>
     </NavContainer>
   );
 };

@@ -16,7 +16,7 @@ import GitHub from '../components/metrics/Github';
 import TopTracks from '../components/TopTracks';
 import { CustomLink } from 'components/MDX';
 
-import { secondaryTextColor } from "styles/darkMode"
+import { secondaryTextColor } from 'styles/darkMode';
 
 const url = 'https://jasonhong.me/dashboard';
 const title = 'Dashboard – Jason Hong';
@@ -35,15 +35,15 @@ const Dashboard = () => {
         openGraph={{
           url,
           title,
-          description,
-        //   images: [
-        //     {
-        //       url: 'https://jasonhong.me/static/images/dashboard.jpg',
-        //       alt: description,
-        //       width: 1280,
-        //       height: 720
-        //     }
-        //   ]
+          description
+          //   images: [
+          //     {
+          //       url: 'https://jasonhong.me/static/images/dashboard.jpg',
+          //       alt: description,
+          //       width: 1280,
+          //       height: 720
+          //     }
+          //   ]
         }}
       />
       <PageWrapper>
@@ -61,7 +61,7 @@ const Dashboard = () => {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+            <Heading mb={2} as="h1" size="2xl">
               Dashboard
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
@@ -88,7 +88,7 @@ const Dashboard = () => {
               <Buttondown />
             </SimpleGrid> */}
           </Flex>
-          <Heading letterSpacing="tight" as="h2" size="xl">
+          <Heading as="h2" size="xl">
             Top Tracks
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>

@@ -43,7 +43,7 @@ const Blog = () => {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+            <Heading mb={2} as="h1" size="2xl">
               Blog
             </Heading>
           </Flex>

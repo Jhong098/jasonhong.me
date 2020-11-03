@@ -22,6 +22,7 @@ const SectionHeading = ({ children }) => (
 
 const Index = () => {
   const { colorMode } = useColorMode();
+
   return (
     <PageWrapper>
       <Stack
@@ -37,7 +38,7 @@ const Index = () => {
             Hi, I'm Jason Hong
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>
-            I'm a Computer Engineering student at the University of Waterloo
+            A Computer Engineering student at the University of Waterloo
             currently working at Amazon Web Services as an SDE Intern. I like to
             travel, draw and take photos.
           </Text>

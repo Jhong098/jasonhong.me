@@ -36,6 +36,19 @@ const SOCIAL_LINKS = [
   }
 ];
 
+const INTERNAL_LINKS = [
+  {
+    href: '/tools',
+    title: 'Tools',
+    text: '>tools'
+  },
+  {
+    href: '/resume.pdf',
+    title: 'Resume',
+    text: '>resume'
+  }
+];
+
 const getIcon = ({ aria, icon, href, title }) => (
   <Link key={title} href={href} title={title} isExternal>
     <IconButton
@@ -48,24 +61,20 @@ const getIcon = ({ aria, icon, href, title }) => (
   </Link>
 );
 
+const getLink = ({ href, title, text }) => (
+  <NextLink href={href} passHref key={title}>
+    <Link fontSize="sm" color="gray.500" minWidth="100px" mr={2} title={title}>
+      {text}
+    </Link>
+  </NextLink>
+);
+
 const Footer = () => (
   <footer>
     <Flex align="center" mb={4} direction="column">
       <NowPlaying />
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
-      <div>
-        <NextLink href="/tools" passHref>
-          <Link
-            fontSize="sm"
-            color="gray.500"
-            minWidth="100px"
-            mr={2}
-            title="Tools"
-          >
-            {`>tools`}
-          </Link>
-        </NextLink>
-      </div>
+      <div>{INTERNAL_LINKS.map(getLink)}</div>
     </Flex>
   </footer>
 );
