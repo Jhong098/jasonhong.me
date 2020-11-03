@@ -12,7 +12,7 @@ import {
 import { borderColor, iconColor } from 'styles/darkMode';
 
 const getBadge = ({ text, color }) => (
-  <Badge variantColor={color} mr={2}>
+  <Badge variantColor={color} mr={2} mb={2}>
     {text}
   </Badge>
 );
@@ -52,7 +52,9 @@ const ProjectCard = ({ title, description, href, icon, tags }) => {
             {title}
           </Heading>
           <Text lineHeight="1.3">{description}</Text>
-          <Flex mt={2}>{tags.map(getBadge)}</Flex>
+          <Flex mt={2} wrap="wrap">
+            {tags.map(getBadge)}
+          </Flex>
         </Stack>
       </Flex>
     </Link>
