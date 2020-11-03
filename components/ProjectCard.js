@@ -12,7 +12,7 @@ import {
 import { borderColor, iconColor } from 'styles/darkMode';
 
 const getBadge = ({ text, color }) => (
-  <Badge variantColor={color} mr={2} mb={2}>
+  <Badge variantColor={color} mr={2} mb={2} key={text}>
     {text}
   </Badge>
 );

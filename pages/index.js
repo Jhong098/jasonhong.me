@@ -64,7 +64,7 @@ const Index = () => {
               { text: 'React', color: 'cyan' },
               { text: 'Typescript', color: 'blue' },
               { text: 'Styled-Components', color: 'purple' },
-              { text: 'Mapbox', color: 'grey' }
+              { text: 'Mapbox', color: 'gray' }
             ]}
           />
           <ProjectCard
