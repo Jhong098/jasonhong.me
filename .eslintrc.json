@@ -17,7 +17,8 @@
         "react/prop-types": 0,
         "react/jsx-filename-extension": 0,
         "react/react-in-jsx-scope": 0,
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "react/jsx-props-no-spreading": "warn"
     },
     "env": {
         "browser": true,

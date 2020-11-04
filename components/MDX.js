@@ -82,7 +82,7 @@ const CustomLink = (props) => {
     dark: 'hsl(208, 95%, 68%)'
   };
 
-  const href = props.href;
+  const { href } = props;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {

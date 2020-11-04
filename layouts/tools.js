@@ -3,10 +3,9 @@ import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
 
 import Container from 'components/PageWrapper';
 
-import { secondaryTextColor } from "styles/darkMode"
+import { secondaryTextColor } from 'styles/darkMode';
 
-const DESC =
-  "Here's what I'm currently using to create things.";
+const DESC = "Here's what I'm currently using to create things.";
 const url = 'https://jasonhong.me/tools';
 
 export default function UsesLayout({ children }) {

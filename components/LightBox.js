@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { CloseButton } from '@chakra-ui/core';
