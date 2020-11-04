@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
-import { Flex, Link, IconButton } from '@chakra-ui/core';
+import { Flex, Link, IconButton, Box } from '@chakra-ui/core';
+import { FaDeviantart } from 'react-icons/fa';
 
 import NowPlaying from './NowPlaying';
 
@@ -27,6 +28,12 @@ const SOCIAL_LINKS = [
     icon: 'instagram',
     href: 'https://www.instagram.com/hong.json/',
     title: 'Instagram'
+  },
+  {
+    aria: 'DeviantArt',
+    icon: FaDeviantart,
+    href: 'https://www.deviantart.com/jhong098',
+    title: 'DeviantArt'
   },
   {
     aria: 'email',
