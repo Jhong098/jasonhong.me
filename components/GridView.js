@@ -58,6 +58,7 @@ const GridView = ({ images, handleLightBoxToggle }) => {
             alt={file}
             width={width}
             height={height}
+            priority
             onMouseOver={() => setHovered(i)}
             onClick={() => {
               setOpenImage({ file, width, height });
