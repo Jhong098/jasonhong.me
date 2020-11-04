@@ -19,7 +19,7 @@ const GridContainer = styled.div`
     width: 100%;
   }
   @for $i from 1 through 36 {
-    div:nth-child(#{$i}) {
+    div:nth-of-type(#{$i}) {
       $h: (random(400) + 100) + px;
       height: $h;
       line-height: $h;

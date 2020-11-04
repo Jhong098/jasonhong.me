@@ -14,6 +14,7 @@ const PageWrapper = ({ children }) => {
         as="main"
         justifyContent="center"
         flexDirection="column"
+        alignItems="center"
         bg={bgColor[colorMode]}
         color={primaryTextColor[colorMode]}
         px={8}

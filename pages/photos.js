@@ -8,21 +8,57 @@ import Gallery from 'components/Gallery';
 import { useState } from 'react';
 import { Stack, Tag, TagIcon, TagLabel } from '@chakra-ui/core';
 
-const TRAVEL_FILTERS = { All: true, HK: false, Taiwan: false, Japan: false, Vancouver: false };
+const TRAVEL_FILTERS_INIT = {
+  HK: true,
+  Taiwan: true,
+  Japan: true,
+  Vancouver: true
+};
 
 const Photos = ({ images }) => {
-  const [filters, setFilters] = useState(TRAVEL_FILTERS);
+  const [all, setAll] = useState(true);
+  const [filters, setFilters] = useState(TRAVEL_FILTERS_INIT);
+
   return (
     <PageWrapper>
-      <Stack spacing={4} isInline>
+      <Stack spacing={4} isInline flexWrap="wrap">
         {Object.entries(filters).map(([key, value]) => (
-          <Tag size="lg" key={key} variantColor={value ? "cyan" : "gray"}>
-            <TagIcon icon="add" size="12px" />
+          <Tag
+            size="lg"
+            mb="2"
+            key={key}
+            _hover={{
+              cursor: 'pointer'
+            }}
+            variantColor={value ? 'cyan' : 'gray'}
+            variant={value ? 'solid' : 'outline'}
+            onClick={() => {
+              if (filters[key]) {
+                setAll(false);
+              }
+              setFilters({ ...filters, [key]: !filters[key] });
+            }}
+          >
+            <TagIcon icon={value ? 'minus' : 'add'} size="12px" />
             <TagLabel>{key}</TagLabel>
           </Tag>
         ))}
+        <Tag
+          size="lg"
+          mb={2}
+          _hover={{ cursor: all ? 'default' : 'pointer' }}
+          variantColor={all ? 'cyan' : 'gray'}
+          onClick={() => {
+            if (!all) {
+              setFilters(TRAVEL_FILTERS_INIT);
+            }
+            setAll(!all);
+          }}
+        >
+          <TagLabel>All</TagLabel>
+        </Tag>
       </Stack>
-      <Gallery images={images} />
+      <Gallery images={images.filter(({ location }) => filters[location])} />
     </PageWrapper>
   );
 };
@@ -38,10 +74,12 @@ export async function getStaticProps() {
         result = recFindByExt(newbase, ext, fs.readdirSync(newbase), result);
       } else if (file.substr(-1 * (ext.length + 1)) === `.${ext}`) {
         const dimensions = sizeOf(newbase);
+
         result.push({
           file: newbase.replace('public', ''),
           width: dimensions.width,
           height: dimensions.height,
+          location: file.split('_')[0]
         });
       }
     });
@@ -51,8 +89,8 @@ export async function getStaticProps() {
   const images = recFindByExt('public/static/images/travel', 'jpg');
   return {
     props: {
-      images,
-    },
+      images
+    }
   };
 }
 
