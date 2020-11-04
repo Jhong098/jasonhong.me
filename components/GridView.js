@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import LightBox from 'components/LightBox';
 
@@ -35,7 +35,6 @@ const StyledImage = styled(Image)`
 `;
 
 const GridView = ({ images, handleLightBoxToggle }) => {
-  const [hovered, setHovered] = useState();
   const [openImage, setOpenImage] = useState();
 
   return (
@@ -51,7 +50,7 @@ const GridView = ({ images, handleLightBoxToggle }) => {
       )}
       <GridContainer>
         {/* {!imagesLoaded && <Loader />} */}
-        {images.map(({ file, width, height }, i) => (
+        {images.map(({ file, width, height }) => (
           <StyledImage
             key={file}
             src={file}
@@ -59,7 +58,6 @@ const GridView = ({ images, handleLightBoxToggle }) => {
             width={width}
             height={height}
             priority
-            onMouseOver={() => setHovered(i)}
             onClick={() => {
               setOpenImage({ file, width, height });
               handleLightBoxToggle();

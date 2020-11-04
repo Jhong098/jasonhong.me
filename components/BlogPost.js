@@ -18,8 +18,6 @@ const BlogPost = (frontMatter) => {
     .replace('blog/', '')
     .replace('.mdx', '');
 
-  console.log(frontMatter);
-
   //   const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
   //   const views = data?.total;
 

@@ -8,11 +8,6 @@ import {
   ListItem,
   Icon,
   Stack,
-  Divider,
-  Slider,
-  SliderThumb,
-  SliderTrack,
-  SliderFilledTrack,
   Accordion,
   AccordionItem,
   AccordionHeader,
@@ -20,7 +15,7 @@ import {
   AccordionPanel,
   Box
 } from '@chakra-ui/core';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { secondaryTextColor } from 'styles/darkMode';
 
 const TIMELINE_ITEMS = [
@@ -31,11 +26,6 @@ const TIMELINE_ITEMS = [
         title: 'Software Development Engineer Intern @ AWS',
         desc: 'Working on Amazon Connect Contact Lens',
         isEmployment: true
-      },
-      {
-        title: 'Visited Shenzhen, China',
-        desc: 'Here are some photos',
-        isEmployment: false
       }
     ]
   },
@@ -75,16 +65,6 @@ const TIMELINE_ITEMS = [
   }
 ];
 
-const YearDivider = () => {
-  const { colorMode } = useColorMode();
-  const borderColor = {
-    light: 'gray.200',
-    dark: 'gray.600'
-  };
-
-  return <Divider borderColor={borderColor[colorMode]} my={8} w="100%" />;
-};
-
 const YearItems = ({ year, items }) => {
   const { colorMode } = useColorMode();
   return (
@@ -100,7 +80,7 @@ const YearItems = ({ year, items }) => {
       </AccordionHeader>
       <AccordionPanel pb={4}>
         <List>
-          {items.map(({ title, desc, isEmployment }) => (
+          {items.map(({ title, desc }) => (
             <ListItem key={title}>
               <Stack ml={2} mb={4}>
                 <Flex align="center">
@@ -119,6 +99,7 @@ const YearItems = ({ year, items }) => {
 };
 
 const Timeline = () => {
+  // const [employmentOnly, setEmploymentOnly] = useState(false);
   return (
     <Flex
       flexDirection="column"
@@ -126,7 +107,7 @@ const Timeline = () => {
       alignItems="flex-start"
       maxWidth="700px"
     >
-      <Accordion defaultIndex={[0]} allowMultiple width="100%">
+      <Accordion defaultIndex={[0]} allowMultiple>
         {TIMELINE_ITEMS.map(({ year, items }) => (
           <YearItems key={year} year={year} items={items} />
         ))}

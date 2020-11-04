@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Flex, Link, IconButton, Box } from '@chakra-ui/core';
+import { Flex, Link, IconButton } from '@chakra-ui/core';
 import { FaDeviantart } from 'react-icons/fa';
 
 import NowPlaying from './NowPlaying';

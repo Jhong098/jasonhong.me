@@ -1,7 +1,7 @@
-import { useColorMode, Button, Flex, Box, IconButton } from '@chakra-ui/core';
+import { useColorMode, Flex } from '@chakra-ui/core';
 
-import Footer from './Footer';
 import { primaryTextColor, bgColor } from 'styles/darkMode';
+import Footer from './Footer';
 import Nav from './Nav';
 
 const PageWrapper = ({ children }) => {
