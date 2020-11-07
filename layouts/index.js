@@ -13,7 +13,7 @@ import {
 
 import PageWrapper from 'components/PageWrapper';
 // import Subscribe from '../components/Subscribe';
-// import ViewCounter from '../components/ViewCounter';
+import ViewCounter from 'components/ViewCounter';
 import BlogSeo from 'components/BlogSeo';
 
 import { secondaryTextColor } from 'styles/darkMode';
@@ -76,8 +76,8 @@ export default function BlogLayout({ children, frontMatter }) {
             </Flex>
             <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
               {frontMatter.readingTime.text}
-              {/* {` • `} */}
-              {/* <ViewCounter id={slug} /> */}
+              {` • `}
+              <ViewCounter id={slug} />
             </Text>
           </Flex>
         </Flex>

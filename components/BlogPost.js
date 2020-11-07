@@ -1,10 +1,10 @@
 import React from 'react';
 import NextLink from 'next/link';
-// import useSWR from 'swr';
-// import format from 'comma-number';
+import useSWR from 'swr';
+import format from 'comma-number';
 import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
 
-// import fetcher from '../lib/fetcher';
+import fetcher from 'lib/fetcher';
 
 const BlogPost = (frontMatter) => {
   const { title, summary } = frontMatter;
@@ -18,8 +18,8 @@ const BlogPost = (frontMatter) => {
     .replace('blog/', '')
     .replace('.mdx', '');
 
-  //   const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
-  //   const views = data?.total;
+  const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
+  const views = data?.total;
 
   return (
     <NextLink href={`blog/${slug}`} passHref>
@@ -34,14 +34,14 @@ const BlogPost = (frontMatter) => {
             <Heading size="md" as="h3" mb={2} fontWeight="medium">
               {title}
             </Heading>
-            {/* <Text
+            <Text
               color="gray.500"
               minWidth="105px"
               textAlign={['left', 'right']}
               mb={[4, 0]}
             >
               {`${views ? format(views) : '–––'} views`}
-            </Text> */}
+            </Text>
           </Flex>
           <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
         </Box>

@@ -9,12 +9,12 @@ import {
   SimpleGrid
 } from '@chakra-ui/core';
 
-// import Analytics from '../components/metrics/Analytics';
+import PageViews from 'components/metrics/PageViews';
 // import Buttondown from '../components/metrics/Buttondown';
 import PageWrapper from 'components/PageWrapper';
-import GitHub from '../components/metrics/Github';
-import TopTracks from '../components/TopTracks';
-import { CustomLink } from 'components/MDX';
+import GitHub from 'components/metrics/Github';
+import TopTracks from 'components/TopTracks';
+// import { CustomLink } from 'components/MDX';
 
 import { secondaryTextColor } from 'styles/darkMode';
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
             {/* <Unsplash /> */}
             {/* <YouTube /> */}
             <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
-              {/* <Analytics /> */}
+              <PageViews />
               <GitHub />
             </SimpleGrid>
             {/* <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>

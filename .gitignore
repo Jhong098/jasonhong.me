@@ -33,3 +33,5 @@ yarn-error.log*
 public/*.xml
 
 .mdx-data
+
+service_account.json
