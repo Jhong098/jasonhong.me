@@ -65,8 +65,8 @@ const StyledHeading = styled(Heading)`
   }
   &[id]:before {
     display: block;
-    height: 6rem;
-    margintop: -6rem;
+    height: 2rem;
+    margintop: -2rem;
     visibility: hidden;
     content: '';
   }
@@ -152,7 +152,7 @@ const Hr = () => {
 };
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
+  h1: (props) => <Heading as="h1" size="xl" my={2} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
