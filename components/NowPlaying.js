@@ -8,7 +8,7 @@ import {
   Icon,
   Skeleton,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import fetcher from 'lib/fetcher';
 

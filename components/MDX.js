@@ -1,6 +1,6 @@
 import {
   Box,
-  Callout,
+  Alert,
   Code,
   Heading,
   Kbd,
@@ -9,7 +9,7 @@ import {
   Text,
   Divider,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 
@@ -50,7 +50,7 @@ const TData = (props) => (
   />
 );
 
-const StyledCallout = styled(Callout)`
+const StyledCallout = styled(Alert)`
   > *:first-of-type {
     margin-top: 0;
     margin-left: 8;
@@ -156,7 +156,7 @@ const MDXComponents = {
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code variantColor="yellow" fontSize="0.84em" {...props} />
+    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
   ),
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,

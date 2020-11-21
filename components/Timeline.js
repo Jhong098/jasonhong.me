@@ -10,11 +10,11 @@ import {
   Stack,
   Accordion,
   AccordionItem,
-  AccordionHeader,
+  AccordionButton,
   AccordionIcon,
   AccordionPanel,
   Box
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 // import { useEffect, useState } from 'react';
 import { secondaryTextColor } from 'styles/darkMode';
 
@@ -68,8 +68,8 @@ const TIMELINE_ITEMS = [
 const YearItems = ({ year, items }) => {
   const { colorMode } = useColorMode();
   return (
-    <AccordionItem defaultIsOpen>
-      <AccordionHeader>
+    <AccordionItem>
+      <AccordionButton>
         <Box flex="1" textAlign="left">
           <Heading as="h3" size="lg" fontWeight="bold">
             {year}
@@ -77,7 +77,7 @@ const YearItems = ({ year, items }) => {
         </Box>
 
         <AccordionIcon />
-      </AccordionHeader>
+      </AccordionButton>
       <AccordionPanel pb={4}>
         <List>
           {items.map(({ title, desc }) => (
@@ -107,7 +107,7 @@ const Timeline = () => {
       alignItems="flex-start"
       maxWidth="700px"
     >
-      <Accordion defaultIndex={[0]} allowMultiple>
+      <Accordion defaultIndex={[1]} allowMultiple>
         {TIMELINE_ITEMS.map(({ year, items }) => (
           <YearItems key={year} year={year} items={items} />
         ))}

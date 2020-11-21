@@ -1,29 +1,30 @@
 import {
-  ThemeProvider,
-  CSSReset,
-  ColorModeProvider,
-  useColorMode
-} from '@chakra-ui/core';
+  ChakraProvider,
+  useColorMode,
+  useColorModeValue
+} from '@chakra-ui/react';
 import { MDXProvider } from '@mdx-js/react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 
-import theme from 'styles/theme';
 import { prismLightTheme, prismDarkTheme } from 'styles/prism';
 import SEO from 'next-seo.config';
 import MDXComponents from 'components/MDX';
+import theme from 'styles/theme';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
+  const prismTheme = useColorModeValue(prismLightTheme, prismDarkTheme);
+  const bgColor = useColorModeValue('white', '#171923');
+  console.log(colorMode);
 
   return (
     <>
-      <CSSReset />
       <Global
         styles={css`
-          ${colorMode === 'light' ? prismLightTheme : prismDarkTheme};
+          ${prismTheme};
 
           ::selection {
             background-color: #47a3f3;
@@ -39,7 +40,7 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === 'light' ? 'white' : '#171923'};
+            background: ${bgColor};
           }
         `}
       />
@@ -48,28 +49,20 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
-const MyApp = ({ Component, pageProps }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <MDXProvider components={MDXComponents}>
-        <ColorModeProvider value="light">
-          <GlobalStyle>
-            <Head>
-              <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-              <meta
-                content="width=device-width, initial-scale=1"
-                name="viewport"
-              />
-              <meta content="#ffffff" name="theme-color" />
-              <meta content="#ffffff" name="msapplication-TileColor" />
-            </Head>
-          </GlobalStyle>
-          <DefaultSeo {...SEO} />
-          <Component {...pageProps} />
-        </ColorModeProvider>
-      </MDXProvider>
-    </ThemeProvider>
-  );
-};
+const MyApp = ({ Component, pageProps }) => (
+  <ChakraProvider resetCSS theme={theme}>
+    <MDXProvider components={MDXComponents}>
+      <Head>
+        <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="#ffffff" name="theme-color" />
+        <meta content="#ffffff" name="msapplication-TileColor" />
+      </Head>
+
+      <DefaultSeo {...SEO} />
+      <Component {...pageProps} />
+    </MDXProvider>
+  </ChakraProvider>
+);
 
 export default MyApp;

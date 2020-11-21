@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { CloseButton } from '@chakra-ui/core';
+import { CloseButton } from '@chakra-ui/react';
 
 import useOnClickOutside from 'utils/useClickOutside';
 // import { media } from "breakpoints";

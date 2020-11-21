@@ -9,7 +9,7 @@ import {
   Avatar,
   Link,
   Box
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import PageWrapper from 'components/PageWrapper';
 // import Subscribe from '../components/Subscribe';

@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
+import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/react';
 
 import Container from 'components/PageWrapper';
 

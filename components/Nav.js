@@ -1,7 +1,15 @@
 import NextLink from 'next/link';
 
-import { useColorMode, Button, Flex, Box, IconButton } from '@chakra-ui/core';
+import {
+  useColorMode,
+  Button,
+  Flex,
+  Box,
+  IconButton,
+  useColorModeValue
+} from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { navBgColor } from 'styles/darkMode';
 
 const LINKS = [
@@ -37,6 +45,7 @@ const NavContainer = styled(Flex)`
 
 const Nav = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue(navBgColor.light, navBgColor.dark);
 
   const getLink = ({ href, text }) => (
     <NextLink href={href} passHref key={text}>
@@ -58,7 +67,7 @@ const Nav = () => {
       alignItems="center"
       maxWidth="900px"
       width="100%"
-      bg={navBgColor[colorMode]}
+      bg={bg}
       as="nav"
       p={8}
       mt={[0, 8]}
@@ -67,7 +76,7 @@ const Nav = () => {
     >
       <IconButton
         aria-label="toggle dark mode"
-        icon={colorMode === 'dark' ? 'sun' : 'moon'}
+        icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
         onClick={toggleColorMode}
       />
       <Box>{LINKS.map(getLink)}</Box>

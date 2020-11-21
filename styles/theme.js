@@ -1,7 +1,33 @@
-import { theme as chakraTheme } from '@chakra-ui/core';
+import { theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 
-const theme = {
+const config = {
+  // useSystemColorMode: true,
+  initialColorMode: 'system'
+};
+
+const styles = {
+  global: (props) => ({
+    '::selection': {
+      backgroundColor: '#47a3f3',
+      color: '#fefefe'
+    },
+    html: {
+      minWidth: '360px',
+      scrollBehavior: 'smooth'
+    },
+    '#__next': {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+      background: props.colorMode === 'light' ? 'white' : '#171923'
+    }
+  })
+};
+
+const theme = extendTheme({
   ...chakraTheme,
+  styles,
+  config,
   fonts: {
     ...chakraTheme.fonts,
     body: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
@@ -181,6 +207,6 @@ const theme = {
       )
     }
   }
-};
+});
 
 export default theme;
