@@ -1,4 +1,4 @@
-import { useColorMode, Flex } from '@chakra-ui/core';
+import { useColorMode, Flex } from '@chakra-ui/react';
 
 import { primaryTextColor, bgColor } from 'styles/darkMode';
 import Footer from './Footer';

@@ -1,6 +1,6 @@
-import { useColorMode, Text, Flex, Box, Link, Icon } from '@chakra-ui/core';
+import { useColorMode, Text, Flex, Box, Link, Icon } from '@chakra-ui/react';
 
-import { borderColor } from "styles/darkMode"
+import { borderColor } from 'styles/darkMode';
 
 const MetricCard = ({ header, link, metric }) => {
   const { colorMode } = useColorMode();

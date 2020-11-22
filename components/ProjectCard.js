@@ -4,15 +4,23 @@ import {
   Heading,
   Text,
   Stack,
-  Icon,
   useColorMode,
   Badge
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import { borderColor, iconColor } from 'styles/darkMode';
 
 const getBadge = ({ text, color }) => (
-  <Badge variantColor={color} mr={2} mb={2} key={text} p={1}>
+  <Badge
+    colorScheme={color}
+    mr={2}
+    mb={2}
+    key={text}
+    pt={1}
+    pb={1}
+    pl={2}
+    pr={2}
+  >
     {text}
   </Badge>
 );
@@ -39,14 +47,13 @@ const ProjectCard = ({ title, description, href, icon, tags }) => {
         borderRadius={4}
         p={4}
       >
-        <Icon
-          aria-label={title}
-          name={icon}
-          color={iconColor[colorMode]}
-          size="63px"
-          ml={2}
-          mr={6}
-        />
+        {icon({
+          'aria-label': title,
+          color: iconColor[colorMode],
+          boxSize: '63px',
+          ml: 2,
+          mr: 6
+        })}
         <Stack>
           <Heading as="h4" size="md" fontWeight="bold" mb={4}>
             {title}

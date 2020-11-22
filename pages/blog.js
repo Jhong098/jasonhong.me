@@ -9,7 +9,7 @@ import {
   InputGroup,
   InputRightElement,
   Icon
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import PageWrapper from 'components/PageWrapper';
 import BlogPost from 'components/BlogPost';
 

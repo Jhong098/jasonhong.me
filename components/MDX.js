@@ -1,15 +1,14 @@
 import {
   Box,
-  Callout,
+  Alert,
   Code,
   Heading,
   Kbd,
   Link,
-  PseudoBox,
   Text,
   Divider,
-  useColorMode
-} from '@chakra-ui/core';
+  useColorModeValue
+} from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 
@@ -20,21 +19,10 @@ const Table = (props) => (
 );
 
 const THead = (props) => {
-  const { colorMode } = useColorMode();
-  const bg = {
-    light: 'gray.50',
-    dark: 'whiteAlpha.100'
-  };
+  const bg = useColorModeValue('gray.50', 'whiteAlpha.100');
 
   return (
-    <Box
-      as="th"
-      bg={bg[colorMode]}
-      fontWeight="semibold"
-      p={2}
-      fontSize="sm"
-      {...props}
-    />
+    <Box as="th" bg={bg} fontWeight="semibold" p={2} fontSize="sm" {...props} />
   );
 };
 
@@ -50,7 +38,7 @@ const TData = (props) => (
   />
 );
 
-const StyledCallout = styled(Callout)`
+const StyledCallout = styled(Alert)`
   > *:first-of-type {
     margin-top: 0;
     margin-left: 8;
@@ -76,11 +64,7 @@ const StyledHeading = styled(Heading)`
 `;
 
 const CustomLink = (props) => {
-  const { colorMode } = useColorMode();
-  const color = {
-    light: 'hsl(208, 99%, 44%)',
-    dark: 'hsl(208, 95%, 68%)'
-  };
+  const color = useColorModeValue('hsl(208, 99%, 44%)', 'hsl(208, 95%, 68%)');
 
   const { href } = props;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
@@ -88,26 +72,22 @@ const CustomLink = (props) => {
   if (isInternalLink) {
     return (
       <NextLink href={href} passHref>
-        <Link color={color[colorMode]} {...props} />
+        <Link color={color} {...props} />
       </NextLink>
     );
   }
 
-  return <Link color={color[colorMode]} isExternal {...props} />;
+  return <Link color={color} isExternal {...props} />;
 };
 
 const Quote = (props) => {
-  const { colorMode } = useColorMode();
-  const bgColor = {
-    light: 'blue.50',
-    dark: 'blue.900'
-  };
+  const bgColor = useColorModeValue('blue.50', 'blue.900');
 
   return (
     <StyledCallout
       mt={4}
       w="98%"
-      bg={bgColor[colorMode]}
+      bg={bgColor}
       variant="left-accent"
       status="info"
       {...props}
@@ -120,7 +100,7 @@ const DocsHeading = (props) => (
     <Box pointerEvents="auto">
       {props.children}
       {props.id && (
-        <PseudoBox
+        <Box
           aria-label="anchor"
           as="a"
           color="blue.500"
@@ -135,20 +115,16 @@ const DocsHeading = (props) => (
           href={`#${props.id}`}
         >
           #
-        </PseudoBox>
+        </Box>
       )}
     </Box>
   </StyledHeading>
 );
 
 const Hr = () => {
-  const { colorMode } = useColorMode();
-  const borderColor = {
-    light: 'gray.200',
-    dark: 'gray.600'
-  };
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
 
-  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
+  return <Divider borderColor={borderColor} my={4} w="100%" />;
 };
 
 const MDXComponents = {
@@ -156,7 +132,7 @@ const MDXComponents = {
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code variantColor="yellow" fontSize="0.84em" {...props} />
+    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
   ),
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,

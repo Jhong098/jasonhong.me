@@ -18,7 +18,7 @@ const GridContainer = styled.div`
     display: inline-block;
     width: 100%;
   }
-  @for $i from 1 through 36 {
+  @for $i from 1 through ${(props) => props.count} {
     div:nth-of-type(#{$i}) {
       $h: (random(400) + 100) + px;
       height: $h;
@@ -29,6 +29,7 @@ const GridContainer = styled.div`
 
 const StyledImage = styled(Image)`
   cursor: pointer;
+
   &:hover {
     filter: grayscale(100%) contrast(1) brightness(90%);
   }
@@ -48,7 +49,7 @@ const GridView = ({ images, handleLightBoxToggle }) => {
           }}
         />
       )}
-      <GridContainer>
+      <GridContainer count={images.length}>
         {/* {!imagesLoaded && <Loader />} */}
         {images.map(({ file, width, height }) => (
           <StyledImage
@@ -57,6 +58,7 @@ const GridView = ({ images, handleLightBoxToggle }) => {
             alt={file}
             width={width}
             height={height}
+            loading="eager"
             priority
             onClick={() => {
               setOpenImage({ file, width, height });

@@ -6,7 +6,8 @@ import sizeOf from 'image-size';
 import PageWrapper from 'components/PageWrapper';
 import Gallery from 'components/Gallery';
 import { useState } from 'react';
-import { Stack, Tag, TagIcon, TagLabel } from '@chakra-ui/core';
+import { Stack, Tag, TagIcon, TagLabel, TagLeftIcon } from '@chakra-ui/react';
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 
 const TRAVEL_FILTERS_INIT = {
   HK: true,
@@ -30,7 +31,7 @@ const Photos = ({ images }) => {
             _hover={{
               cursor: 'pointer'
             }}
-            variantColor={value ? 'cyan' : 'gray'}
+            colorScheme={value ? 'cyan' : 'gray'}
             variant={value ? 'solid' : 'outline'}
             onClick={() => {
               if (filters[key]) {
@@ -39,7 +40,7 @@ const Photos = ({ images }) => {
               setFilters({ ...filters, [key]: !filters[key] });
             }}
           >
-            <TagIcon icon={value ? 'minus' : 'add'} size="12px" />
+            <TagLeftIcon as={value ? MinusIcon : AddIcon} size="12px" />
             <TagLabel>{key}</TagLabel>
           </Tag>
         ))}
@@ -47,7 +48,7 @@ const Photos = ({ images }) => {
           size="lg"
           mb={2}
           _hover={{ cursor: all ? 'default' : 'pointer' }}
-          variantColor={all ? 'cyan' : 'gray'}
+          colorScheme={all ? 'cyan' : 'gray'}
           onClick={() => {
             if (!all) {
               setFilters(TRAVEL_FILTERS_INIT);
