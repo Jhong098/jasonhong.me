@@ -18,8 +18,9 @@
         "react/jsx-filename-extension": 0,
         "react/react-in-jsx-scope": 0,
         "comma-dangle": "off",
-        "react/jsx-props-no-spreading": "warn",
-        "arrow-body-style": "off"
+        "react/jsx-props-no-spreading": "off",
+        "arrow-body-style": "off",
+        "import/prefer-default-export": "off",
     },
     "env": {
         "browser": true,

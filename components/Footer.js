@@ -3,29 +3,36 @@ import { Flex, Link, IconButton } from '@chakra-ui/react';
 import { FaDeviantart } from 'react-icons/fa';
 
 import NowPlaying from './NowPlaying';
+import {
+  GithubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MailIcon,
+  TwitterIcon
+} from './CustomIcons';
 
 const SOCIAL_LINKS = [
   {
     aria: 'Github',
-    icon: 'github',
+    icon: GithubIcon,
     href: 'https://github.com/Jhong098',
     title: 'Github'
   },
   {
     aria: 'Twitter',
-    icon: 'twitter',
+    icon: TwitterIcon,
     href: 'https://twitter.com/jadoretech',
     title: 'Twitter'
   },
   {
     aria: 'LinkedIn',
-    icon: 'linkedin',
+    icon: LinkedInIcon,
     href: 'https://www.linkedin.com/in/jason-hong/',
     title: 'LinkedIn'
   },
   {
     aria: 'Instagram',
-    icon: 'instagram',
+    icon: InstagramIcon,
     href: 'https://www.instagram.com/hong.json/',
     title: 'Instagram'
   },
@@ -37,7 +44,7 @@ const SOCIAL_LINKS = [
   },
   {
     aria: 'email',
-    icon: 'mail',
+    icon: MailIcon,
     href: 'mailto:jhong098@gmail.com',
     title: 'email'
   }
@@ -60,7 +67,7 @@ const getIcon = ({ aria, icon, href, title }) => (
   <Link key={title} href={href} title={title} isExternal>
     <IconButton
       aria-label={aria}
-      icon={icon}
+      icon={icon()}
       size="lg"
       color="gray.500"
       variant="ghost"
@@ -78,7 +85,7 @@ const getLink = ({ href, title, text }) => (
 
 const Footer = () => (
   <footer>
-    <Flex align="center" mt={8} mb={4} direction="column">
+    <Flex align="center" mt={8} mb={8} direction="column">
       <NowPlaying />
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
       <div>{INTERNAL_LINKS.map(getLink)}</div>

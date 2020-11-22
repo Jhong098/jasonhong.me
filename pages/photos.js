@@ -6,7 +6,8 @@ import sizeOf from 'image-size';
 import PageWrapper from 'components/PageWrapper';
 import Gallery from 'components/Gallery';
 import { useState } from 'react';
-import { Stack, Tag, TagIcon, TagLabel } from '@chakra-ui/react';
+import { Stack, Tag, TagIcon, TagLabel, TagLeftIcon } from '@chakra-ui/react';
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 
 const TRAVEL_FILTERS_INIT = {
   HK: true,
@@ -39,7 +40,7 @@ const Photos = ({ images }) => {
               setFilters({ ...filters, [key]: !filters[key] });
             }}
           >
-            <TagIcon icon={value ? 'minus' : 'add'} size="12px" />
+            <TagLeftIcon as={value ? MinusIcon : AddIcon} size="12px" />
             <TagLabel>{key}</TagLabel>
           </Tag>
         ))}

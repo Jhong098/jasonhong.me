@@ -3,10 +3,8 @@ import {
   Heading,
   Text,
   Flex,
-  Button,
   List,
   ListItem,
-  Icon,
   Stack,
   Accordion,
   AccordionItem,
@@ -15,7 +13,6 @@ import {
   AccordionPanel,
   Box
 } from '@chakra-ui/react';
-// import { useEffect, useState } from 'react';
 import { secondaryTextColor } from 'styles/darkMode';
 
 const TIMELINE_ITEMS = [
@@ -107,7 +104,7 @@ const Timeline = () => {
       alignItems="flex-start"
       maxWidth="700px"
     >
-      <Accordion defaultIndex={[1]} allowMultiple>
+      <Accordion defaultIndex={[0, 1, 2]} allowMultiple>
         {TIMELINE_ITEMS.map(({ year, items }) => (
           <YearItems key={year} year={year} items={items} />
         ))}

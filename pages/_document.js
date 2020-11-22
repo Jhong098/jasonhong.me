@@ -4,10 +4,6 @@ import { ColorModeScript } from '@chakra-ui/react';
 import theme from 'styles/theme';
 
 class MyDocument extends NextDocument {
-  static getInitialProps(ctx) {
-    return NextDocument.getInitialProps(ctx);
-  }
-
   render() {
     return (
       <Html lang="en">
