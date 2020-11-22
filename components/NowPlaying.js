@@ -5,7 +5,6 @@ import {
   Stack,
   Image,
   Text,
-  Icon,
   Skeleton,
   useColorMode
 } from '@chakra-ui/react';
@@ -13,6 +12,7 @@ import {
 import fetcher from 'lib/fetcher';
 
 import { borderColor } from 'styles/darkMode';
+import { SpotifyIcon } from './CustomIcons';
 
 const NowPlaying = () => {
   const { data } = useSWR('/api/now-playing', fetcher);
@@ -69,7 +69,7 @@ const NowPlaying = () => {
           {data && (data?.artist || 'Spotify')}
         </Text>
       </Stack>
-      <Icon name="spotify" ml="auto" mt={1} />
+      <SpotifyIcon ml="auto" mt={1} />
     </Box>
   );
 };
