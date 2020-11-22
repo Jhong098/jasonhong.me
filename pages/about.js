@@ -1,19 +1,12 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  Link,
-  Icon
-} from '@chakra-ui/react';
+import { useColorMode, Heading, Text, Box } from '@chakra-ui/react';
 
 import Container from 'components/PageWrapper';
 import { CustomLink } from 'components/MDX';
 
 import { secondaryTextColor } from 'styles/darkMode';
+import Image from 'next/image';
 
 const url = 'https://jasonhong.me/about';
 const title = 'About Me – Jason Hong';
@@ -32,23 +25,23 @@ const About = () => {
         }}
       />
       <Container>
-        <Stack
+        <Box
           as="main"
-          spacing={8}
+          p={8}
+          display="flex"
           justifyContent="center"
-          alignItems="flex-start"
+          alignItems="center"
+          flexDirection="column"
           m="0 auto 4rem auto"
           maxWidth="700px"
         >
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            maxWidth="700px"
-          >
-            <Heading mb={2} as="h1" size="2xl">
+          <Box>
+            <Heading mb={4} as="h1" size="2xl" textAlign="center">
               About Me
             </Heading>
+            <Image src="/static/images/me.jpg" width={500} height={500} />
+          </Box>
+          <Box mt={8} ml={{ md: 6 }} maxWidth="700px">
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               Nice to see you, I’m Jason. I'm a Computer Engineering student at
               the University of Waterloo.
@@ -57,15 +50,14 @@ const About = () => {
               I was born in Nanjing, China and moved to Vancouver, Canada when I
               was 10 years-old. I like to travel, draw and take photos.
             </Text>
-
-            <iframe
-              height="280"
-              src="https://www.google.com/maps/d/embed?mid=1-IAkVuRwpGjw1DGjpGW85aFYZxDsXzkz&hl=en"
-              title="Lee's Travel Map"
-              width="100%"
-            />
-          </Flex>
-        </Stack>
+          </Box>
+          <iframe
+            height="280"
+            src="https://www.google.com/maps/d/embed?mid=1-IAkVuRwpGjw1DGjpGW85aFYZxDsXzkz&hl=en"
+            title="Jason's Travel Map"
+            width="100%"
+          />
+        </Box>
       </Container>
     </>
   );
