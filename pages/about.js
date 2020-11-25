@@ -39,9 +39,11 @@ const About = () => {
             <Heading mb={4} as="h1" size="2xl" textAlign="center">
               About Me
             </Heading>
-            <Image src="/static/images/me.jpg" width={500} height={500} />
+            <Box w={[300, 400, 500]}>
+              <Image src="/static/images/me.jpg" width={1079} height={1079} />
+            </Box>
           </Box>
-          <Box mt={8} ml={{ md: 6 }} maxWidth="700px">
+          <Box w={[300, 400, 500]} mt={8} maxWidth="700px">
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               Nice to see you, I’m Jason. I'm a Computer Engineering student at
               the University of Waterloo.
