@@ -27,7 +27,6 @@ const About = () => {
       <Container>
         <Box
           as="main"
-          p={8}
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -36,14 +35,14 @@ const About = () => {
           maxWidth="700px"
         >
           <Box>
-            <Heading mb={4} as="h1" size="2xl" textAlign="center">
+            <Heading mb={8} as="h1" size="2xl">
               About Me
             </Heading>
             <Box w={[300, 400, 500]}>
               <Image src="/static/images/me.jpg" width={1079} height={1079} />
             </Box>
           </Box>
-          <Box w={[300, 400, 500]} mt={8} maxWidth="700px">
+          <Box w={[300, 400, 500]} mt={8}>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               Nice to see you, I’m Jason. I'm a Computer Engineering student at
               the University of Waterloo.
