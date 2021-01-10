@@ -96,7 +96,7 @@ const Quote = (props) => {
 };
 
 const DocsHeading = (props) => (
-  <StyledHeading {...props} mb="1em" mt="2em">
+  <StyledHeading {...props} mb="1em" mt="1em">
     <Box pointerEvents="auto">
       {props.children}
       {props.id && (
@@ -128,7 +128,7 @@ const Hr = () => {
 };
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={2} {...props} />,
+  h1: (props) => <Heading as="h1" size="xl" my={1} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
