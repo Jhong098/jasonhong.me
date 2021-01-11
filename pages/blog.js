@@ -1,15 +1,5 @@
 import { NextSeo } from 'next-seo';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Icon
-} from '@chakra-ui/react';
+import { Heading, Flex, Stack } from '@chakra-ui/react';
 import PageWrapper from 'components/PageWrapper';
 import BlogPost from 'components/BlogPost';
 

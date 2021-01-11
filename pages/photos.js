@@ -6,7 +6,7 @@ import sizeOf from 'image-size';
 import PageWrapper from 'components/PageWrapper';
 import Gallery from 'components/Gallery';
 import { useState } from 'react';
-import { Stack, Tag, TagIcon, TagLabel, TagLeftIcon } from '@chakra-ui/react';
+import { Stack, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 
 const TRAVEL_FILTERS_INIT = {

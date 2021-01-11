@@ -21,7 +21,8 @@ const TIMELINE_ITEMS = [
     items: [
       {
         title: 'Software Development Engineer Intern @ AWS',
-        desc: 'Working on Amazon Connect Contact Lens',
+        desc:
+          'Designed scalable and fault-tolerant backend monitoring system using Node.js and TypeScript for Amazon Connect Contact Lens',
         isEmployment: true
       }
     ]

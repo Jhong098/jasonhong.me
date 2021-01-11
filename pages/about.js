@@ -3,8 +3,6 @@ import { NextSeo } from 'next-seo';
 import { useColorMode, Heading, Text, Box } from '@chakra-ui/react';
 
 import Container from 'components/PageWrapper';
-import { CustomLink } from 'components/MDX';
-
 import { secondaryTextColor } from 'styles/darkMode';
 import Image from 'next/image';
 
