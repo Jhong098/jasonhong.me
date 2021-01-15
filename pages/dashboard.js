@@ -13,6 +13,7 @@ import PageViews from 'components/metrics/PageViews';
 // import Buttondown from '../components/metrics/Buttondown';
 import PageWrapper from 'components/PageWrapper';
 import GitHub from 'components/metrics/Github';
+import Unsplash from 'components/metrics/Unsplash';
 import TopTracks from 'components/TopTracks';
 // import { CustomLink } from 'components/MDX';
 
@@ -77,7 +78,7 @@ const Dashboard = () => {
             maxWidth="700px"
             mt={8}
           >
-            {/* <Unsplash /> */}
+            <Unsplash />
             {/* <YouTube /> */}
             <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
               <PageViews />

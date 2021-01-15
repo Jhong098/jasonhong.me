@@ -35,6 +35,15 @@
           "value": "public, max-age=60, stale-while-revalidate=30"
         }
       ]
+    },
+    {
+      "source": "/api/unsplash",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=1200, stale-while-revalidate=600"
+        }
+      ]
     }
   ]
 }
