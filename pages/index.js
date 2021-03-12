@@ -94,7 +94,7 @@ const listItem = {
   show: { opacity: 1 }
 };
 
-const MotionBox = motion.custom(Box);
+const MotionBox = motion(Box);
 
 const Index = () => {
   const { colorMode } = useColorMode();
