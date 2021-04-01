@@ -17,6 +17,17 @@ import { secondaryTextColor } from 'styles/darkMode';
 
 const PROJECTS = [
   {
+    title: 'SignSense',
+    description: 'Real-Time American Sign Language Interpreter',
+    href: 'https://github.com/Jhong098/SignSense',
+    icon: HTNIcon,
+    tags: [
+      { text: 'Python', color: 'cyan' },
+      { text: 'Tensorflow', color: 'blue' },
+      { text: 'Keras', color: 'purple' }
+    ]
+  },
+  {
     title: 'hackthenorth.com',
     description:
       'Landing page for the largest hackathon in Canada that saw 30,000 unique visitors per month',
