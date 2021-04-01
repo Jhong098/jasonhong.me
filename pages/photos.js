@@ -8,6 +8,7 @@ import Gallery from 'components/Gallery';
 import { useState } from 'react';
 import { Stack, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+// import { useMediaQuery } from 'react-responsive';
 
 const TRAVEL_FILTERS_INIT = {
   HK: true,
@@ -19,6 +20,7 @@ const TRAVEL_FILTERS_INIT = {
 const Photos = ({ images }) => {
   const [all, setAll] = useState(true);
   const [filters, setFilters] = useState(TRAVEL_FILTERS_INIT);
+  // const isBigScreen = useMediaQuery({ minWidth: 600 });
 
   return (
     <PageWrapper>
@@ -26,7 +28,6 @@ const Photos = ({ images }) => {
         {Object.entries(filters).map(([key, value]) => (
           <Tag
             size="lg"
-            mb="2"
             key={key}
             _hover={{
               cursor: 'pointer'
@@ -39,6 +40,7 @@ const Photos = ({ images }) => {
               }
               setFilters({ ...filters, [key]: !filters[key] });
             }}
+            m={2}
           >
             <TagLeftIcon as={value ? MinusIcon : AddIcon} size="12px" />
             <TagLabel>{key}</TagLabel>
@@ -46,7 +48,6 @@ const Photos = ({ images }) => {
         ))}
         <Tag
           size="lg"
-          mb={2}
           _hover={{ cursor: all ? 'default' : 'pointer' }}
           colorScheme={all ? 'cyan' : 'gray'}
           onClick={() => {
@@ -55,6 +56,7 @@ const Photos = ({ images }) => {
             }
             setAll(!all);
           }}
+          m={2}
         >
           <TagLabel>All</TagLabel>
         </Tag>

@@ -25,7 +25,7 @@ const getBadge = ({ text, color }) => (
   </Badge>
 );
 
-const ProjectCard = ({ title, description, href, icon, tags }) => {
+const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -47,13 +47,14 @@ const ProjectCard = ({ title, description, href, icon, tags }) => {
         borderRadius={4}
         p={4}
       >
-        {icon({
-          'aria-label': title,
-          color: iconColor[colorMode],
-          boxSize: '63px',
-          ml: 2,
-          mr: 6
-        })}
+        {isBigScreen &&
+          icon({
+            'aria-label': title,
+            color: iconColor[colorMode],
+            boxSize: '63px',
+            ml: 2,
+            mr: 6
+          })}
         <Stack>
           <Heading as="h4" size="md" fontWeight="bold" mb={4}>
             {title}

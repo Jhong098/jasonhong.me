@@ -8,19 +8,25 @@ import {
   Fade
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { BBTIcon, HTNIcon, VisionMotionIcon } from 'components/CustomIcons';
+import {
+  BBTIcon,
+  HTNIcon,
+  VisionMotionIcon,
+  SignSenseIcon
+} from 'components/CustomIcons';
 import PageWrapper from 'components/PageWrapper';
 import ProjectCard from 'components/ProjectCard';
 import Timeline from 'components/Timeline';
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import { secondaryTextColor } from 'styles/darkMode';
+import { useMediaQuery } from 'react-responsive';
 
 const PROJECTS = [
   {
     title: 'SignSense',
     description: 'Real-Time American Sign Language Interpreter',
     href: 'https://github.com/Jhong098/SignSense',
-    icon: HTNIcon,
+    icon: SignSenseIcon,
     tags: [
       { text: 'Python', color: 'cyan' },
       { text: 'Tensorflow', color: 'blue' },
@@ -105,10 +111,11 @@ const listItem = {
   show: { opacity: 1 }
 };
 
-const MotionBox = motion(Box);
+const MotionBox = m(Box);
 
 const Index = () => {
   const { colorMode } = useColorMode();
+  const isBigScreen = useMediaQuery({ minWidth: 450 });
 
   return (
     <PageWrapper>
@@ -137,13 +144,15 @@ const Index = () => {
             <SectionHeading>Projects</SectionHeading>
           </Fade>
 
-          <MotionBox variants={container} initial="hidden" animate="show">
-            {PROJECTS.map((props, i) => (
-              <MotionBox key={`project-${i}`} variants={listItem} mb={2}>
-                <ProjectCard {...props} />
-              </MotionBox>
-            ))}
-          </MotionBox>
+          <LazyMotion features={domAnimation}>
+            <MotionBox variants={container} initial="hidden" animate="show">
+              {PROJECTS.map((props, i) => (
+                <MotionBox key={`project-${i}`} variants={listItem} mb={2}>
+                  <ProjectCard {...props} isBigScreen={isBigScreen} />
+                </MotionBox>
+              ))}
+            </MotionBox>
+          </LazyMotion>
         </Section>
         <Section>
           <Fade in>
