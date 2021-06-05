@@ -17,6 +17,17 @@ import { secondaryTextColor } from 'styles/darkMode';
 
 const TIMELINE_ITEMS = [
   {
+    year: '2021',
+    items: [
+      {
+        title: 'Software Development Engineer @ AWS',
+        desc:
+          'Building Amazon Connect Contact Lens',
+        isEmployment: true
+      }
+    ]
+  },
+  {
     year: '2020',
     items: [
       {
