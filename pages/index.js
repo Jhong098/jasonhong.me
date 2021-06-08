@@ -133,8 +133,8 @@ const Index = () => {
               Hi, I'm Jason Hong
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
-              A Computer Engineering student at the University of Waterloo
-              currently working at Amazon Web Services as an SDE Intern. I like
+              A recent Computer Engineering graduate from the University of Waterloo
+              currently working at Amazon Web Services as an SDE. I like
               to travel, draw and take photos.
             </Text>
           </Fade>
