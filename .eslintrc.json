@@ -1,51 +1,7 @@
 {
-    "root": true,
-    "parser": "babel-eslint",
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:jsx-a11y/recommended",
-        "plugin:react-hooks/recommended",
-        "airbnb"
-    ],
+    "extends": "next",
     "rules": {
-        "object-curly-newline": "off",
-        "quotes": "off",
-        "no-unused-vars": "warn",
         "react/prop-types": 0,
-        "react/jsx-filename-extension": 0,
-        "react/react-in-jsx-scope": 0,
-        "comma-dangle": "off",
-        "react/jsx-props-no-spreading": "off",
-        "arrow-body-style": "off",
-        "import/prefer-default-export": "off",
-    },
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        },
-        "import/resolver": {
-            "node": {
-                "paths": [
-                    "./"
-                ]
-            }
-        }
-    },
-    "plugins": []
+        "react/no-unescaped-entities": 0
+    }
 }
