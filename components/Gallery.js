@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import GridView from './GridView';
-// import Cards from "Components/Cards";
 
 const Container = styled.div`
   display: flex;

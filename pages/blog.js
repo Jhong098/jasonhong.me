@@ -3,13 +3,13 @@ import { Heading, Flex, Stack } from '@chakra-ui/react';
 import PageWrapper from 'components/PageWrapper';
 import BlogPost from 'components/BlogPost';
 
-import { frontMatter as blogPosts } from './blog/*.mdx';
+import { getAllFilesFrontMatter } from 'lib/mdx';
 
 const url = 'https://jasonhong.me/blog';
 const title = 'Blog – Jason Hong';
 const description = 'My thoughts in text form.';
 
-const Blog = () => {
+const Blog = ({ posts }) => {
   return (
     <>
       <NextSeo
@@ -38,7 +38,7 @@ const Blog = () => {
             </Heading>
           </Flex>
           <Flex>
-            {blogPosts.map((frontMatter) => (
+            {posts.map((frontMatter) => (
               <BlogPost key={frontMatter.title} {...frontMatter} />
             ))}
           </Flex>
@@ -47,5 +47,11 @@ const Blog = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter('blog');
+
+  return { props: { posts } };
+}
 
 export default Blog;

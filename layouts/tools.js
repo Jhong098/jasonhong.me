@@ -19,7 +19,7 @@ export default function UsesLayout({ children }) {
         canonical={url}
         openGraph={{
           url,
-          title: 'Uses – Lee Robinson',
+          title: 'Uses – Jason Hong',
           description: DESC
         }}
       />

@@ -10,7 +10,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import NextLink from 'next/link';
+// import NextLink from 'next/link';
 
 const Table = (props) => (
   <Box overflowX="scroll" w="full">
@@ -127,6 +127,35 @@ const Hr = () => {
   return <Divider borderColor={borderColor} my={4} w="100%" />;
 };
 
+// const MDXComponents = {
+//   h1: (props) => <Heading as="h1" size="xl" my={1} {...props} />,
+//   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
+//   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
+//   inlineCode: (props) => (
+//     <Code colorScheme="yellow" fontSize="0.84em" {...props} />
+//   ),
+//   kbd: Kbd,
+//   br: (props) => <Box height="24px" {...props} />,
+//   hr: Hr,
+//   table: Table,
+//   th: THead,
+//   td: TData,
+//   a: CustomLink,
+//   p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
+//   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
+//   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
+//   li: (props) => <Box as="li" pb={1} {...props} />,
+//   blockquote: Quote
+// };
+
+// export { CustomLink };
+// export default MDXComponents;
+import NextLink from 'next/link';
+import Image from 'next/image';
+
+import Unsplash from 'components/metrics/Unsplash';
+import PageViews from 'components/metrics/PageViews';
+
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={1} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
@@ -145,8 +174,11 @@ const MDXComponents = {
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
-  blockquote: Quote
+  blockquote: Quote,
+  Image,
+  a: CustomLink,
+  Unsplash,
+  PageViews
 };
 
-export { CustomLink };
 export default MDXComponents;

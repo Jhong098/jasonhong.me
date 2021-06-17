@@ -10,12 +10,10 @@ import {
 } from '@chakra-ui/react';
 
 import PageViews from 'components/metrics/PageViews';
-// import Buttondown from '../components/metrics/Buttondown';
 import PageWrapper from 'components/PageWrapper';
 import GitHub from 'components/metrics/Github';
 import Unsplash from 'components/metrics/Unsplash';
 import TopTracks from 'components/TopTracks';
-// import { CustomLink } from 'components/MDX';
 
 import { secondaryTextColor } from 'styles/darkMode';
 
