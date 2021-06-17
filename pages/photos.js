@@ -36,7 +36,7 @@ export async function getStaticProps() {
     return result;
   };
 
-  const images = recFindByExt('public/static/images/travel', 'jpg');
+  const images = recFindByExt('public/static/images/travel', 'webp');
   return {
     props: {
       images
