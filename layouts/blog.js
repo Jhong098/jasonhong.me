@@ -6,9 +6,7 @@ import {
   Text,
   Flex,
   Stack,
-  Avatar,
-  Link,
-  Box
+  Avatar
 } from '@chakra-ui/react';
 
 import PageWrapper from 'components/PageWrapper';
@@ -26,9 +24,7 @@ import { secondaryTextColor } from 'styles/darkMode';
 //   )}`;
 
 export default function BlogLayout({ children, frontMatter }) {
-  const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
-    .replace('.mdx', '');
+  const { slug, title, readingTime, publishedAt } = frontMatter;
   const { colorMode } = useColorMode();
 
   return (
@@ -51,7 +47,7 @@ export default function BlogLayout({ children, frontMatter }) {
           w="100%"
         >
           <Heading mb={2} as="h1" size="2xl">
-            {frontMatter.title}
+            {title}
           </Heading>
           <Flex
             justify="space-between"
@@ -71,36 +67,17 @@ export default function BlogLayout({ children, frontMatter }) {
               <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
                 {frontMatter.by}
                 {'Jason Hong / '}
-                {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+                {format(parseISO(publishedAt), 'MMMM dd, yyyy')}
               </Text>
             </Flex>
             <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
-              {frontMatter.readingTime.text}
+              {readingTime.text}
               {` • `}
               <ViewCounter id={slug} />
             </Text>
           </Flex>
         </Flex>
         {children}
-        {/* <Subscribe /> */}
-        {/* <Box>
-          <Link href={discussUrl(slug)} isExternal>
-            {'Discuss on Twitter'}
-          </Link>
-          {` • `}
-          <Link href={editUrl(slug)} isExternal>
-            {'Edit on GitHub'}
-          </Link>
-        </Box> */}
-        {/* <IframeResizer
-          checkOrigin={false}
-          title="Comments"
-          src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}?theme=${colorMode}`}
-          style={{
-            width: '1px',
-            minWidth: '100%'
-          }}
-        /> */}
       </Stack>
     </PageWrapper>
   );

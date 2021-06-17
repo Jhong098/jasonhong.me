@@ -1,6 +1,6 @@
 import { theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
-import { prismLightTheme, prismDarkTheme } from 'styles/prism';
+// import { prismLightTheme, prismDarkTheme } from 'styles/prism';
 
 const config = {
   // useSystemColorMode: true,
@@ -31,6 +31,7 @@ const theme = extendTheme({
   config,
   fonts: {
     ...chakraTheme.fonts,
+    heading: `Lora`,
     body: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
   },
   styles,

@@ -3,7 +3,6 @@ import {
   cookieStorageManager,
   localStorageManager,
 } from '@chakra-ui/react';
-import Fonts from './Font';
 
 export function Chakra({ cookies, theme, children }) {
   // b) Pass `colorModeManager` prop
@@ -14,7 +13,6 @@ export function Chakra({ cookies, theme, children }) {
 
   return (
     <ChakraProvider resetCSS colorModeManager={colorModeManager} theme={theme}>
-      <Fonts />
       {children}
     </ChakraProvider>
   );

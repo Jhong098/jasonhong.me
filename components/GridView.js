@@ -58,12 +58,12 @@ const GridView = ({ images, handleLightBoxToggle }) => {
             alt={file}
             width={width}
             height={height}
-            loading="eager"
             priority
             onClick={() => {
               setOpenImage({ file, width, height });
               handleLightBoxToggle();
             }}
+            placeholder='empty'
           />
         ))}
       </GridContainer>

@@ -2,66 +2,13 @@
 import path from 'path';
 import fs from 'fs';
 import sizeOf from 'image-size';
-
 import PageWrapper from 'components/PageWrapper';
 import Gallery from 'components/Gallery';
-import { useState } from 'react';
-import { Stack, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
-// import { useMediaQuery } from 'react-responsive';
-
-const TRAVEL_FILTERS_INIT = {
-  HK: true,
-  Taiwan: true,
-  Japan: true,
-  Vancouver: true
-};
 
 const Photos = ({ images }) => {
-  const [all, setAll] = useState(true);
-  const [filters, setFilters] = useState(TRAVEL_FILTERS_INIT);
-  // const isBigScreen = useMediaQuery({ minWidth: 600 });
-
   return (
     <PageWrapper>
-      <Stack spacing={4} isInline flexWrap="wrap">
-        {Object.entries(filters).map(([key, value]) => (
-          <Tag
-            size="lg"
-            key={key}
-            _hover={{
-              cursor: 'pointer'
-            }}
-            colorScheme={value ? 'cyan' : 'gray'}
-            variant={value ? 'solid' : 'outline'}
-            onClick={() => {
-              if (filters[key]) {
-                setAll(false);
-              }
-              setFilters({ ...filters, [key]: !filters[key] });
-            }}
-            m={2}
-          >
-            <TagLeftIcon as={value ? MinusIcon : AddIcon} size="12px" />
-            <TagLabel>{key}</TagLabel>
-          </Tag>
-        ))}
-        <Tag
-          size="lg"
-          _hover={{ cursor: all ? 'default' : 'pointer' }}
-          colorScheme={all ? 'cyan' : 'gray'}
-          onClick={() => {
-            if (!all) {
-              setFilters(TRAVEL_FILTERS_INIT);
-            }
-            setAll(!all);
-          }}
-          m={2}
-        >
-          <TagLabel>All</TagLabel>
-        </Tag>
-      </Stack>
-      <Gallery images={images.filter(({ location }) => filters[location])} />
+      <Gallery images={images} />
     </PageWrapper>
   );
 };
@@ -89,7 +36,7 @@ export async function getStaticProps() {
     return result;
   };
 
-  const images = recFindByExt('public/static/images/travel', 'jpg');
+  const images = recFindByExt('public/static/images/travel', 'webp');
   return {
     props: {
       images

@@ -52,9 +52,9 @@ const SOCIAL_LINKS = [
 
 const INTERNAL_LINKS = [
   {
-    href: '/tools',
-    title: 'Tools',
-    text: '>tools'
+    href: '/uses',
+    title: 'Uses',
+    text: '>uses'
   },
   {
     href: '/resume.pdf',

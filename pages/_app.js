@@ -3,11 +3,12 @@ import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { prismLightTheme, prismDarkTheme } from 'styles/prism';
 import SEO from 'next-seo.config';
-import MDXComponents from 'components/MDX';
+import MDXComponents from 'components/MDXComponents';
 import theme from 'styles/theme';
 import { Chakra } from 'components/Chakra';
 import { css } from '@emotion/react';
 import { useColorModeValue } from '@chakra-ui/react';
+import '@fontsource/lora/600.css';
 
 const MyApp = ({ Component, pageProps, cookies }) => {
   const prismTheme = useColorModeValue(prismLightTheme, prismDarkTheme);

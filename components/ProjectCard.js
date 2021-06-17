@@ -7,6 +7,7 @@ import {
   useColorMode,
   Badge
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 import { borderColor, iconColor } from 'styles/darkMode';
 
@@ -29,43 +30,47 @@ const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
   const { colorMode } = useColorMode();
 
   return (
-    <Link
-      mb={4}
-      href={href}
-      //   onClick={() => trackGoal(title)}
-      title={title}
-      isExternal
-      _hover={{
-        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
-        textDecoration: 'none'
-      }}
+    <motion.div
+      whileHover={{ y: -2, opacity: 0.7 }}
+      transition={{ duration: 0.1 }}
     >
-      <Flex
-        align="center"
-        border="1px solid"
-        borderColor={borderColor[colorMode]}
-        borderRadius={4}
-        p={4}
+      <Link
+        mb={4}
+        href={href}
+        title={title}
+        isExternal
+        _hover={{
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+          textDecoration: 'none'
+        }}
       >
-        {isBigScreen &&
-          icon({
-            'aria-label': title,
-            color: iconColor[colorMode],
-            boxSize: '63px',
-            ml: 2,
-            mr: 6
-          })}
-        <Stack>
-          <Heading as="h4" size="md" fontWeight="bold" mb={4}>
-            {title}
-          </Heading>
-          <Text lineHeight="1.3">{description}</Text>
-          <Flex mt={2} wrap="wrap">
-            {tags.map(getBadge)}
-          </Flex>
-        </Stack>
-      </Flex>
-    </Link>
+        <Flex
+          align="center"
+          border="1px solid"
+          borderColor={borderColor[colorMode]}
+          borderRadius={4}
+          p={4}
+        >
+          {isBigScreen &&
+            icon({
+              'aria-label': title,
+              color: iconColor[colorMode],
+              boxSize: '63px',
+              ml: 2,
+              mr: 6
+            })}
+          <Stack>
+            <Text size="xl" fontWeight="medium" mb={3} letterSpacing="wide">
+              {title}
+            </Text>
+            <Text lineHeight="1.3">{description}</Text>
+            <Flex mt={2} wrap="wrap">
+              {tags.map(getBadge)}
+            </Flex>
+          </Stack>
+        </Flex>
+      </Link>
+    </motion.div>
   );
 };
 

@@ -5,6 +5,6 @@ Personal Website built with React, Next.js, Chakra-UI, and Vercel.
 ## Running Locally
 
 dev server:
-`npm install && npm run dev`
+`yarn && yarn dev`
 
-prod build: `npm run build`
+prod build: `yarn build`

@@ -21,8 +21,7 @@ const TIMELINE_ITEMS = [
     items: [
       {
         title: 'Software Development Engineer @ AWS',
-        desc:
-          'Building Amazon Connect Contact Lens',
+        desc: 'Building Amazon Connect Contact Lens',
         isEmployment: true
       }
     ]
@@ -32,8 +31,7 @@ const TIMELINE_ITEMS = [
     items: [
       {
         title: 'Software Development Engineer Intern @ AWS',
-        desc:
-          'Designed scalable and fault-tolerant backend monitoring system using Node.js and TypeScript for Amazon Connect Contact Lens',
+        desc: 'Designed scalable and fault-tolerant backend monitoring system using Node.js and TypeScript for Amazon Connect Contact Lens',
         isEmployment: true
       }
     ]
@@ -43,20 +41,17 @@ const TIMELINE_ITEMS = [
     items: [
       {
         title: 'Software Tools and Automation Intern @ Canoo',
-        desc:
-          'Increased productivity by creating software release management tool with React, TypeScript, Python, and Flask to monitor and control builds for 10+ vehicle components',
+        desc: 'Increased productivity by creating software release management tool with React, TypeScript, Python, and Flask to monitor and control builds for 10+ vehicle components',
         isEmployment: true
       },
       {
         title: 'Organizer @ Hack the North',
-        desc:
-          'Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month',
+        desc: 'Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month',
         isEmployment: false
       },
       {
         title: 'Software Engineering Intern @ StackAdapt',
-        desc:
-          'Implemented customization and productivity features on a web platform that manages 3000+ ad campaigns with Ruby on Rails, React, and Redux',
+        desc: 'Implemented customization and productivity features on a web platform that manages 3000+ ad campaigns with Ruby on Rails, React, and Redux',
         isEmployment: true
       }
     ]
@@ -66,8 +61,7 @@ const TIMELINE_ITEMS = [
     items: [
       {
         title: 'Software Developer Intern @ Monogram',
-        desc:
-          'Optimized performance and size for Qt application in C++ and photo-editing software plugins',
+        desc: 'Optimized performance and size for Qt application in C++ and photo-editing software plugins',
         isEmployment: true
       }
     ]
@@ -84,7 +78,6 @@ const YearItems = ({ year, items }) => {
             {year}
           </Heading>
         </Box>
-
         <AccordionIcon />
       </AccordionButton>
       <AccordionPanel pb={4}>
@@ -93,7 +86,9 @@ const YearItems = ({ year, items }) => {
             <ListItem key={title}>
               <Stack ml={2} mb={4}>
                 <Flex align="center">
-                  <Text fontWeight="medium">{title}</Text>
+                  <Text fontWeight="medium" letterSpacing="wide">
+                    {title}
+                  </Text>
                 </Flex>
                 <Text color={secondaryTextColor[colorMode]} ml={6}>
                   {desc}
@@ -116,7 +111,7 @@ const Timeline = () => {
       alignItems="flex-start"
       maxWidth="700px"
     >
-      <Accordion defaultIndex={[0, 1, 2]} allowMultiple>
+      <Accordion defaultIndex={[0, 1, 2, 3]} allowMultiple>
         {TIMELINE_ITEMS.map(({ year, items }) => (
           <YearItems key={year} year={year} items={items} />
         ))}

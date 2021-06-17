@@ -6,7 +6,7 @@ import Container from 'components/PageWrapper';
 import { secondaryTextColor } from 'styles/darkMode';
 
 const DESC = "Here's what I'm currently using to create things.";
-const url = 'https://jasonhong.me/tools';
+const url = 'https://jasonhong.me/uses';
 
 export default function UsesLayout({ children }) {
   const { colorMode } = useColorMode();
@@ -19,7 +19,7 @@ export default function UsesLayout({ children }) {
         canonical={url}
         openGraph={{
           url,
-          title: 'Uses – Lee Robinson',
+          title: 'Tools – Jason Hong',
           description: DESC
         }}
       />

@@ -22,23 +22,23 @@ import { useMediaQuery } from 'react-responsive';
 const LINKS = [
   {
     href: '/',
-    text: 'Home'
+    text: 'home'
   },
   {
     href: '/dashboard',
-    text: 'Dashboard'
+    text: 'dashboard'
   },
   {
     href: '/blog',
-    text: 'Blog'
+    text: 'blog'
   },
   {
     href: '/about',
-    text: 'About'
+    text: 'about'
   },
   {
     href: '/photos',
-    text: 'Photos'
+    text: 'photos'
   }
 ];
 
