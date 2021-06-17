@@ -7,6 +7,7 @@ import {
   Box,
   Fade
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import styled from '@emotion/styled';
 import {
   BBTIcon,
@@ -113,6 +114,17 @@ const listItem = {
 
 const MotionBox = m(Box);
 
+const UnderlinedLink = styled.a`
+  border-style: dotted;
+  border-width: 1px 1px 2px;
+  border-color: transparent transparent rgba(92, 92, 92, 3.21);
+  transition: opacity 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const Index = () => {
   const { colorMode } = useColorMode();
   const isBigScreen = useMediaQuery({ minWidth: 450 });
@@ -130,12 +142,15 @@ const Index = () => {
         <Section>
           <Fade in>
             <Heading mb={6} as="h1" size="2xl">
-              Hi, I'm Jason Hong
+              Hi, I'm{' '}
+              <NextLink href="/resume.pdf" passHref>
+                <UnderlinedLink>Jason Hong</UnderlinedLink>
+              </NextLink>
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
-              A recent Computer Engineering graduate from the University of Waterloo
-              currently working at Amazon Web Services as an SDE. I like
-              to travel, draw and take photos.
+              A recent Computer Engineering graduate from the University of
+              Waterloo currently working at Amazon Web Services as an SDE. I
+              like to travel, draw and take photos.
             </Text>
           </Fade>
         </Section>

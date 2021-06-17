@@ -8,6 +8,7 @@ import theme from 'styles/theme';
 import { Chakra } from 'components/Chakra';
 import { css } from '@emotion/react';
 import { useColorModeValue } from '@chakra-ui/react';
+import '@fontsource/lora/600.css';
 
 const MyApp = ({ Component, pageProps, cookies }) => {
   const prismTheme = useColorModeValue(prismLightTheme, prismDarkTheme);

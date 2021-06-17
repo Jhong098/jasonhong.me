@@ -30,7 +30,10 @@ const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
   const { colorMode } = useColorMode();
 
   return (
-    <motion.div whileHover={{ y: -3 }}>
+    <motion.div
+      whileHover={{ y: -2, opacity: 0.7 }}
+      transition={{ duration: 0.1 }}
+    >
       <Link
         mb={4}
         href={href}
@@ -57,9 +60,9 @@ const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
               mr: 6
             })}
           <Stack>
-            <Heading as="h4" size="md" fontWeight="bold" mb={4}>
+            <Text size="xl" fontWeight="medium" mb={3} letterSpacing="wide">
               {title}
-            </Heading>
+            </Text>
             <Text lineHeight="1.3">{description}</Text>
             <Flex mt={2} wrap="wrap">
               {tags.map(getBadge)}
