@@ -4,85 +4,16 @@ import {
   Text,
   Flex,
   Stack,
-  Box,
   Fade
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import styled from '@emotion/styled';
-import {
-  BBTIcon,
-  HTNIcon,
-  VisionMotionIcon,
-  SignSenseIcon
-} from 'components/CustomIcons';
-import PageWrapper from 'components/PageWrapper';
-import ProjectCard from 'components/ProjectCard';
-import Timeline from 'components/Timeline';
-import { m, LazyMotion, domAnimation } from 'framer-motion';
-import { secondaryTextColor } from 'styles/darkMode';
-import { useMediaQuery } from 'react-responsive';
 
-const PROJECTS = [
-  {
-    title: 'SignSense',
-    description: 'Real-Time American Sign Language Interpreter',
-    href: 'https://github.com/Jhong098/SignSense',
-    icon: SignSenseIcon,
-    tags: [
-      { text: 'Python', color: 'cyan' },
-      { text: 'Tensorflow', color: 'blue' },
-      { text: 'Keras', color: 'purple' }
-    ]
-  },
-  {
-    title: 'hackthenorth.com',
-    description:
-      'Landing page for the largest hackathon in Canada that saw 30,000 unique visitors per month',
-    href: 'https://2019.hackthenorth.com',
-    icon: HTNIcon,
-    tags: [
-      { text: 'React', color: 'cyan' },
-      { text: 'Typescript', color: 'blue' },
-      { text: 'Styled-Components', color: 'purple' }
-    ]
-  },
-  {
-    title: 'Hacker Applications',
-    description:
-      'Hack the North 2019 hacker application experience that processed 8000+ applications in total',
-    href: 'https://your.hackthenorth.com/',
-    icon: HTNIcon,
-    tags: [
-      { text: 'React', color: 'cyan' },
-      { text: 'Typescript', color: 'blue' },
-      { text: 'Styled-Components', color: 'purple' },
-      { text: 'Mapbox', color: 'gray' }
-    ]
-  },
-  {
-    title: 'Hackioca',
-    description:
-      "Hack the North 2019 April Fool's Prank that attracted thousands of gullible hackers to sign-up",
-    href: 'https://hackioca.com',
-    icon: BBTIcon,
-    tags: [
-      { text: 'React', color: 'cyan' },
-      { text: 'Typescript', color: 'blue' },
-      { text: 'Styled-Components', color: 'purple' }
-    ]
-  },
-  {
-    title: 'Vision Motion',
-    description:
-      'Mobile app that uses the camera to track an object and graph position, velocity, and acceleration',
-    href: 'https://visionmotion.williamqin.com/',
-    icon: VisionMotionIcon,
-    tags: [
-      { text: 'Android', color: 'green' },
-      { text: 'OpenCV', color: 'orange' }
-    ]
-  }
-];
+import PageWrapper from 'components/PageWrapper';
+import Timeline from 'components/Timeline';
+
+import Projects from 'components/Projects';
+import { secondaryTextColor } from 'styles/darkMode';
 
 const Section = styled(Flex)`
   flex-direction: column;
@@ -97,23 +28,6 @@ const SectionHeading = ({ children }) => (
   </Heading>
 );
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const listItem = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-};
-
-const MotionBox = m(Box);
-
 const UnderlinedLink = styled.a`
   border-style: dotted;
   border-width: 1px 1px 2px;
@@ -127,7 +41,6 @@ const UnderlinedLink = styled.a`
 
 const Index = () => {
   const { colorMode } = useColorMode();
-  const isBigScreen = useMediaQuery({ minWidth: 450 });
 
   return (
     <PageWrapper>
@@ -157,17 +70,8 @@ const Index = () => {
         <Section>
           <Fade in>
             <SectionHeading>Projects</SectionHeading>
+            <Projects />
           </Fade>
-
-          <LazyMotion features={domAnimation}>
-            <MotionBox variants={container} initial="hidden" animate="show">
-              {PROJECTS.map((props, i) => (
-                <MotionBox key={`project-${i}`} variants={listItem} mb={2}>
-                  <ProjectCard {...props} isBigScreen={isBigScreen} />
-                </MotionBox>
-              ))}
-            </MotionBox>
-          </LazyMotion>
         </Section>
         <Section>
           <Fade in>

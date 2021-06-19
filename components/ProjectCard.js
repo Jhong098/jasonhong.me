@@ -1,12 +1,4 @@
-import {
-  Flex,
-  Link,
-  Heading,
-  Text,
-  Stack,
-  useColorMode,
-  Badge
-} from '@chakra-ui/react';
+import { Flex, Link, Text, Stack, useColorMode, Badge } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 import { borderColor, iconColor } from 'styles/darkMode';
@@ -49,7 +41,8 @@ const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
           border="1px solid"
           borderColor={borderColor[colorMode]}
           borderRadius={4}
-          p={4}
+          py={6}
+          px={4}
         >
           {isBigScreen &&
             icon({
@@ -63,8 +56,10 @@ const ProjectCard = ({ title, description, href, icon, tags, isBigScreen }) => {
             <Text size="xl" fontWeight="medium" mb={3} letterSpacing="wide">
               {title}
             </Text>
-            <Text lineHeight="1.3">{description}</Text>
-            <Flex mt={2} wrap="wrap">
+            <Text lineHeight="1.3" mb={6}>
+              {description}
+            </Text>
+            <Flex wrap="wrap" pt={4}>
               {tags.map(getBadge)}
             </Flex>
           </Stack>

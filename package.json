@@ -15,6 +15,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,yml}\""
   },
   "dependencies": {
