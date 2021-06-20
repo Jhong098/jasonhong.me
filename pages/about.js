@@ -37,13 +37,17 @@ const About = () => {
               About Me
             </Heading>
             <Box w={[300, 400, 500]}>
-              <Image src="/static/images/me.jpg" width={1079} height={1079} />
+              <Image
+                src="/static/images/me.jpg"
+                alt="profile"
+                width={1079}
+                height={1079}
+              />
             </Box>
           </Box>
           <Box w={[300, 400, 500]} mt={8}>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              Nice to see you, I’m Jason. I'm a Computer Engineering student at
-              the University of Waterloo.
+              Nice to see you, I’m Jason.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={8}>
               I was born in Nanjing, China and moved to Vancouver, Canada when I

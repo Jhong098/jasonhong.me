@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 
 import PageWrapper from 'components/PageWrapper';
 import Timeline from 'components/Timeline';
-
+import UnderlinedLink from 'components/UnderlinedLink';
 import Projects from 'components/Projects';
 import { secondaryTextColor } from 'styles/darkMode';
 
@@ -27,17 +27,6 @@ const SectionHeading = ({ children }) => (
     {children}
   </Heading>
 );
-
-const UnderlinedLink = styled.a`
-  border-style: dotted;
-  border-width: 1px 1px 2px;
-  border-color: transparent transparent rgba(92, 92, 92, 3.21);
-  transition: opacity 0.1s ease-in-out;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 const Index = () => {
   const { colorMode } = useColorMode();

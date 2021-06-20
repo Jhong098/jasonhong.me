@@ -14,15 +14,31 @@ import {
   Box
 } from '@chakra-ui/react';
 import { secondaryTextColor } from 'styles/darkMode';
+import UnderlinedLink from './UnderlinedLink';
 
 const TIMELINE_ITEMS = [
   {
     year: '2021',
     items: [
       {
-        title: 'Software Development Engineer @ AWS',
-        desc: 'Building Amazon Connect Contact Lens',
-        isEmployment: true
+        title: () => 'Software Development Engineer @ AWS',
+        desc: () => (
+          <>
+            Building{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://aws.amazon.com/connect/contact-lens/"
+            >
+              Amazon Connect Contact Lens
+            </UnderlinedLink>
+          </>
+        )
+      },
+      {
+        title: () => 'Graduated from the University of Waterloo',
+        desc: () =>
+          `Awarded a Bachelor of Applied Science, Computer Engineering, Honours, Co-op, With Distinction`
       }
     ]
   },
@@ -30,9 +46,20 @@ const TIMELINE_ITEMS = [
     year: '2020',
     items: [
       {
-        title: 'Software Development Engineer Intern @ AWS',
-        desc: 'Designed scalable and fault-tolerant backend monitoring system using Node.js and TypeScript for Amazon Connect Contact Lens',
-        isEmployment: true
+        title: () => 'Software Development Engineer Intern @ AWS',
+        desc: () => (
+          <>
+            Designed scalable and fault-tolerant backend monitoring system using
+            Node.js and TypeScript for{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://aws.amazon.com/connect/contact-lens/"
+            >
+              Amazon Connect Contact Lens
+            </UnderlinedLink>
+          </>
+        )
       }
     ]
   },
@@ -40,19 +67,52 @@ const TIMELINE_ITEMS = [
     year: '2019',
     items: [
       {
-        title: 'Software Tools and Automation Intern @ Canoo',
-        desc: 'Increased productivity by creating software release management tool with React, TypeScript, Python, and Flask to monitor and control builds for 10+ vehicle components',
-        isEmployment: true
+        title: () => (
+          <>
+            Software Tools and Automation Intern @{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://www.canoo.com/"
+            >
+              Canoo
+            </UnderlinedLink>
+          </>
+        ),
+        desc: () =>
+          'Increased productivity by creating software release management tool with React, TypeScript, Python, and Flask to monitor and control builds for 10+ vehicle components'
       },
       {
-        title: 'Organizer @ Hack the North',
-        desc: 'Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month',
-        isEmployment: false
+        title: () => (
+          <>
+            Organizer @{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://hackthenorth.com/"
+            >
+              Hack the North
+            </UnderlinedLink>
+          </>
+        ),
+        desc: () =>
+          'Created delightful web experiences with React, Typescript, and Styled Components for one of the world’s largest hackathons, with more than 30k unique visitors and 3M requests per month'
       },
       {
-        title: 'Software Engineering Intern @ StackAdapt',
-        desc: 'Implemented customization and productivity features on a web platform that manages 3000+ ad campaigns with Ruby on Rails, React, and Redux',
-        isEmployment: true
+        title: () => (
+          <>
+            Software Engineering Intern @{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://www.stackadapt.com/"
+            >
+              StackAdapt
+            </UnderlinedLink>
+          </>
+        ),
+        desc: () =>
+          'Implemented customization and productivity features on a web platform that manages 3000+ ad campaigns with Ruby on Rails, React, and Redux'
       }
     ]
   },
@@ -60,9 +120,20 @@ const TIMELINE_ITEMS = [
     year: '2018',
     items: [
       {
-        title: 'Software Developer Intern @ Monogram',
-        desc: 'Optimized performance and size for Qt application in C++ and photo-editing software plugins',
-        isEmployment: true
+        title: () => (
+          <>
+            Software Developer Intern @{' '}
+            <UnderlinedLink
+              target="_blank"
+              rel="​noopener noreferrer"
+              href="https://monogramcc.com/"
+            >
+              Monogram
+            </UnderlinedLink>
+          </>
+        ),
+        desc: () =>
+          'Optimized performance and size for Qt application in C++ and photo-editing software plugins'
       }
     ]
   }
@@ -87,11 +158,11 @@ const YearItems = ({ year, items }) => {
               <Stack ml={2} mb={4}>
                 <Flex align="center">
                   <Text fontWeight="medium" letterSpacing="wide">
-                    {title}
+                    {title()}
                   </Text>
                 </Flex>
                 <Text color={secondaryTextColor[colorMode]} ml={6}>
-                  {desc}
+                  {desc()}
                 </Text>
               </Stack>
             </ListItem>
