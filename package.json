@@ -36,7 +36,7 @@
     "gray-matter": "^4.0.3",
     "image-size": "^0.9.5",
     "mdx-prism": "^0.3.3",
-    "next": "^11.0.1-canary.2",
+    "next": "^11.1.0",
     "next-mdx-remote": "^3.0.2",
     "next-seo": "^4.20.0",
     "preact": "^10.5.13",
