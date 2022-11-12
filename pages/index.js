@@ -45,9 +45,9 @@ const Index = () => {
           <Fade in>
             <Heading mb={6} as="h1" size="2xl">
               Hi, I'm{' '}
-              <NextLink href="/resume.pdf" passHref>
-                <UnderlinedLink>Jason Hong</UnderlinedLink>
-              </NextLink>
+              <UnderlinedLink href="/resume.pdf" passHref>
+                Jason Hong
+              </UnderlinedLink>
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
               A recent Computer Engineering graduate from the University of
