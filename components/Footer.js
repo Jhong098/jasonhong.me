@@ -76,11 +76,17 @@ const getIcon = ({ aria, icon, href, title }) => (
 );
 
 const getLink = ({ href, title, text }) => (
-  <NextLink href={href} passHref key={title}>
-    <Link fontSize="sm" color="gray.500" minWidth="100px" mr={2} title={title}>
-      {text}
-    </Link>
-  </NextLink>
+  <Link
+    href={href}
+    key={title}
+    fontSize="sm"
+    color="gray.500"
+    minWidth="100px"
+    mr={2}
+    title={title}
+  >
+    {text}
+  </Link>
 );
 
 const Footer = () => (

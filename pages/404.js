@@ -24,13 +24,7 @@ const Error = () => {
             404 – Are You Lost?
           </Heading>
           <NextLink href="/" passHref>
-            <Button
-              as="a"
-              p={[1, 4]}
-              w="250px"
-              fontWeight="bold"
-              m="3rem auto 0"
-            >
+            <Button p={[1, 4]} w="250px" fontWeight="bold" m="3rem auto 0">
               Return Home
             </Button>
           </NextLink>

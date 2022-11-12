@@ -58,7 +58,7 @@ const Nav = () => {
 
   const getLink = ({ href, text }) => (
     <NextLink href={href} passHref key={text}>
-      <Button as="a" variant="ghost" p={[6, 4]} fontSize={['xl', 'lg']}>
+      <Button variant="ghost" p={[6, 4]} fontSize={['xl', 'lg']}>
         {text}
       </Button>
     </NextLink>
