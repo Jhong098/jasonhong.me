@@ -3,13 +3,15 @@ const fs = require('fs');
 const prettier = require('prettier');
 
 (async () => {
-  const globby = await import('globby');
+  const { globby } = await import('globby');
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
     'pages/**/*{.js,.mdx}',
     '!pages/_*.js',
     '!pages/api'
   ]);
+
+  // console.log(pages);
   const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -31,7 +33,7 @@ const prettier = require('prettier');
         </urlset>
     `;
 
-  const formatted = prettier.format(sitemap, {
+  const formatted = await prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html'
   });
