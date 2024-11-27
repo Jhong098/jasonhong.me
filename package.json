@@ -30,7 +30,7 @@
     "babel-plugin-import-glob-array": "^0.2.0",
     "comma-number": "^2.0.1",
     "date-fns": "^3.2.0",
-    "firebase": "^10.7.1",
+    "firebase": "^10.9.0",
     "firebase-admin": "^12.0.0",
     "framer-motion": "^7.6.6",
     "gray-matter": "^4.0.3",
