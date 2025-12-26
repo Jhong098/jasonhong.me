@@ -35,10 +35,6 @@ const LINKS = [
   {
     href: '/about',
     text: 'about'
-  },
-  {
-    href: '/photos',
-    text: 'photos'
   }
 ];
 

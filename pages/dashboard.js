@@ -13,7 +13,6 @@ import PageViews from 'components/metrics/PageViews';
 import PageWrapper from 'components/PageWrapper';
 import GitHub from 'components/metrics/Github';
 import Unsplash from 'components/metrics/Unsplash';
-import TopTracks from 'components/TopTracks';
 
 import { secondaryTextColor } from 'styles/darkMode';
 
@@ -87,13 +86,6 @@ const Dashboard = () => {
               <Buttondown />
             </SimpleGrid> */}
           </Flex>
-          <Heading as="h2" size="xl">
-            Top Tracks
-          </Heading>
-          <Text color={secondaryTextColor[colorMode]}>
-            What I'm currently jamming to...
-          </Text>
-          <TopTracks />
         </Stack>
       </PageWrapper>
     </>

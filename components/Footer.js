@@ -2,7 +2,6 @@ import NextLink from 'next/link';
 import { Flex, Link, IconButton } from '@chakra-ui/react';
 import { FaDeviantart } from 'react-icons/fa';
 
-import NowPlaying from './NowPlaying';
 import {
   GithubIcon,
   InstagramIcon,
@@ -92,7 +91,6 @@ const getLink = ({ href, title, text }) => (
 const Footer = () => (
   <footer>
     <Flex align="center" mt={8} mb={8} direction="column">
-      <NowPlaying />
       <div>{SOCIAL_LINKS.map(getIcon)}</div>
       <div>{INTERNAL_LINKS.map(getLink)}</div>
     </Flex>
