@@ -7,6 +7,9 @@
     "email": "jhong098@gmail.com",
     "url": "https://jasonhong.me"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

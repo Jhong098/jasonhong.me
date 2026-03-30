@@ -3,6 +3,5 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "nodeVersion": "22.x"
+  "trailingSlash": false
 }
