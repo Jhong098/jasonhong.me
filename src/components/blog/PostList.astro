@@ -45,17 +45,17 @@ function formatDate(date: Date) {
   .post-item {
     display: block;
     padding: 14px 0;
-    border-bottom: 1px solid #1f1f22;
+    border-bottom: 1px solid var(--bg-elevated);
     text-decoration: none;
     transition: border-color 150ms;
   }
 
   .post-item:first-child {
-    border-top: 1px solid #1f1f22;
+    border-top: 1px solid var(--bg-elevated);
   }
 
   .post-item:hover .post-title {
-    color: #a78bfa;
+    color: var(--accent);
   }
 
   .post-header {
@@ -67,14 +67,14 @@ function formatDate(date: Date) {
   }
 
   .post-title {
-    color: #e4e4e7;
+    color: var(--fg-2);
     font-size: 0.875rem;
     font-weight: 500;
     transition: color 150ms;
   }
 
   .post-date {
-    color: #52525b;
+    color: var(--fg-6);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     white-space: nowrap;
@@ -82,7 +82,7 @@ function formatDate(date: Date) {
   }
 
   .post-desc {
-    color: #71717a;
+    color: var(--fg-5);
     font-size: 0.8125rem;
     line-height: 1.5;
     margin-bottom: 6px;
@@ -95,13 +95,13 @@ function formatDate(date: Date) {
   }
 
   .tag {
-    color: #52525b;
+    color: var(--fg-6);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     transition: color 120ms;
   }
 
   .post-item:hover .tag {
-    color: #71717a;
+    color: var(--fg-5);
   }
 </style>

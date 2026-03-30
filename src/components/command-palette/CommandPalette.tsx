@@ -18,6 +18,7 @@ const NAV_PAGES = [
   { label: 'Home', href: '/', hint: '~' },
   { label: 'Blog', href: '/blog', hint: 'posts' },
   { label: 'Projects', href: '/projects', hint: 'work' },
+  { label: 'Uses', href: '/uses', hint: 'gear' },
   { label: 'About', href: '/about', hint: 'info' },
 ];
 

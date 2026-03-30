@@ -29,6 +29,12 @@ const navItems = [
     active: currentPath.startsWith('/about'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>',
   },
+  {
+    href: '/uses',
+    label: 'Uses',
+    active: currentPath.startsWith('/uses'),
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.344c2.672 0 4.011-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"/></svg>',
+  },
 ];
 ---
 
@@ -63,8 +69,8 @@ const navItems = [
   .nav-rail {
     width: 44px;
     transition: width 200ms ease;
-    background: rgb(24 24 27 / 0.6);
-    border-right: 1px solid #27272a;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     padding: 6px 0;
@@ -88,7 +94,7 @@ const navItems = [
   }
 
   .nav-bottom {
-    border-top: 1px solid #27272a;
+    border-top: 1px solid var(--border);
     padding-top: 6px;
     margin-top: 6px;
   }
@@ -99,7 +105,7 @@ const navItems = [
     gap: 10px;
     padding: 7px 7px;
     border-radius: 6px;
-    color: #52525b;
+    color: var(--fg-6);
     text-decoration: none;
     transition: color 150ms, background-color 150ms;
     font-size: 0.8125rem;
@@ -108,13 +114,13 @@ const navItems = [
   }
 
   .nav-item:hover {
-    color: #a1a1aa;
-    background-color: rgb(39 39 42 / 0.6);
+    color: var(--fg-4);
+    background-color: var(--item-hover);
   }
 
   .nav-item.active {
-    color: #a78bfa;
-    background-color: rgb(167 139 250 / 0.1);
+    color: var(--accent);
+    background-color: var(--accent-subtle);
   }
 
   .nav-icon {

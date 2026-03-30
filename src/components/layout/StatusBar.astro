@@ -1,23 +1,31 @@
 ---
 import ThemeToggle from '@components/shared/ThemeToggle';
+import { OPEN_TO_WORK } from '@lib/config';
 
 const year = new Date().getFullYear();
 ---
 
 <div class="status-bar">
   <div class="status-left">
-    <span class="status-item">updated {year}</span>
+    <span class="status-item">© {year} Jason Hong</span>
 
     <!-- Open to work badge -->
-    <span class="status-badge">
-      <span class="badge-dot"></span>
-      open to work
-    </span>
+    {OPEN_TO_WORK && (
+      <span class="status-badge">
+        <span class="badge-dot"></span>
+        open to work
+      </span>
+    )}
   </div>
 
   <div class="status-right">
+    <span class="status-hint">
+      <kbd>⌘K</kbd> search
+    </span>
+    <span class="status-hint">
+      <kbd>Ctrl`</kbd> terminal
+    </span>
     <ThemeToggle client:load />
-    <span class="status-item">Astro</span>
   </div>
 </div>
 
@@ -28,8 +36,8 @@ const year = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    background: #18181b;
-    border-top: 1px solid #27272a;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
     flex-shrink: 0;
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -48,7 +56,7 @@ const year = new Date().getFullYear();
     display: flex;
     align-items: center;
     gap: 4px;
-    color: #52525b;
+    color: var(--fg-6);
     text-decoration: none;
     padding: 0 4px;
     border-radius: 3px;
@@ -57,14 +65,14 @@ const year = new Date().getFullYear();
   }
 
   .status-item:hover {
-    color: #a1a1aa;
+    color: var(--fg-4);
   }
 
   .status-badge {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: #34d399;
+    color: var(--success);
     padding: 0 4px;
   }
 
@@ -72,8 +80,34 @@ const year = new Date().getFullYear();
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #34d399;
+    background: var(--success);
     animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fg-7);
+    padding: 0 4px;
+  }
+
+  .status-hint kbd {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--fg-7);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-muted);
+    border-radius: 3px;
+    padding: 0 4px;
+    line-height: 1.6;
+  }
+
+  /* Hide hint on mobile — no keyboard */
+  @media (max-width: 640px) {
+    .status-hint {
+      display: none;
+    }
   }
 
   @keyframes pulse {

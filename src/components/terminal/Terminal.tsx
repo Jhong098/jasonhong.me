@@ -22,9 +22,7 @@ export default function Terminal() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (open) {
-      inputRef.current?.focus();
-    }
+    if (open) inputRef.current?.focus();
   }, [open]);
 
   useEffect(() => {
@@ -36,14 +34,30 @@ export default function Terminal() {
     const cmd = input.trim();
     if (!cmd) return;
 
-    setCmdHistory(prev => [cmd, ...prev]);
+    const newCmdHistory = [cmd, ...cmdHistory];
+    setCmdHistory(newCmdHistory);
     setHistIdx(-1);
     setInput('');
 
-    const result = runCommand(cmd);
+    const result = runCommand(cmd, { cmdHistory: newCmdHistory });
 
     if (result === '__CLEAR__') {
       setHistory(WELCOME);
+      return;
+    }
+
+    // Handle navigation instructions
+    if (typeof result === 'string' && result.startsWith('__NAV__:')) {
+      const href = result.slice(8);
+      setHistory(prev => [
+        ...prev,
+        { kind: 'input', text: cmd },
+        { kind: 'output', text: `→ navigating to ${href}…` },
+      ]);
+      setTimeout(() => {
+        terminalOpen.set(false);
+        window.location.href = href;
+      }, 300);
       return;
     }
 

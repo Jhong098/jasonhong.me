@@ -91,14 +91,14 @@ const projects: ProjectData[] =
   .page-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #f4f4f5;
+    color: var(--fg-1);
     margin-bottom: 4px;
   }
 
   .page-meta {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #52525b;
+    color: var(--fg-6);
   }
 
   .project-grid {
@@ -108,15 +108,15 @@ const projects: ProjectData[] =
   }
 
   .project-card {
-    border: 1px solid #27272a;
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1.125rem 1.25rem;
-    background: rgb(24 24 27 / 0.3);
+    background: var(--bg-card);
     transition: border-color 150ms;
   }
 
   .project-card:hover {
-    border-color: #3f3f46;
+    border-color: var(--border-muted);
   }
 
   .project-top {
@@ -130,7 +130,7 @@ const projects: ProjectData[] =
   .project-name {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #e4e4e7;
+    color: var(--fg-2);
     margin-bottom: 2px;
   }
 
@@ -141,13 +141,13 @@ const projects: ProjectData[] =
   }
 
   .project-name a:hover {
-    color: #a78bfa;
+    color: var(--accent);
   }
 
   .project-year {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #52525b;
+    color: var(--fg-6);
   }
 
   .project-links {
@@ -159,18 +159,18 @@ const projects: ProjectData[] =
   .project-link {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #52525b;
+    color: var(--fg-6);
     text-decoration: none;
     transition: color 120ms;
   }
 
   .project-link:hover {
-    color: #a78bfa;
+    color: var(--accent);
   }
 
   .project-desc {
     font-size: 0.8125rem;
-    color: #71717a;
+    color: var(--fg-5);
     line-height: 1.55;
     margin-bottom: 10px;
   }
@@ -184,10 +184,10 @@ const projects: ProjectData[] =
   .project-tag {
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    color: #52525b;
+    color: var(--fg-6);
     padding: 1px 7px;
-    background: #1f1f23;
-    border: 1px solid #27272a;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
     border-radius: 4px;
   }
 </style>

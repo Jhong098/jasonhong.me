@@ -1,0 +1,111 @@
+---
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+
+const navItems = [
+  {
+    href: '/',
+    label: 'Home',
+    active: currentPath === '/',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>',
+  },
+  {
+    href: '/blog',
+    label: 'Blog',
+    active: currentPath.startsWith('/blog'),
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>',
+  },
+  {
+    href: '/projects',
+    label: 'Projects',
+    active: currentPath.startsWith('/projects'),
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>',
+  },
+  {
+    href: '/about',
+    label: 'About',
+    active: currentPath.startsWith('/about'),
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>',
+  },
+  {
+    href: '/uses',
+    label: 'Uses',
+    active: currentPath.startsWith('/uses'),
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.344c2.672 0 4.011-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"/></svg>',
+  },
+];
+---
+
+<nav class="mobile-nav">
+  {navItems.map(item => (
+    <a href={item.href} class:list={['mobile-item', { active: item.active }]}>
+      <span class="mobile-icon" set:html={item.icon} />
+      <span class="mobile-label">{item.label}</span>
+    </a>
+  ))}
+</nav>
+
+<style>
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    z-index: 40;
+    padding: 0 4px;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-nav {
+      display: flex;
+      align-items: stretch;
+    }
+  }
+
+  .mobile-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--fg-6);
+    text-decoration: none;
+    transition: color 120ms;
+    padding: 6px 4px;
+    border-radius: 6px;
+  }
+
+  .mobile-item:hover {
+    color: var(--fg-4);
+  }
+
+  .mobile-item.active {
+    color: var(--accent);
+  }
+
+  .mobile-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-label {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    line-height: 1;
+  }
+</style>

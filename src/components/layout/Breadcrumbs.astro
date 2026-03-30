@@ -33,8 +33,8 @@ const segments = raw ? raw.split('/').filter(Boolean) : [];
     align-items: center;
     gap: 1px;
     padding: 0 14px;
-    border-bottom: 1px solid #27272a;
-    background: #18181b;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
     flex-shrink: 0;
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -42,26 +42,26 @@ const segments = raw ? raw.split('/').filter(Boolean) : [];
   }
 
   .crumb {
-    color: #71717a;
+    color: var(--fg-5);
     text-decoration: none;
     padding: 0 2px;
     transition: color 120ms;
   }
 
   .crumb:hover {
-    color: #a78bfa;
+    color: var(--accent);
   }
 
   .crumb.root {
-    color: #a78bfa;
+    color: var(--accent);
   }
 
   .crumb.current {
-    color: #d4d4d8;
+    color: var(--fg-3);
   }
 
   .sep {
-    color: #3f3f46;
+    color: var(--fg-7);
     padding: 0 1px;
   }
 </style>

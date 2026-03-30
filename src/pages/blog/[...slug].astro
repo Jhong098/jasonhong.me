@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import EditorLayout from '@layouts/EditorLayout.astro';
+import SourceDrawer from '@components/blog/SourceDrawer';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => data.status === 'published');
@@ -12,6 +15,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const rawMdx = readFileSync(
+  path.join(process.cwd(), 'src/content/blog', `${post.id}.mdx`),
+  'utf-8'
+);
 
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -25,13 +33,14 @@ function formatDate(date: Date) {
 >
   <article class="page-content">
     <header class="post-header">
-      {post.data.tags.length > 0 && (
+      <div class="post-meta-row">
         <div class="tags">
           {post.data.tags.map(tag => (
             <span class="tag">#{tag}</span>
           ))}
         </div>
-      )}
+        <SourceDrawer client:load rawMdx={rawMdx} />
+      </div>
       <h1 class="post-title">{post.data.title}</h1>
       <p class="post-date">{formatDate(post.data.date)}</p>
     </header>
@@ -57,27 +66,35 @@ function formatDate(date: Date) {
     margin-bottom: 2.5rem;
   }
 
+  .post-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
   .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 1rem;
   }
 
   .tag {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #52525b;
+    color: var(--fg-6);
     padding: 2px 8px;
-    background: #1f1f23;
-    border: 1px solid #27272a;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
     border-radius: 4px;
   }
 
   .post-title {
     font-size: 1.625rem;
     font-weight: 600;
-    color: #f4f4f5;
+    color: var(--fg-1);
     line-height: 1.3;
     margin-bottom: 0.5rem;
   }
@@ -85,24 +102,24 @@ function formatDate(date: Date) {
   .post-date {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #52525b;
+    color: var(--fg-6);
   }
 
   .post-footer {
     margin-top: 3.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #27272a;
+    border-top: 1px solid var(--border);
   }
 
   .back-link {
     font-family: var(--font-mono);
     font-size: 0.8125rem;
-    color: #52525b;
+    color: var(--fg-6);
     text-decoration: none;
     transition: color 120ms;
   }
 
   .back-link:hover {
-    color: #a78bfa;
+    color: var(--accent);
   }
 </style>

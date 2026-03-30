@@ -2,9 +2,11 @@
 import NavRail from '@components/layout/NavRail.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import StatusBar from '@components/layout/StatusBar.astro';
+import MobileNav from '@components/layout/MobileNav.astro';
 import CommandPalette from '@components/command-palette/CommandPalette';
 import KeyboardShortcuts from '@components/shared/KeyboardShortcuts';
 import Terminal from '@components/terminal/Terminal';
+import { ClientRouter } from 'astro:transitions';
 import { getCollection } from 'astro:content';
 import '@styles/global.css';
 import '@styles/syntax.css';
@@ -47,17 +49,22 @@ const postItems = allPosts.map(p => ({
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <!-- Prevent flash of wrong theme before JS loads -->
+    <ClientRouter />
+    <!-- Apply theme on initial load and after every view-transition swap -->
     <script is:inline>
-      const stored = localStorage.getItem('theme');
-      const preferred =
-        stored ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', preferred === 'dark');
-      document.documentElement.classList.toggle('light', preferred === 'light');
+      function applyTheme() {
+        const stored = localStorage.getItem('theme');
+        const preferred =
+          stored ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', preferred === 'dark');
+        document.documentElement.classList.toggle('light', preferred === 'light');
+      }
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </head>
-  <body class="bg-zinc-950 text-zinc-100 h-screen flex flex-col overflow-hidden">
+  <body class="bg-zinc-950 text-zinc-100 h-screen flex flex-col overflow-hidden mobile-body">
     <!-- Global keyboard shortcuts (no UI) -->
     <KeyboardShortcuts client:load />
 
@@ -67,6 +74,7 @@ const postItems = allPosts.map(p => ({
     <!-- Main row: nav rail + content -->
     <div class="flex flex-1 min-h-0">
       <NavRail currentPath={currentPathname} />
+      <MobileNav currentPath={currentPathname} />
       <div class="flex flex-col flex-1 min-h-0">
         <Breadcrumbs path={path} />
         <main class="flex-1 overflow-y-auto">
