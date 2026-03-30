@@ -43,12 +43,6 @@ const postItems = allPosts.map(p => ({
     <meta name="description" content={description} />
     <title>{title === 'Jason Hong' ? title : `${title} — Jason Hong`}</title>
     <link rel="icon" type="image/x-icon" href="/static/favicons/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
     <ClientRouter />
     <!-- Apply theme on initial load and after every view-transition swap -->
     <script is:inline>
