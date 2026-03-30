@@ -1,0 +1,83 @@
+---
+import ThemeToggle from '@components/shared/ThemeToggle';
+
+const year = new Date().getFullYear();
+---
+
+<div class="status-bar">
+  <div class="status-left">
+    <span class="status-item">updated {year}</span>
+
+    <!-- Open to work badge -->
+    <span class="status-badge">
+      <span class="badge-dot"></span>
+      open to work
+    </span>
+  </div>
+
+  <div class="status-right">
+    <ThemeToggle client:load />
+    <span class="status-item">Astro</span>
+  </div>
+</div>
+
+<style>
+  .status-bar {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: #18181b;
+    border-top: 1px solid #27272a;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .status-left,
+  .status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #52525b;
+    text-decoration: none;
+    padding: 0 4px;
+    border-radius: 3px;
+    transition: color 120ms;
+    white-space: nowrap;
+  }
+
+  .status-item:hover {
+    color: #a1a1aa;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #34d399;
+    padding: 0 4px;
+  }
+
+  .badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #34d399;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>

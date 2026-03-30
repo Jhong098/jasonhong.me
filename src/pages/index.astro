@@ -1,0 +1,225 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
+---
+
+<EditorLayout title="Jason Hong" path="~">
+  <div class="page-content">
+    <!-- Header -->
+    <div class="section">
+      <p class="file-label">~/README.md</p>
+      <h1 class="name">Jason Hong</h1>
+      <p class="tagline">SDE at AWS &middot; Waterloo CS &middot; Toronto</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- About -->
+    <div class="section prose-content">
+      <p>
+        I build serverless systems and LLM-powered tools at AWS. I'm drawn to distributed systems,
+        developer tooling, and the overlap between performance and ergonomics.
+      </p>
+      <p>
+        Previously interned at Shopify, Canoo, and others through Waterloo co-op.
+        Graduated in Computer Engineering.
+      </p>
+    </div>
+
+    <!-- Open to work -->
+    <div class="open-card">
+      <div class="open-header">
+        <span class="open-dot"></span>
+        <span class="open-label">open to work</span>
+      </div>
+      <p class="open-desc">
+        Exploring full-stack SDE roles. Interested in developer tooling, AI infrastructure,
+        and high-scale distributed systems.
+      </p>
+    </div>
+
+    {posts.length > 0 && (
+      <>
+        <div class="divider"></div>
+        <div class="section">
+          <div class="section-header">
+            <span class="section-title">Recent writing</span>
+            <a href="/blog" class="section-link">all posts →</a>
+          </div>
+          <div class="recent-posts">
+            {posts.map(post => (
+              <a href={`/blog/${post.id}`} class="recent-post">
+                <div class="recent-post-row">
+                  <span class="recent-title">{post.data.title}</span>
+                  <span class="recent-date">{formatDate(post.data.date)}</span>
+                </div>
+                <p class="recent-desc">{post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .section {
+    margin-bottom: 1.5rem;
+  }
+
+  .file-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    margin-bottom: 0.75rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    margin-bottom: 0.25rem;
+  }
+
+  .tagline {
+    font-size: 0.8125rem;
+    color: #71717a;
+    font-family: var(--font-mono);
+  }
+
+  .divider {
+    border-top: 1px solid #27272a;
+    margin: 1.5rem 0;
+  }
+
+  .open-card {
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: rgb(24 24 27 / 0.4);
+    margin-bottom: 1.5rem;
+  }
+
+  .open-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  .open-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .open-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #34d399;
+  }
+
+  .open-desc {
+    font-size: 0.8125rem;
+    color: #71717a;
+    line-height: 1.6;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .section-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .section-link:hover {
+    color: #a78bfa;
+  }
+
+  .recent-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .recent-post {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #1f1f22;
+    text-decoration: none;
+  }
+
+  .recent-post:first-child {
+    border-top: 1px solid #1f1f22;
+  }
+
+  .recent-post-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .recent-title {
+    font-size: 0.8125rem;
+    color: #d4d4d8;
+    transition: color 150ms;
+  }
+
+  .recent-post:hover .recent-title {
+    color: #a78bfa;
+  }
+
+  .recent-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .recent-desc {
+    font-size: 0.75rem;
+    color: #52525b;
+    line-height: 1.5;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>

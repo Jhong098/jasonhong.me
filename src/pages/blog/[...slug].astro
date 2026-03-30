@@ -1,0 +1,108 @@
+---
+import { getCollection, render } from 'astro:content';
+import EditorLayout from '@layouts/EditorLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.status === 'published');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<EditorLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={`~/blog/${post.id}`}
+>
+  <article class="page-content">
+    <header class="post-header">
+      {post.data.tags.length > 0 && (
+        <div class="tags">
+          {post.data.tags.map(tag => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-date">{formatDate(post.data.date)}</p>
+    </header>
+
+    <div class="prose-content">
+      <Content />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/blog" class="back-link">← back to blog</a>
+    </footer>
+  </article>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    padding: 2px 8px;
+    background: #1f1f23;
+    border: 1px solid #27272a;
+    border-radius: 4px;
+  }
+
+  .post-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #52525b;
+  }
+
+  .post-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #27272a;
+  }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: #52525b;
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .back-link:hover {
+    color: #a78bfa;
+  }
+</style>

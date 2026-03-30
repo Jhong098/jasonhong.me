@@ -1,0 +1,84 @@
+---
+import NavRail from '@components/layout/NavRail.astro';
+import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
+import StatusBar from '@components/layout/StatusBar.astro';
+import CommandPalette from '@components/command-palette/CommandPalette';
+import KeyboardShortcuts from '@components/shared/KeyboardShortcuts';
+import Terminal from '@components/terminal/Terminal';
+import { getCollection } from 'astro:content';
+import '@styles/global.css';
+import '@styles/syntax.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title = 'Jason Hong',
+  description = 'Software engineer at AWS. Building serverless systems and LLM-powered tools.',
+  path = '~',
+} = Astro.props;
+
+const currentPathname = Astro.url.pathname;
+
+// Collect post metadata for the command palette search index
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'published');
+const postItems = allPosts.map(p => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+}));
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title === 'Jason Hong' ? title : `${title} — Jason Hong`}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicons/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Prevent flash of wrong theme before JS loads -->
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const preferred =
+        stored ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', preferred === 'dark');
+      document.documentElement.classList.toggle('light', preferred === 'light');
+    </script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 h-screen flex flex-col overflow-hidden">
+    <!-- Global keyboard shortcuts (no UI) -->
+    <KeyboardShortcuts client:load />
+
+    <!-- Command palette overlay -->
+    <CommandPalette client:load posts={postItems} />
+
+    <!-- Main row: nav rail + content -->
+    <div class="flex flex-1 min-h-0">
+      <NavRail currentPath={currentPathname} />
+      <div class="flex flex-col flex-1 min-h-0">
+        <Breadcrumbs path={path} />
+        <main class="flex-1 overflow-y-auto">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <!-- Terminal panel (slides in above status bar) -->
+    <Terminal client:load />
+
+    <!-- Status bar spans full width at bottom -->
+    <StatusBar />
+  </body>
+</html>

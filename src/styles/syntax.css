@@ -1,0 +1,59 @@
+/* Custom syntax highlighting — purple keywords, teal strings, blue functions, amber types */
+
+pre[class*='language-'],
+code[class*='language-'] {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+.token.keyword,
+.token.rule,
+.token.selector,
+.token.important {
+  color: #d2a8ff; /* purple */
+}
+
+.token.string,
+.token.template-string,
+.token.attr-value,
+.token.regex {
+  color: #76e3ea; /* teal */
+}
+
+.token.function,
+.token.method {
+  color: #79c0ff; /* blue */
+}
+
+.token.class-name,
+.token.type-definition,
+.token.builtin,
+.token.namespace {
+  color: #ffa657; /* amber */
+}
+
+.token.comment {
+  color: #6e7681;
+  font-style: italic;
+}
+
+.token.number,
+.token.boolean,
+.token.null,
+.token.undefined {
+  color: #a5d6ff;
+}
+
+.token.operator,
+.token.punctuation {
+  color: #8b949e;
+}
+
+.token.property,
+.token.attr-name {
+  color: #79c0ff;
+}
+
+.token.tag { color: #7ee787; }

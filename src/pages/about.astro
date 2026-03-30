@@ -1,0 +1,181 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+
+const experience = [
+  {
+    company: 'AWS',
+    role: 'SDE',
+    period: '2024 — present',
+    desc: 'Building serverless systems and LLM-powered developer tools.',
+  },
+  {
+    company: 'Shopify',
+    role: 'SDE Intern',
+    period: '2022',
+    desc: 'Storefront API and checkout infrastructure.',
+  },
+  {
+    company: 'Canoo',
+    role: 'SWE Intern',
+    period: '2020',
+    desc: 'Full-stack work on the vehicle companion app and internal tooling.',
+  },
+];
+
+const stack: Record<string, string[]> = {
+  Languages: ['TypeScript', 'Python', 'Go'],
+  Frontend: ['React', 'Astro', 'Tailwind CSS'],
+  Backend: ['AWS Lambda', 'DynamoDB', 'SQS/SNS'],
+  Tools: ['Git', 'Docker', 'Terraform'],
+};
+---
+
+<EditorLayout title="About" path="~/about">
+  <div class="page-content prose-content">
+    <p class="file-label">~/about/index.md</p>
+    <h1>About</h1>
+
+    <p>
+      Software engineer based in Toronto. I care about systems that are fast,
+      observable, and pleasant to maintain. I like TypeScript, clean APIs,
+      and tools that respect your time.
+    </p>
+
+    <h3>Experience</h3>
+    <div class="experience-list">
+      {experience.map(e => (
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">{e.company}</span>
+            <span class="exp-period">{e.period}</span>
+          </div>
+          <div class="exp-body">
+            <span class="exp-role">{e.role}</span>
+            <p class="exp-desc">{e.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h3>Stack</h3>
+    <div class="stack-grid">
+      {Object.entries(stack).map(([cat, items]) => (
+        <div class="stack-group">
+          <p class="stack-cat">{cat}</p>
+          <div class="stack-tags">
+            {items.map(item => (
+              <span class="stack-tag">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h3>Education</h3>
+    <p>
+      BASc Computer Engineering — University of Waterloo (2019–2024).
+    </p>
+
+    <h3>Contact</h3>
+    <p>
+      <a href="mailto:jason@jasonhong.me">jason@jasonhong.me</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://github.com/Jhong098" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://linkedin.com/in/jasonhong098" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .file-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    margin-bottom: 1.25rem;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .exp-meta {
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .exp-company {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e4e4e7;
+  }
+
+  .exp-period {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    margin-top: 2px;
+  }
+
+  .exp-role {
+    display: block;
+    font-size: 0.8125rem;
+    color: #a1a1aa;
+    margin-bottom: 2px;
+  }
+
+  .exp-desc {
+    font-size: 0.8125rem;
+    color: #71717a;
+    margin: 0;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .stack-cat {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 6px;
+  }
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .stack-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    color: #a1a1aa;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+</style>

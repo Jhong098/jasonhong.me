@@ -1,0 +1,193 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+import { getCollection } from 'astro:content';
+
+const mdxProjects = await getCollection('projects').catch(() => []);
+const sorted = mdxProjects.sort((a, b) => b.data.year - a.data.year);
+
+// Static fallback projects until MDX project files are added
+const fallback = [
+  {
+    title: 'jasonhong.me',
+    description: 'Personal site — Astro 5 + Tailwind v4 with an editor-inspired design system.',
+    year: 2024,
+    tags: ['Astro', 'TypeScript', 'Tailwind CSS'],
+    github: 'https://github.com/Jhong098/jasonhong.me',
+    url: 'https://jasonhong.me',
+  },
+];
+
+type ProjectData = {
+  title: string;
+  description: string;
+  year: number;
+  tags: string[];
+  github?: string;
+  url?: string;
+};
+
+const projects: ProjectData[] =
+  sorted.length > 0
+    ? sorted.map(p => ({ ...p.data, github: p.data.github, url: p.data.url }))
+    : fallback;
+---
+
+<EditorLayout title="Projects" path="~/projects">
+  <div class="page-content">
+    <div class="page-header">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-meta">~/projects/</p>
+    </div>
+
+    <div class="project-grid">
+      {projects.map(p => (
+        <div class="project-card">
+          <div class="project-top">
+            <div>
+              <h2 class="project-name">
+                {p.url
+                  ? <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
+                  : p.title
+                }
+              </h2>
+              <span class="project-year">{p.year}</span>
+            </div>
+            <div class="project-links">
+              {p.github && (
+                <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
+                  gh →
+                </a>
+              )}
+              {p.url && (
+                <a href={p.url} target="_blank" rel="noopener noreferrer" class="project-link">
+                  live →
+                </a>
+              )}
+            </div>
+          </div>
+          <p class="project-desc">{p.description}</p>
+          <div class="project-tags">
+            {p.tags.map(tag => (
+              <span class="project-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    margin-bottom: 4px;
+  }
+
+  .page-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+  }
+
+  .project-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .project-card {
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 1.125rem 1.25rem;
+    background: rgb(24 24 27 / 0.3);
+    transition: border-color 150ms;
+  }
+
+  .project-card:hover {
+    border-color: #3f3f46;
+  }
+
+  .project-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .project-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e4e4e7;
+    margin-bottom: 2px;
+  }
+
+  .project-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .project-name a:hover {
+    color: #a78bfa;
+  }
+
+  .project-year {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .project-link:hover {
+    color: #a78bfa;
+  }
+
+  .project-desc {
+    font-size: 0.8125rem;
+    color: #71717a;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .project-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: #52525b;
+    padding: 1px 7px;
+    background: #1f1f23;
+    border: 1px solid #27272a;
+    border-radius: 4px;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+import PostList from '@components/blog/PostList.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<EditorLayout title="Blog" path="~/blog">
+  <div class="page-content">
+    <div class="page-header">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-meta">~/blog/ &mdash; {posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    </div>
+    <PostList posts={posts} />
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    margin-bottom: 4px;
+  }
+
+  .page-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #52525b;
+  }
+</style>
