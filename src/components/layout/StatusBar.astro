@@ -1,0 +1,117 @@
+---
+import ThemeToggle from '@components/shared/ThemeToggle';
+import { OPEN_TO_WORK } from '@lib/config';
+
+const year = new Date().getFullYear();
+---
+
+<div class="status-bar">
+  <div class="status-left">
+    <span class="status-item">© {year} Jason Hong</span>
+
+    <!-- Open to work badge -->
+    {OPEN_TO_WORK && (
+      <span class="status-badge">
+        <span class="badge-dot"></span>
+        open to work
+      </span>
+    )}
+  </div>
+
+  <div class="status-right">
+    <span class="status-hint">
+      <kbd>⌘K</kbd> search
+    </span>
+    <span class="status-hint">
+      <kbd>Ctrl`</kbd> terminal
+    </span>
+    <ThemeToggle client:load />
+  </div>
+</div>
+
+<style>
+  .status-bar {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .status-left,
+  .status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fg-6);
+    text-decoration: none;
+    padding: 0 4px;
+    border-radius: 3px;
+    transition: color 120ms;
+    white-space: nowrap;
+  }
+
+  .status-item:hover {
+    color: var(--fg-4);
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--success);
+    padding: 0 4px;
+  }
+
+  .badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--fg-7);
+    padding: 0 4px;
+  }
+
+  .status-hint kbd {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--fg-7);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-muted);
+    border-radius: 3px;
+    padding: 0 4px;
+    line-height: 1.6;
+  }
+
+  /* Hide hint on mobile — no keyboard */
+  @media (max-width: 640px) {
+    .status-hint {
+      display: none;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>

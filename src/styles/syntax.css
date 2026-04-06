@@ -1,0 +1,33 @@
+/* ── Syntax highlighting ─────────────────────── */
+/* Dark mode (default) */
+
+.token.keyword    { color: #d2a8ff; }
+.token.string,
+.token.attr-value { color: #76e3ea; }
+.token.function   { color: #79c0ff; }
+.token.class-name,
+.token.builtin    { color: #ffa657; }
+.token.comment    { color: #6e7681; font-style: italic; }
+.token.number,
+.token.boolean    { color: #a5d6ff; }
+.token.operator   { color: #8b949e; }
+.token.property,
+.token.attr-name  { color: #79c0ff; }
+.token.tag        { color: #7ee787; }
+.token.punctuation { color: #8b949e; }
+
+/* Light mode overrides */
+html.light .token.keyword     { color: #8250df; }
+html.light .token.string,
+html.light .token.attr-value  { color: #1a7f37; }
+html.light .token.function    { color: #6639ba; }
+html.light .token.class-name,
+html.light .token.builtin     { color: #953800; }
+html.light .token.comment     { color: #6e7781; }
+html.light .token.number,
+html.light .token.boolean     { color: #0550ae; }
+html.light .token.operator    { color: #24292f; }
+html.light .token.property,
+html.light .token.attr-name   { color: #0550ae; }
+html.light .token.tag         { color: #116329; }
+html.light .token.punctuation { color: #6e7781; }

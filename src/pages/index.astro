@@ -1,0 +1,275 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+import { getCollection } from 'astro:content';
+import { OPEN_TO_WORK } from '@lib/config';
+
+const posts = (await getCollection('blog', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
+---
+
+<EditorLayout title="Jason Hong" path="~">
+  <div class="page-content">
+    <!-- Header -->
+    <div class="section">
+      <p class="file-label">~/README.md</p>
+      <h1 class="name">Jason Hong</h1>
+      <p class="tagline">SDE at AWS &middot; University of Waterloo &middot; Vancouver, Canada</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- About -->
+    <div class="section prose-content">
+      <p>
+        I build serverless systems and LLM-powered tools at <a href="https://aws.amazon.com/connect/" target="_blank" rel="noopener" class="inline-link">AWS (Amazon Connect)</a>. I'm drawn to distributed systems,
+        developer tooling, and the overlap between performance and ergonomics.
+      </p>
+      <p>
+        Previously interned at AWS, Canoo, StackAdapt and others through Waterloo co-op.
+        Graduated in Computer Engineering.
+      </p>
+    </div>
+
+    <!-- Open to work -->
+    {OPEN_TO_WORK && <div class="open-card">
+      <div class="open-header">
+        <span class="open-dot"></span>
+        <span class="open-label">open to work</span>
+      </div>
+      <p class="open-desc">
+        Exploring full-stack SDE roles. Interested in developer tooling, AI infrastructure,
+        and high-scale distributed systems.
+      </p>
+    </div>}
+
+    {posts.length > 0 && (
+      <>
+        <div class="divider"></div>
+        <div class="section">
+          <div class="section-header">
+            <span class="section-title">Recent writing</span>
+            <a href="/blog" class="section-link">all posts →</a>
+          </div>
+          <div class="recent-posts">
+            {posts.map(post => (
+              <a href={`/blog/${post.id}`} class="recent-post">
+                <div class="recent-post-row">
+                  <span class="recent-title">{post.data.title}</span>
+                  <span class="recent-date">{formatDate(post.data.date)}</span>
+                </div>
+                <p class="recent-desc">{post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+
+    <div class="divider"></div>
+    <div class="section">
+      <div class="contact-links">
+        <a href="mailto:jhong098@gmail.com" class="contact-link">Email</a>
+        <span class="contact-sep">·</span>
+        <a href="https://github.com/Jhong098" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+        <span class="contact-sep">·</span>
+        <a href="https://linkedin.com/in/jasonhong098" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+        <span class="contact-sep">·</span>
+        <a href="/resume.pdf" target="_blank" rel="noopener" class="contact-link">Resume</a>
+      </div>
+    </div>
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .section {
+    margin-bottom: 1.5rem;
+  }
+
+  .file-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    margin-bottom: 0.75rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--fg-1);
+    margin-bottom: 0.25rem;
+  }
+
+  .tagline {
+    font-size: 0.8125rem;
+    color: var(--fg-5);
+    font-family: var(--font-mono);
+  }
+
+  .divider {
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  .open-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .open-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  .open-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .open-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--success);
+  }
+
+  .open-desc {
+    font-size: 0.8125rem;
+    color: var(--fg-5);
+    line-height: 1.6;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .section-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .section-link:hover {
+    color: var(--accent);
+  }
+
+  .recent-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .recent-post {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bg-elevated);
+    text-decoration: none;
+  }
+
+  .recent-post:first-child {
+    border-top: 1px solid var(--bg-elevated);
+  }
+
+  .recent-post-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .recent-title {
+    font-size: 0.8125rem;
+    color: var(--fg-3);
+    transition: color 150ms;
+  }
+
+  .recent-post:hover .recent-title {
+    color: var(--accent);
+  }
+
+  .recent-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .recent-desc {
+    font-size: 0.75rem;
+    color: var(--fg-6);
+    line-height: 1.5;
+  }
+
+  .contact-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .contact-link {
+    color: var(--fg-5);
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .contact-link:hover {
+    color: var(--accent);
+  }
+
+  .contact-sep {
+    color: var(--fg-7);
+  }
+
+  .inline-link {
+    color: var(--fg-3);
+    text-decoration: underline;
+    text-decoration-color: var(--fg-6);
+    text-underline-offset: 2px;
+    transition: color 120ms, text-decoration-color 120ms;
+  }
+
+  .inline-link:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>

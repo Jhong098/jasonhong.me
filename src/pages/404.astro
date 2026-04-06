@@ -1,0 +1,63 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+---
+
+<EditorLayout title="404 — Not Found" path="~/404">
+  <div class="page-content">
+    <p class="file-label">~/404.md</p>
+    <h1 class="code">404</h1>
+    <p class="message">This page doesn't exist.</p>
+    <div class="links">
+      <a href="/">← home</a>
+      <a href="/blog">blog</a>
+      <a href="/projects">projects</a>
+    </div>
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .file-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    margin-bottom: 1.5rem;
+  }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--border-muted);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .message {
+    font-size: 0.9375rem;
+    color: var(--fg-5);
+    margin-bottom: 2rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+
+  .links a {
+    color: var(--fg-6);
+    text-decoration: none;
+    transition: color 120ms;
+  }
+
+  .links a:hover {
+    color: var(--accent);
+  }
+</style>

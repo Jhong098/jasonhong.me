@@ -1,0 +1,67 @@
+---
+interface Props {
+  path: string;
+}
+const { path = '~' } = Astro.props;
+
+// Build breadcrumb segments from path string like "~/blog/post-slug"
+const raw = path.startsWith('~/') ? path.slice(2) : path === '~' ? '' : path;
+const segments = raw ? raw.split('/').filter(Boolean) : [];
+---
+
+<div class="breadcrumbs">
+  <a href="/" class="crumb root">~</a>
+  {segments.map((seg, i) => {
+    const href = '/' + segments.slice(0, i + 1).join('/');
+    const isLast = i === segments.length - 1;
+    return (
+      <>
+        <span class="sep">/</span>
+        {isLast
+          ? <span class="crumb current">{seg}</span>
+          : <a href={href} class="crumb">{seg}</a>
+        }
+      </>
+    );
+  })}
+</div>
+
+<style>
+  .breadcrumbs {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    overflow: hidden;
+  }
+
+  .crumb {
+    color: var(--fg-5);
+    text-decoration: none;
+    padding: 0 2px;
+    transition: color 120ms;
+  }
+
+  .crumb:hover {
+    color: var(--accent);
+  }
+
+  .crumb.root {
+    color: var(--accent);
+  }
+
+  .crumb.current {
+    color: var(--fg-3);
+  }
+
+  .sep {
+    color: var(--fg-7);
+    padding: 0 1px;
+  }
+</style>

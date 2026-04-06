@@ -1,0 +1,54 @@
+---
+import EditorLayout from '@layouts/EditorLayout.astro';
+
+const gear: Record<string, string[]> = {
+  'Computer / Office': [
+    '14" M3 Pro MacBook Pro',
+    'Keychron Q2',
+    'Logitech MX Master 3'
+  ],
+  Coding: ['Claude Code', 'Terminal: iTerm / oh-my-zsh'],
+  Photography: ['Fujifilm X-T30'],
+  Gaming: ['Nintendo Switch', 'Oculus Quest 2']
+};
+---
+
+<EditorLayout title="Uses" path="~/uses">
+  <div class="page-content prose-content">
+    <p class="file-label">~/uses/index.md</p>
+    <h1>Uses</h1>
+    <p>Hardware and software I use day-to-day.</p>
+
+    {
+      Object.entries(gear).map(([category, items]) => (
+        <div class="gear-section">
+          <h3>{category}</h3>
+          <ul>
+            {items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</EditorLayout>
+
+<style>
+  .page-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .file-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-6);
+    margin-bottom: 1.25rem;
+  }
+
+  .gear-section {
+    margin-bottom: 0.5rem;
+  }
+</style>
