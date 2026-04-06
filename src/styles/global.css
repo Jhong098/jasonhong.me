@@ -473,44 +473,51 @@
 /* Globe widget — sticky travel location indicator */
 .globe-widget {
   position: fixed;
-  right: 2.5rem;
+  right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  /* translateX(50%) shifts the globe right by half its own width,
+     placing its center at the viewport edge — only the left half is visible */
+  transform: translateY(-50%) translateX(50%);
   display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
   pointer-events: none;
   z-index: 10;
 }
 
 @media (min-width: 1200px) {
   .globe-widget {
-    display: flex;
+    display: block;
   }
 }
 
-.globe-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  min-height: 2.5rem;
-  justify-content: center;
-  text-align: center;
+/* City label floating next to each pin, positioned via JS in rAF loop */
+.globe-pin-label {
+  position: absolute;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+  transition: opacity 0.2s ease;
 }
 
-.globe-label-small {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-6);
-}
-
-.globe-label-city {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
+.globe-pin-label[data-active="true"] {
   font-weight: 600;
-  color: var(--fg-2);
+}
+
+/* "scroll to explore" hint shown before any location is active */
+.globe-hint {
+  position: absolute;
+  bottom: 18%;
+  left: 5%;
+  width: 42%;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  pointer-events: none;
 }

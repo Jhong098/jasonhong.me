@@ -9,6 +9,9 @@ const blog = defineCollection({
     description: z.string(),
     tags: z.array(z.string()).default([]),
     status: z.enum(['published', 'draft']).default('published'),
+    locations: z
+      .array(z.object({ label: z.string(), lat: z.number(), lng: z.number() }))
+      .optional(),
   }),
 });
 
