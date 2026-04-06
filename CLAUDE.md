@@ -23,7 +23,7 @@ There's an existing VS Code portfolio template ([itsnitinr/vscode-portfolio](htt
 
 ### What this project is
 - **Own design language** — editor-inspired, not editor-cosplay
-- **Functional depth** — command palette searches real content, git log shows real commits, split panes actually work
+- **Functional depth** — command palette searches real content, split panes actually work
 - **Living blog** — MDX posts with interactive embedded demos
 - **Working terminal** — real command parsing, not hardcoded echo
 - **Keyboard-first** — every action has a shortcut, the site is operable without a mouse
@@ -40,7 +40,6 @@ There's an existing VS Code portfolio template ([itsnitinr/vscode-portfolio](htt
 **2. Functional depth**
 - **Command palette** (`/` or `Cmd+K`): searches blog post content, page titles, tags, and actions. Built with `cmdk` library
 - **Split pane**: button on any blog post to view rendered post alongside its raw MDX source — meta and impressive
-- **Git log panel**: fetches real GitHub commit history via API, displayed as `git log --oneline`. Shows visitors how actively you ship
 - **Keyboard shortcuts throughout**: `j/k` to navigate posts, `esc` to go back, `?` to show shortcut cheatsheet, `/` for command palette
 
 **3. Working terminal**
@@ -93,7 +92,7 @@ MDX posts with live React component islands. The blog IS the portfolio — it pr
 - **Command palette**: `cmdk` library
 - **State management**: `nanostores` (lightweight, Astro-native)
 - **Deployment**: Vercel
-- **Git log data**: GitHub REST API (fetched at build time via Astro)
+
 
 ## Design System
 
@@ -137,7 +136,7 @@ src/
 │   ├── blog/
 │   │   ├── PostList.astro         # Blog index list
 │   │   ├── SplitView.tsx          # MDX source split view (Phase 3)
-│   │   └── GitLog.tsx             # Commit history panel (Phase 2)
+
 │   ├── interactive/
 │   │   ├── LeaderboardDemo.tsx    # Live Redis simulation (Phase 3)
 │   │   ├── TypePlayground.tsx     # TypeScript type demo (Phase 3)
@@ -190,7 +189,6 @@ src/
 7. Command palette with `cmdk` (search posts, pages, actions)
 8. Keyboard shortcuts (`j/k`, `esc`, `/`, `?`, `Ctrl+\``)
 9. Terminal panel with core commands
-10. Git log panel (GitHub API)
 
 ### Phase 3 — Polish
 11. Split pane view (rendered + MDX source)
