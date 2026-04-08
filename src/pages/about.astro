@@ -157,6 +157,13 @@ const stack: Record<string, string[]> = {
     margin: 0;
   }
 
+  @media (max-width: 640px) {
+    .exp-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
   .stack-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
