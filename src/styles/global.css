@@ -521,3 +521,22 @@
   text-align: center;
   pointer-events: none;
 }
+
+/* View transition: main content fades + slides slightly between pages */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(main-content) {
+    animation: 150ms ease-in both content-out;
+  }
+
+  ::view-transition-new(main-content) {
+    animation: 200ms ease-out both content-in;
+  }
+
+  @keyframes content-out {
+    to { opacity: 0; transform: translateY(4px); }
+  }
+
+  @keyframes content-in {
+    from { opacity: 0; transform: translateY(4px); }
+  }
+}

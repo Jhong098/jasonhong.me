@@ -62,27 +62,44 @@ const postItems = allPosts.map(p => ({
   </head>
   <body class="bg-zinc-950 text-zinc-100 h-screen flex flex-col overflow-hidden mobile-body">
     <!-- Global keyboard shortcuts (no UI) -->
-    <KeyboardShortcuts client:load />
+    <KeyboardShortcuts client:load transition:persist />
 
     <!-- Command palette overlay -->
-    <CommandPalette client:load posts={postItems} />
+    <CommandPalette client:load posts={postItems} transition:persist />
 
     <!-- Main row: nav rail + content -->
     <div class="flex flex-1 min-h-0">
-      <NavRail currentPath={currentPathname} />
-      <MobileNav currentPath={currentPathname} />
+      <NavRail currentPath={currentPathname} transition:persist />
+      <MobileNav currentPath={currentPathname} transition:persist />
       <div class="flex flex-col flex-1 min-h-0">
         <Breadcrumbs path={path} />
-        <main class="flex-1 overflow-y-auto">
+        <main transition:name="main-content" class="flex-1 overflow-y-auto">
           <slot />
         </main>
       </div>
     </div>
 
     <!-- Terminal panel (slides in above status bar) -->
-    <Terminal client:load />
+    <Terminal client:load transition:persist />
 
     <!-- Status bar spans full width at bottom -->
-    <StatusBar />
+    <StatusBar transition:persist />
+
+    <script>
+      function initSpotlight() {
+        document.querySelectorAll<HTMLElement>('.post-item, .project-card').forEach(el => {
+          el.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = el.getBoundingClientRect();
+            el.style.setProperty('--sx', `${e.clientX - rect.left}px`);
+            el.style.setProperty('--sy', `${e.clientY - rect.top}px`);
+          });
+          el.addEventListener('mouseleave', () => {
+            el.style.setProperty('--sx', '-9999px');
+            el.style.setProperty('--sy', '-9999px');
+          });
+        });
+      }
+      document.addEventListener('astro:page-load', initSpotlight);
+    </script>
   </body>
 </html>
