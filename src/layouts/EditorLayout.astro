@@ -6,6 +6,7 @@ import MobileNav from '@components/layout/MobileNav.astro';
 import CommandPalette from '@components/command-palette/CommandPalette';
 import KeyboardShortcuts from '@components/shared/KeyboardShortcuts';
 import Terminal from '@components/terminal/Terminal';
+import AsciiPet from '@components/shared/AsciiPet';
 import { ClientRouter } from 'astro:transitions';
 import { getCollection } from 'astro:content';
 import '@styles/global.css';
@@ -81,6 +82,9 @@ const postItems = allPosts.map(p => ({
 
     <!-- Terminal panel (slides in above status bar) -->
     <Terminal client:load transition:persist />
+
+    <!-- ASCII pet roams above the status bar -->
+    <AsciiPet client:load transition:persist />
 
     <!-- Status bar spans full width at bottom -->
     <StatusBar transition:persist />

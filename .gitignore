@@ -28,3 +28,4 @@ pnpm-debug.log*
 # Credentials
 service_account.json
 *.pem
+.superpowers/
