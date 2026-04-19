@@ -6,45 +6,45 @@ const experience = [
     company: 'AWS',
     role: 'SDE',
     period: '2021 — present',
-    desc: 'Building serverless systems and LLM-powered evaluation infrastructure for Amazon Connect Contact Lens.',
+    desc: 'Building LLM-powered microservices for Amazon Connect.'
   },
   {
     company: 'AWS',
     role: 'SDE Intern',
     period: '2020',
-    desc: 'Designed a scalable fault-tolerant backend monitoring system in Node.js and TypeScript for Contact Lens.',
+    desc: 'Built a scalable fault-tolerant backend monitoring system in Node.js and TypeScript for Amzon Connect Contact Lens.'
   },
   {
     company: 'Canoo',
     role: 'Software Tools Intern',
     period: '2019',
-    desc: 'Built a software release management tool in React, TypeScript, Python, and Flask for 10+ vehicle components.',
+    desc: 'Built a software release management tool in React, TypeScript, Python, and Flask for 10+ vehicle components.'
   },
   {
     company: 'Hack the North',
     role: 'Organizer',
     period: '2019',
-    desc: 'Built web experiences with React and TypeScript for one of the world\'s largest hackathons — 30k visitors, 3M req/month.',
+    desc: "Built web experiences with React and TypeScript for one of the world's largest hackathons — 30k visitors, 3M req/month."
   },
   {
     company: 'StackAdapt',
     role: 'SWE Intern',
     period: '2019',
-    desc: 'Implemented customization features on an ad platform managing 3000+ campaigns with Ruby on Rails, React, and Redux.',
+    desc: 'Implemented customization features on an ad platform managing 3000+ campaigns with Ruby on Rails, React, and Redux.'
   },
   {
     company: 'Monogram',
     role: 'Software Developer Intern',
     period: '2018',
-    desc: 'Optimized performance and size for a Qt application in C++ and photo-editing software plugins.',
-  },
+    desc: 'Optimized performance and size for a Qt application in C++ and photo-editing software plugins.'
+  }
 ];
 
 const stack: Record<string, string[]> = {
   Languages: ['TypeScript', 'Python', 'Go'],
   Frontend: ['React', 'Astro', 'Tailwind CSS'],
   Backend: ['AWS Lambda', 'DynamoDB', 'SQS/SNS'],
-  Tools: ['Git', 'Docker', 'Terraform'],
+  Tools: ['Claude Code', 'Git', 'Docker', 'AWS CDK']
 };
 ---
 
@@ -55,45 +55,46 @@ const stack: Record<string, string[]> = {
 
     <p>
       Software engineer based in Vancouver. I care about systems that are fast,
-      observable, and pleasant to maintain. I like TypeScript, clean APIs,
-      and tools that respect your time.
+      observable, and pleasant to maintain. I like TypeScript, clean APIs, and
+      tools that respect your time.
     </p>
 
     <h3>Experience</h3>
     <div class="experience-list">
-      {experience.map(e => (
-        <div class="exp-item">
-          <div class="exp-meta">
-            <span class="exp-company">{e.company}</span>
-            <span class="exp-period">{e.period}</span>
+      {
+        experience.map((e) => (
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-company">{e.company}</span>
+              <span class="exp-period">{e.period}</span>
+            </div>
+            <div class="exp-body">
+              <span class="exp-role">{e.role}</span>
+              <p class="exp-desc">{e.desc}</p>
+            </div>
           </div>
-          <div class="exp-body">
-            <span class="exp-role">{e.role}</span>
-            <p class="exp-desc">{e.desc}</p>
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <h3>Stack</h3>
     <div class="stack-grid">
-      {Object.entries(stack).map(([cat, items]) => (
-        <div class="stack-group">
-          <p class="stack-cat">{cat}</p>
-          <div class="stack-tags">
-            {items.map(item => (
-              <span class="stack-tag">{item}</span>
-            ))}
+      {
+        Object.entries(stack).map(([cat, items]) => (
+          <div class="stack-group">
+            <p class="stack-cat">{cat}</p>
+            <div class="stack-tags">
+              {items.map((item) => (
+                <span class="stack-tag">{item}</span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <h3>Education</h3>
-    <p>
-      BASc Computer Engineering — University of Waterloo, class of 2021.
-    </p>
-
+    <p>BASc Computer Engineering — University of Waterloo, class of 2021.</p>
   </div>
 </EditorLayout>
 
