@@ -2,6 +2,8 @@
 import EditorLayout from '@layouts/EditorLayout.astro';
 import { getCollection } from 'astro:content';
 import { OPEN_TO_WORK } from '@lib/config';
+import NowStrip from '@components/shared/NowStrip';
+import now from '@/data/now.json';
 
 const posts = (await getCollection('blog', ({ data }) => data.status === 'published'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -34,6 +36,8 @@ function formatDate(date: Date) {
         Graduated in Computer Engineering.
       </p>
     </div>
+
+    <NowStrip client:idle meal={now.meal.restaurant ? now.meal : null} />
 
     <!-- Open to work -->
     {OPEN_TO_WORK && <div class="open-card">
