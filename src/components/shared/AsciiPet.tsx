@@ -82,7 +82,8 @@ const MOVE_INTERVAL = 80; // ms
 const FRAME_INTERVAL = 500; // ms
 
 export default function AsciiPet() {
-  const [petKey] = useState(() => PET_KEYS[Math.floor(Math.random() * PET_KEYS.length)]);
+  // Chosen after mount so SSR and hydration render the same (empty) output
+  const [petKey, setPetKey] = useState<string | null>(null);
   const [petState, setPetState] = useState<PetState>('walking');
   const [frameIdx, setFrameIdx] = useState(0);
   const [posX, setPosX] = useState(0);
@@ -92,10 +93,11 @@ export default function AsciiPet() {
   const petStateRef = useRef<PetState>('walking');
   petStateRef.current = petState;
 
-  const pet = PETS[petKey];
+  const pet = petKey ? PETS[petKey] : null;
 
-  // Randomize starting position on mount
+  // Randomize pet and starting position on mount
   useEffect(() => {
+    setPetKey(PET_KEYS[Math.floor(Math.random() * PET_KEYS.length)]);
     setPosX(Math.random() * Math.max(0, window.innerWidth * 0.5));
   }, []);
 
@@ -116,6 +118,7 @@ export default function AsciiPet() {
 
   // Frame cycling
   useEffect(() => {
+    if (!pet) return;
     const stateKey =
       petState === 'react' ? 'react' :
       petState === 'pause' ? 'pause' :
@@ -149,7 +152,7 @@ export default function AsciiPet() {
   }, [petState]);
 
   function handleClick() {
-    if (petState === 'react') return;
+    if (!pet || petState === 'react') return;
     const quip = pet.quips[Math.floor(Math.random() * pet.quips.length)];
     setBubble(quip);
     setPetState('react');
@@ -158,6 +161,8 @@ export default function AsciiPet() {
       setPetState('walking');
     }, 1500);
   }
+
+  if (!pet) return null;
 
   const stateKey =
     petState === 'react' ? 'react' :
