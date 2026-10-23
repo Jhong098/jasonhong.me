@@ -8,7 +8,7 @@ A developer blog and personal website that borrows the **interaction model** of 
 
 ## Owner
 
-Jason (Ren Jie) Hong — SDE at AWS (Amazon Connect Contact Lens). Building serverless backend systems and LLM-powered call center agent evaluation infrastructure. Currently exploring full-stack software engineering roles.
+Jason (Ren Jie) Hong — SDE at Amazon (FP&A) in Seattle, building finance systems. Previously at AWS (Amazon Connect Contact Lens), building serverless backends and LLM-powered agent evaluation infrastructure. Currently exploring full-stack software engineering roles.
 
 ## Differentiation
 

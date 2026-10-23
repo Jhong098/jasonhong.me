@@ -19,8 +19,8 @@ export const commands: Record<string, Command> = {
     description: 'Print current user info',
     run: () => [
       'jason hong',
-      'SDE @ AWS — Amazon Connect Contact Lens',
-      'Waterloo CE \'21 — Toronto, ON',
+      'SDE @ Amazon — finance systems',
+      'Waterloo CE \'21 — Seattle, WA',
     ],
   },
   ls: {
@@ -79,8 +79,8 @@ export const commands: Record<string, Command> = {
           '}',
         ],
         about: [
-          'SDE at AWS building serverless systems and LLM-powered tools.',
-          'Waterloo CE \'21. Based in Toronto.',
+          'SDE at Amazon building finance systems.',
+          'Waterloo CE \'21. Based in Seattle.',
         ],
       };
       return data[target] ?? `cat: ${target}: no such file`;
